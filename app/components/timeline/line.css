@@ -1,0 +1,37 @@
+.line {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 100px;
+    width: 100px; */
+    /* border: 4px dashed #adff2f;  */
+}
+
+.dashed-line,
+.filled-line {
+    position: absolute;
+}
+
+.dashed-line {
+    /* padding-right: 1px; */
+    height: 300px;
+    border-left: 2px dashed #adff2f;
+}
+
+.filled-line {
+    /* left: 50%; */
+    /* padding-right: 0.5px; */
+    height: 0px;
+    border-left: 4px solid #adff2f;
+}
+
+.first-half {
+    bottom: 75%;
+}
+
+.line-wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}

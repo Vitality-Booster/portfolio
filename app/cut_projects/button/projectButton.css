@@ -1,0 +1,33 @@
+.button-with-index {
+    display: flex;
+    position: relative;
+}
+
+.project-index {
+    position: absolute;
+    color: #fff;
+    font-size: 60px;
+    top: -60%;
+    left: 3%;
+    z-index: 1;
+}
+
+.project-button {
+    color: #fff;
+    border: 3px solid #99ff55;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px 40px;
+    background-color: transparent;
+}
+
+.project-button:hover {
+    border-color: #70b44c;
+    background-color: #70b44c;
+    cursor: pointer;
+}
+
+.project-button-active {
+    border-color: #70b44c;
+    background-color: #70b44c;
+}

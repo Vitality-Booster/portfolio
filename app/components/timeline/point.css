@@ -1,0 +1,113 @@
+/* .left-column-reached::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    left: calc(100% - 13px);
+    top: calc(50% - 16px);
+    border-radius: 50%;
+    background-color: #f0ffdb;
+}
+
+.left-column-reached::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: calc(100% - 27px);
+    top: calc(50% - 29px);
+    border: 4px solid #adff2f;
+    border-radius: 50%;
+    background-color: var(--background);
+} */
+
+.main-circle-wrapper {
+    --lightning-opacity: 1;
+}
+
+.little-circle {
+    content: "";
+    /* opacity: 0; */
+    position: relative;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+}
+
+.main-circle-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.main-circle {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--background);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-top: 2px solid #adff2f;
+    border-right: 2px solid #adff2f; */
+    /* margin: 10px; */
+}
+
+.horizontal-line {
+    position: absolute;
+    top: 50%;
+    width: 45px;
+    border-top: 3px solid #adff2f;
+    z-index: 2;
+}
+
+/* The animated border for the main circle  */
+.main-circle-wrapper::before {
+    content: "";
+    display: block;
+    background: linear-gradient(
+        270deg,
+        #8d8d8d23 20%,
+        /* #ffffff63 30%, */ #99fc04 100%
+    );
+    height: 40px;
+    rotate: 180deg;
+    width: 30px;
+    transform: translate(0);
+    position: absolute;
+    animation: rotate 4s linear forwards infinite;
+    z-index: 1;
+    top: 50%;
+    transform-origin: top center;
+    opacity: var(--lightning-opacity);
+}
+
+.wrap-everything {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

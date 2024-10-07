@@ -1,0 +1,12 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.icon-column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}

@@ -1,0 +1,46 @@
+.story-line-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 2000px auto;
+    height: 100hv;
+}
+
+.central-column {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -3%;
+}
+
+.line-and-point {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 200px;
+    /* margin-block: 250px; */
+}
+
+.content-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* margin-inline: 5%; */
+    margin-left: 5%;
+    margin-right: 10%;
+    margin-bottom: 70px;
+}
+
+.content-row:nth-of-type(even) {
+    flex-direction: row-reverse;
+    margin-left: 10%;
+    margin-right: 5%;
+}
+
+.flex-wrapper {
+    display: flex;
+    /* margin-block: 550px; */
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 30px;
+}

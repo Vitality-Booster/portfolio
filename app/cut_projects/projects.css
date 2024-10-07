@@ -1,0 +1,20 @@
+.main-projects {
+    margin: 100px auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.all-project-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 50px 100px;
+}
+
+.card-wrapper {
+    display: flex;
+    margin: 20px;
+    position: relative;
+}

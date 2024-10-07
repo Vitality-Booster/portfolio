@@ -1,0 +1,118 @@
+.project-card-wrapper {
+    --card-width: 350px;
+    --card-height: 500px;
+}
+
+.project-card {
+    height: var(--card-height);
+    width: var(--card-width);
+    background-color: #2e324b;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.project-card::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 400px;
+    background-color: #000;
+    z-index: -2;
+}
+
+.project-card-image {
+    position: relative;
+    object-fit: cover;
+    object-position: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    max-width: 100%;
+    width: var(--card-width);
+    height: 200px;
+}
+
+.card-text-area {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.project-card-title-box {
+    margin-left: 10px;
+}
+
+.project-card-title-box::before {
+    content: "";
+    display: block;
+    left: 10%;
+    width: 80px;
+    height: 1.8rem;
+    position: absolute;
+    border-bottom: 3px solid #99ff55;
+}
+
+.project-card-description {
+    margin-top: 20px;
+}
+
+.project-card-footer {
+    display: flex;
+    margin-inline: auto;
+    margin-bottom: 20px;
+    margin-top: auto;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rectangle-shadow {
+    display: block;
+    position: absolute;
+    width: var(--card-width);
+    height: var(--card-height);
+    content: "";
+    top: 10%;
+    left: -10%;
+    background-color: #99ff55;
+    border-radius: 10px;
+    z-index: -2;
+}
+
+.card-border-path {
+    --stroke-offset-svg: 1700;
+    --anmation-name: "";
+    stroke-dasharray: var(--stroke-offset-svg);
+    stroke-dashoffset: 1700;
+}
+
+.project-card:hover {
+    cursor: pointer;
+}
+
+.project-card:hover .card-border-path {
+    animation: draw 1.3s linear forwards;
+}
+
+.card-border-svg {
+    
+    position: absolute;
+    top: -1.5%;
+    left: -0.5%;
+    z-index: 3;
+    rotate: 180deg;
+    /* top:-1%; */
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes erase {
+    to {
+        stroke-dashoffset: 1700;
+    }
+}
