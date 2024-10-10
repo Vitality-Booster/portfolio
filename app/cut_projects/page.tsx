@@ -61,13 +61,12 @@ const helloWorldProject: ProjectCardInfo = {
 
 const mainImage2: ImageType = {
     src: "https://cdn.pixabay.com/photo/2024/02/05/16/23/labrador-8554882_640.jpg",
-    alt: "Project image"
+    alt: "Project image",
 }
 
 const projectName2 = "Good Boy Project"
 const projectDescription2 =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptate distinctio rem ea culpa architecto ullam, animi eum incidunt consequuntur est praesentium, voluptatem facilis accusamus possimus! Quo sequi ex consequuntur!"
-
 
 const secondProject: ProjectCardInfo = {
     mainImage: mainImage2,
@@ -83,49 +82,130 @@ const buttonProjectMap = {
     "02": secondProject,
 }
 
+const cardAppear = {
+    y: "+=200px",
+    opacity: 0,
+    duration: 2,
+    ease: "elastic.out(0.5,0.4)",
+}
+
+const cardReappear = {
+    y: "-=200px",
+    opacity: 1,
+    duration: 2,
+    ease: "elastic.out(0.5,0.4)",
+}
+
+const cardFadeOut = {
+    y: "+=200px",
+    opacity: 0,
+    ease: "power2.in",
+    duration: 1,
+}
+
 export default function Projects() {
     const [activeButton, setActiveButton] = useState<string>("01")
+    const [firstCardActive, setFirstCardActive] = useState<boolean>(true)
+    const [firstCardProject, setFirstCardProject] = useState<ProjectCardInfo>(
+        buttonProjectMap["01"],
+    )
+    const [secondCardProject, setSecondCardProject] = useState<ProjectCardInfo>(
+        buttonProjectMap["01"],
+    )
     const projectsRef = useRef(null)
-    const { contextSafe } = useGSAP({ scope: projectsRef });
+    const { contextSafe } = useGSAP({ scope: projectsRef })
     const tl = useRef(gsap.timeline())
 
     useGSAP(() => {
-        gsap.from(".card-wrapper", {
-            y: "+=200px",
-            opacity: 0,
-            duration: 2,
-            ease: "elastic.out(0.5,0.4)",
+        gsap.from("#first-card", {
+            ...cardAppear,
+        })
+        gsap.to("#second-card", {
+            ...cardFadeOut,
         })
     }, [])
 
+    /**
+     * Handles card animation and changes the active button
+     */
     const handleButtonClick = contextSafe((index: string) => {
-        tl.current.to(".card-wrapper", {
-            y: "+=200px",
-            opacity: 0,
-            ease: "power2.in",
-            duration: 1
-        }).then(() => setActiveButton(index))
+        setActiveButton(index)
+        if (firstCardActive) {
+            setSecondCardProject(buttonProjectMap[index])
 
-    //     tl.current.from(".card-wrapper", {
-    //         y: "+=200px",
-    //         opacity: 0,
-    //         duration: 2,
-    //         ease: "elastic.out(0.5,0.4)",
-    // }, "+=1")
+            tl.current
+                .to("#first-card", {
+                    ...cardFadeOut,
+                })
+                .then(() => {
+                    // setFirstCardActive(false)
+                })
 
+            tl.current.to(
+                "#second-card",
+                {
+                    ...cardReappear,
+                },
+                ">",
+            )
+            setFirstCardActive(false)
+        } else {
+            setFirstCardProject(buttonProjectMap[index])
+
+            tl.current
+                .to("#second-card", {
+                    ...cardFadeOut,
+                })
+                .then(() => {
+                    // setFirstCardActive(true)
+                })
+
+            tl.current.to(
+                "#first-card",
+                {
+                    ...cardReappear,
+                },
+                ">",
+            )
+            setFirstCardActive(true)
+        }
     })
 
     return (
         <div className="main-projects" ref={projectsRef}>
             <div className="all-project-buttons">
-                <ProjectButton index="01" projectName="Project name" active={activeButton === "01"} callback={handleButtonClick} />
-                <ProjectButton index="02" projectName="Another project" active={activeButton === "02"} callback={handleButtonClick} />
-                <ProjectButton index="03" projectName="Yet another project" active={activeButton === "03"} callback={handleButtonClick} />
+                <ProjectButton
+                    index="01"
+                    projectName="Project name"
+                    active={activeButton === "01"}
+                    callback={handleButtonClick}
+                />
+                <ProjectButton
+                    index="02"
+                    projectName="Another project"
+                    active={activeButton === "02"}
+                    callback={handleButtonClick}
+                />
+                <ProjectButton
+                    index="03"
+                    projectName="Yet another project"
+                    active={activeButton === "03"}
+                    callback={handleButtonClick}
+                />
             </div>
             <div className="card-wrapper">
-                <ProjectCard
-                    projectCardInfo={buttonProjectMap[activeButton]}
-                />
+                <div
+                    id="first-card"
+                    className={!firstCardActive ? "card-hidden" : ""}
+                >
+                    <ProjectCard projectCardInfo={firstCardProject} />
+                </div>
+                <div
+                    id="second-card"
+                    className={firstCardActive ? "card-hidden" : ""}
+                >
+                    <ProjectCard projectCardInfo={secondCardProject} />
+                </div>
             </div>
         </div>
     )

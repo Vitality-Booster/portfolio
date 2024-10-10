@@ -1,0 +1,47 @@
+.all-projects-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 50px auto;
+    max-width: 1200px;
+    /* gap: 50px; */
+}
+
+.main-image-container {
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    position: relative;
+}
+
+.project-main-image {
+    position: relative;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    max-width: 100%;
+    position: relative;
+}
+
+.project-name-label {
+    position: absolute;
+    left: 0;
+    top: 5%;
+    background-color: #70b44c;
+    font-size: 35px;
+    padding: 10px 30px;
+}
+
+.description-with-stats-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: space-between;
+    margin-top: 40px;
+    /* margin-bottom: 50px; */
+}
+
+.project-tech-stack {
+    display: flex;
+    margin-top: 100px;
+}

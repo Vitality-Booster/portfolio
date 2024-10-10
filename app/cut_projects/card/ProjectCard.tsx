@@ -13,11 +13,10 @@ import { ProjectCardInfo } from "@/app/types/Project"
 gsap.registerPlugin(useGSAP)
 
 export default function ProjectCard({
-    projectCardInfo
+    projectCardInfo,
 }: {
     projectCardInfo: ProjectCardInfo
 }) {
-
     const cardRef = useRef(null)
     const shadowRef = useRef(null)
 
@@ -47,15 +46,20 @@ export default function ProjectCard({
 
     return (
         <div className="project-card-wrapper">
-            <div className="rectangle-shadow" ref={shadowRef}/>
-            <div className="project-card" ref={cardRef} onClick={() => {console.log("have a wonderful day!")}}>
+            <div className="rectangle-shadow" ref={shadowRef} />
+            <div
+                className="project-card"
+                ref={cardRef}
+                onClick={() => {
+                    console.log("have a wonderful day!")
+                }}
+            >
                 <svg
                     className="card-border-svg"
                     width="354"
                     height="512"
                     viewBox="0 0 352 502"
                     xmlns="http://www.w3.org/2000/svg"
-                    
                 >
                     <path
                         className="card-border-path"
@@ -65,10 +69,14 @@ export default function ProjectCard({
                         // ref={borderRef}
                     />
                 </svg>
-                
+
                 <img
                     className="project-card-image"
-                    src={typeof projectCardInfo.mainImage.src === "string" ? projectCardInfo.mainImage.src : ""}
+                    src={
+                        typeof projectCardInfo.mainImage.src === "string"
+                            ? projectCardInfo.mainImage.src
+                            : ""
+                    }
                     alt={projectCardInfo.mainImage.alt}
                 />
                 <div className="card-text-area">
@@ -84,19 +92,31 @@ export default function ProjectCard({
                         className="project-card-icon"
                         src={projectCardInfo.iconImage1.src}
                         alt={projectCardInfo.iconImage1.alt}
-                        width={projectCardInfo.iconImage1.width ? projectCardInfo.iconImage1.width : 35}
+                        width={
+                            projectCardInfo.iconImage1.width
+                                ? projectCardInfo.iconImage1.width
+                                : 35
+                        }
                     />
                     <Image
                         className="project-card-icon"
                         src={projectCardInfo.iconImage2.src}
                         alt={projectCardInfo.iconImage2.alt}
-                        width={projectCardInfo.iconImage2.width ? projectCardInfo.iconImage2.width : 35}
+                        width={
+                            projectCardInfo.iconImage2.width
+                                ? projectCardInfo.iconImage2.width
+                                : 35
+                        }
                     />
                     <Image
                         className="project-card-icon"
                         src={projectCardInfo.iconImage3.src}
                         alt={projectCardInfo.iconImage3.alt}
-                        width={projectCardInfo.iconImage3.width ? projectCardInfo.iconImage3.width : 35}
+                        width={
+                            projectCardInfo.iconImage3.width
+                                ? projectCardInfo.iconImage3.width
+                                : 35
+                        }
                     />
                 </div>
             </div>

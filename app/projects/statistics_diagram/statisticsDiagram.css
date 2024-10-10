@@ -1,0 +1,118 @@
+.statistics-diagram {
+    --main-height: 200px;
+
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.statistics-base {
+    border-radius: 50%;
+    border: 2px solid var(--light-purple);
+    height: var(--main-height);
+    width: var(--main-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-line,
+.diagonal-line-1,
+.diagonal-line-2 {
+    position: absolute;
+    border-left: 2px solid var(--light-purple);
+    height: var(--main-height);
+    width: 2px;
+    /* transform-origin: center; */
+}
+
+.diagonal-line-1 {
+    rotate: 60deg;
+}
+
+.diagonal-line-2 {
+    rotate: -60deg;
+}
+
+.vertical-line::before,
+.vertical-line::after,
+.diagonal-line-1::after,
+.diagonal-line-1::before,
+.diagonal-line-2::after,
+.diagonal-line-2::before {
+    position: absolute;
+    font-size: 20px;
+    left: -16px;
+}
+
+.vertical-line::after,
+.diagonal-line-1::after,
+.diagonal-line-2::after {
+    top: -17%;
+}
+
+.vertical-line::before,
+.diagonal-line-1::before,
+.diagonal-line-2::before {
+    bottom: -17%;
+}
+
+.diagonal-line-1::after,
+.diagonal-line-1::before {
+    rotate: -60deg;
+}
+
+.diagonal-line-2::after,
+.diagonal-line-2::before {
+    rotate: 60deg;
+}
+
+.vertical-line::after {
+    content: "Power";
+}
+
+.diagonal-line-1::after {
+    content: "Dex";
+}
+
+.diagonal-line-2::after {
+    content: "Health";
+}
+
+.vertical-line::before {
+    content: "INT";
+}
+
+.diagonal-line-1::before {
+    content: "LWP";
+}
+
+.diagonal-line-2::before {
+    content: "Stress";
+}
+
+.statistics-figure {
+    --stat1: 50% 40%;
+    --stat2: 58% 45.5%;
+    --stat3: 58% 54.5%;
+    --stat4: 50% 60%;
+    --stat5: 42.5% 54.5%;
+    --stat6: 42.5% 45.5%;
+
+    position: absolute;
+    clip-path: polygon(
+        var(--stat1),
+        var(--stat2),
+        var(--stat3),
+        var(--stat4),
+        var(--stat5),
+        var(--stat6)
+    );
+    background-color: #c4f7a196;
+    height: var(--main-height);
+    width: var(--main-height);
+}

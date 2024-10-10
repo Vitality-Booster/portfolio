@@ -1,0 +1,14 @@
+.tech-circle {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    /* width: 200px;
+    height: 200px; */
+    padding: 18px;
+    border-radius: 50%;
+    background-color: var(--background);
+    border: 1px solid #5e5e5e94;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

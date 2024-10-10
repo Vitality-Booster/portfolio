@@ -9,12 +9,34 @@
 .all-project-buttons {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    /* justify-content: center; */
+    /* gap: 50px; */
     margin: 50px 100px;
+    position: relative;
+    z-index: 0;
+    height: 300px;
+    width: 300px;
+    overflow: scroll;
 }
+
+/* .all-project-buttons::before {
+    content: "";
+    position: absolute;
+    top: -70%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #25283ddc;
+    z-index: 0;
+} */
 
 .card-wrapper {
     display: flex;
     margin: 20px;
     position: relative;
+}
+
+.card-hidden {
+    position: absolute;
+    opacity: 0;
 }
