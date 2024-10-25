@@ -1,3 +1,9 @@
 .main-container {
     margin: 150px auto;
 }
+
+.root-container {
+    position: absolute;
+    margin-inline: auto;
+    min-width: 100vw;
+}

@@ -55,6 +55,8 @@ export default function LandingPage() {
                     <p className="description-word">Developer</p>
                     <p className="description-word">Enthusiast</p>
                     <p className="description-word">Challenger</p>
+                    <p className="hidden-word">Team Pla</p>
+                    {/* <p className="hidden-word">Innovator</p> */}
                 </div>
             </div>
         </div>

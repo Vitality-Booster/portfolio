@@ -5,6 +5,7 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 300px;
+    gap: 100px;
 }
 
 .all-project-buttons {

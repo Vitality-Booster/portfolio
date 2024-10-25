@@ -1,6 +1,6 @@
 .custom-cursor {
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     position: fixed;
     z-index: -30;
     /* background-image: radial-gradient(

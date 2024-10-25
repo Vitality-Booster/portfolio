@@ -1,6 +1,7 @@
 .project-card-wrapper {
-    --card-width: 350px;
-    --card-height: 500px;
+    --card-width: 435px;
+    --card-height: 700px;
+    /* margin-left: 100px; */
 }
 
 .project-card {
@@ -13,15 +14,6 @@
     position: relative;
 }
 
-/* .project-card::before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 400px;
-    z-index: -2;
-} */
-
 .project-card-image {
     position: relative;
     object-fit: cover;
@@ -30,7 +22,7 @@
     border-top-left-radius: 10px;
     max-width: 100%;
     width: var(--card-width);
-    height: 200px;
+    height: 325px;
 }
 
 .card-text-area {
@@ -100,6 +92,12 @@
     left: -0.5%;
     z-index: 0;
     rotate: 180deg;
+    height: calc(var(--card-height) + 100px);
+    width: calc(var(--card-width) + 100px);
+}
+
+.card-border-svg-container {
+    /* height: */
 }
 
 @keyframes draw {
