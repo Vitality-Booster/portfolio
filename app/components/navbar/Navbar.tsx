@@ -1,23 +1,42 @@
+"use client"
+
+import { usePathname } from "next/navigation"
 import "./navbar.css"
+import NavLink from "./navlink/NavLink"
 
 export default function Page() {
+    const path = usePathname()
+    console.log(path)
+
     return (
         <div className="navbar">
             <ul>
                 <li>
-                    <a href="#">Home</a>
+                    <NavLink text="Home" link="/" active={path === "/"} />
                 </li>
                 <li>
-                    <a href="#">Education</a>
+                    <NavLink
+                        text="Projects"
+                        link="/projects"
+                        active={path === "/projects"}
+                    />
                 </li>
                 <li>
-                    <a href="#">Story Line</a>
+                    <NavLink
+                        text="Story Line"
+                        link="/story_line"
+                        active={path === "/story_line"}
+                    />
                 </li>
                 <li>
-                    <a href="#">Expertise</a>
+                    <NavLink
+                        text="Expertise"
+                        link="/cut_projects"
+                        active={path === "/cut_projects"}
+                    />
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <NavLink text="Contact" link="/projects" active={false} />
                 </li>
             </ul>
         </div>

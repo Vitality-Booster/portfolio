@@ -18,7 +18,11 @@ export default function ProjectsPage() {
                 <StatisticsCard />
             </div>
             <div className="project-tech-stack">
-                <TechStack />
+                <TechStack
+                    circleSize={100}
+                    iconSize={40}
+                    animationPadding={10}
+                />
             </div>
         </div>
     )

@@ -1,46 +1,15 @@
-body {
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    box-shadow:
+        0 0 15px #00ff00,
+        inset 0 0 15px #00ff00;
+    margin: 50px auto;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}
-
-.face {
-    width: 200px;
-    height: 200px;
-    background-color: #ffeb3b;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.eye {
-    width: 20px;
-    height: 20px;
-    background-color: black;
-    border-radius: 50%;
-    position: absolute;
-}
-
-.eye.left {
-    left: 50px;
-    top: 70px;
-}
-
-.eye.right {
-    right: 50px;
-    top: 70px;
-}
-
-.mouth {
-    width: 100px;
-    height: 50px;
-    border-bottom: 5px solid black;
-    border-radius: 0 0 100px 100px;
-    position: absolute;
-    bottom: 40px;
 }

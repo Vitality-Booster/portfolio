@@ -1,7 +1,7 @@
 .story-line-wrapper {
     position: relative;
     max-width: 1200px;
-    margin: 2000px auto;
+    margin: 300px auto;
     height: 100hv;
 }
 
@@ -17,14 +17,12 @@
     justify-content: center;
     position: relative;
     margin-bottom: 200px;
-    /* margin-block: 250px; */
 }
 
 .content-row {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    /* margin-inline: 5%; */
     margin-left: 5%;
     margin-right: 10%;
     margin-bottom: 70px;
@@ -38,9 +36,7 @@
 
 .flex-wrapper {
     display: flex;
-    /* margin-block: 550px; */
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     gap: 30px;
 }

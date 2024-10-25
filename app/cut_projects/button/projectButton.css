@@ -7,7 +7,7 @@
 
 .project-index {
     position: absolute;
-    color: #fff;
+    color: var(--foreground);
     font-size: 60px;
     top: -60%;
     left: 3%;
@@ -15,17 +15,20 @@
 }
 
 .project-button {
-    color: #fff;
-    border: 3px solid #99ff55;
+    color: var(--foreground);
+    border: 3px solid var(--green);
     border-radius: 10px;
     position: relative;
     padding: 20px 40px;
     background-color: transparent;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .project-button:hover {
-    border-color: #70b44c;
-    background-color: #70b44c;
+    border-color: var(--green);
+    background-color: var(--green);
+    color: var(--background);
     cursor: pointer;
 }
 
@@ -36,6 +39,7 @@
 }
 
 .project-button-active {
-    border-color: #70b44c;
-    background-color: #70b44c;
+    border-color: var(--green);
+    background-color: var(--green);
+    color: var(--background);
 }

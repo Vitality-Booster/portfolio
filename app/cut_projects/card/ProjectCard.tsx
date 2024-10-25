@@ -47,13 +47,7 @@ export default function ProjectCard({
     return (
         <div className="project-card-wrapper">
             <div className="rectangle-shadow" ref={shadowRef} />
-            <div
-                className="project-card"
-                ref={cardRef}
-                onClick={() => {
-                    console.log("have a wonderful day!")
-                }}
-            >
+            <div className="project-card" ref={cardRef}>
                 <svg
                     className="card-border-svg"
                     width="354"
@@ -65,8 +59,7 @@ export default function ProjectCard({
                         className="card-border-path"
                         fill="none"
                         d="M341 1H11C5.47715 1 1 5.47714 1 11V491C1 496.523 5.47715 501 11 501H341C346.523 501 351 496.523 351 491V11C351 5.47715 346.523 1 341 1Z"
-                        stroke="#99ff55"
-                        // ref={borderRef}
+                        stroke="#43FF3F"
                     />
                 </svg>
 

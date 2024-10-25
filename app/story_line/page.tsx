@@ -18,7 +18,7 @@ import ScrollTrigger from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-export default function Page() {
+export default function StoryLine() {
     useGSAP(() => {
         gsap.from(".content-row", {
             scrollTrigger: {
@@ -32,8 +32,6 @@ export default function Page() {
 
             opacity: 0,
             duration: 2,
-            // stagger: 1,
-            // yoyo: true,
         })
     })
 

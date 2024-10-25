@@ -12,6 +12,7 @@
     max-width: 100%;
     justify-content: center;
     position: relative;
+    margin-bottom: 30px;
 }
 
 .project-main-image {
@@ -44,4 +45,6 @@
 .project-tech-stack {
     display: flex;
     margin-top: 100px;
+    margin-bottom: 50px;
+    /* height: 700px; */
 }

@@ -13,11 +13,13 @@ export async function generateAllCircles({
     maxX,
     maxY,
     size,
+    animationPadding,
 }: {
     rawCircles: RawCircleType[]
     maxX: number
     maxY: number
     size: number
+    animationPadding: number
 }): Promise<TechCircleType[]> {
     const allCircles: TechCircleType[] = []
     const realMaxX = maxX - size
@@ -33,9 +35,11 @@ export async function generateAllCircles({
                 isSuccessful = true
             }
             for (const circle of allCircles) {
+                console.log("Still calculating")
                 if (
-                    Math.abs(newX - circle.newX) < size &&
-                    Math.abs(newY - circle.newY) < size
+                    Math.abs(newX - circle.newX) <
+                        size + 2 * animationPadding &&
+                    Math.abs(newY - circle.newY) < size + 2 * animationPadding
                 )
                     break
                 else {
@@ -52,14 +56,13 @@ export async function generateAllCircles({
         }
 
         allCircles.push({
-            id: rawCircle.id,
-            type: rawCircle.type,
+            ...rawCircle,
+            size,
             newX,
             newY,
         })
     })
 
-    console.log("All the circles generated: ", JSON.stringify(allCircles))
     return allCircles
 }
 
@@ -77,17 +80,13 @@ export async function generateLines(
                 if (!prevCircle) {
                     prevCircle = circle
                 } else {
-                    console.log(
-                        `I am generating a line for the circles: ${prevCircle.id} and ${circle.id} with their x1,y1 = ${prevCircle.newX},${prevCircle.newY} and x2,y2 = ${circle.newX},${circle.newY}`,
-                    )
-
                     const angle = await calculateLineAngle(
                         prevCircle.newX,
                         prevCircle.newY,
                         circle.newX,
                         circle.newY,
                     )
-                    
+
                     const length = await calculateLineLength(
                         prevCircle.newX,
                         prevCircle.newY,
@@ -102,8 +101,8 @@ export async function generateLines(
                         circle.newY,
                         circleSize,
                         length,
-                        angle
-                    ) 
+                        angle,
+                    )
 
                     const id = `line-${Math.round(linePoisition[0])}-${Math.round(linePoisition[1])}`
 
@@ -124,32 +123,38 @@ export async function generateLines(
     return lines
 }
 
-async function calculateLineAngle(x1: number, y1: number, x2: number, y2: number): Promise<number> {
-    return Math.atan2(
-        y2 - y1,
-        x2 - x1,
-    )
+async function calculateLineAngle(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+): Promise<number> {
+    return Math.atan2(y2 - y1, x2 - x1)
 }
 
-async function calculateLineLength(x1: number, y1: number, x2: number, y2: number): Promise<number> {
-    return Math.sqrt(
-        Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2),
-    )
+async function calculateLineLength(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+): Promise<number> {
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
 }
 
-async function calculateLinePosition(x1: number, y1: number, x2: number, y2: number, circleSize: number, length: number, angle: number): Promise<number[]> {
-
-    const newXP1 =
-        x1 < x2
-            ? x1 + circleSize / 2
-            : x2 + circleSize / 2
+async function calculateLinePosition(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    circleSize: number,
+    length: number,
+    angle: number,
+): Promise<number[]> {
+    const newXP1 = x1 < x2 ? x1 + circleSize / 2 : x2 + circleSize / 2
     const newXP2 = length / 2 - (length / 2) * Math.abs(Math.cos(angle))
     const newX = newXP1 - newXP2
 
-    const newYP1 =
-        x1 < x2
-            ? y1 + circleSize / 2
-            : y2 + circleSize / 2
+    const newYP1 = x1 < x2 ? y1 + circleSize / 2 : y2 + circleSize / 2
 
     const newYP2 = (length / 2) * Math.sin(angle)
     const newY = x1 < x2 ? newYP1 + newYP2 : newYP1 - newYP2
