@@ -36,7 +36,12 @@ export default function Page() {
                     />
                 </li>
                 <li>
-                    <NavLink text="Contact" link="/projects" active={false} />
+                    <NavLink
+                        text="Contact"
+                        link="/contact-page"
+                        active={false}
+                    />{" "}
+                    {/* TODO: Change later */}
                 </li>
             </ul>
         </div>

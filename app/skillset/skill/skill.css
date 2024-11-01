@@ -1,0 +1,55 @@
+.skill-container {
+    display: flex;
+    max-width: 350px;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.skill-name,
+.skill-years,
+.skill-tags {
+    width: auto;
+    max-height: 40px;
+    position: relative;
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.skill-years-container {
+    display: block;
+    position: absolute;
+    border-radius: 90px;
+    background-color: var(--green);
+    height: 2em;
+    /* padding-block: 1em; */
+    /* padding: 1em; */
+    /* font-size: 25px; */
+    width: 2em;
+    z-index: -1;
+    top: -0.4em;
+    left: -0.9em;
+}
+
+.skill-name {
+    font-size: 30px;
+}
+
+.skill-years-circle {
+    position: absolute;
+    top: -0.4em;
+    left: -0.9em;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    background-color: var(--green);
+}
+
+.skill-years {
+    font-size: 25px;
+    color: var(--background);
+    margin-left: 10px;
+    /* position: absolute; */
+    /* left: 1em; */
+}

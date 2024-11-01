@@ -1,0 +1,33 @@
+.personal-info-card {
+    display: flex;
+    gap: 10px;
+    --title-size: 20px;
+    color: var(--foreground);
+}
+
+.personal-info-icon {
+    border: 1px solid #ffffff79;
+    padding: 8px;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: var(--glass-background);
+}
+
+.personal-info-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.personal-info-title {
+    font-size: var(--title-size);
+    opacity: 0.8;
+}
+
+.personal-info-value {
+    font-size: calc(var(--title-size) + 1px);
+    font-weight: 500;
+}

@@ -3,9 +3,4 @@
     height: 120vh;
     position: fixed;
     z-index: -30;
-    /* background-image: radial-gradient(
-        600px at 400px 400px,
-        #f35 -20%,
-        transparent 100%
-      ); */
 }

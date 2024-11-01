@@ -1,0 +1,197 @@
+.contact-main-container {
+    margin: 150px auto;
+    max-width: 1200px;
+    display: flex;
+    gap: 20px;
+
+    --text-size: 23px;
+    --detail-input-width: 200px;
+}
+
+/* --- (START) Left part of the Contact Page --- */
+.contact-main-text {
+    font-size: 60px;
+    font-weight: 400;
+    color: var(--foreground);
+}
+
+.contact-information-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cta-text-highlited {
+    color: var(--green);
+    opacity: 0.7;
+    font-size: 35px;
+    position: relative;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
+.contact-main-text-highlighted {
+    position: relative;
+    color: var(--background);
+}
+
+.highlighted-rectangle {
+    position: absolute;
+    top: -10%;
+    left: -20%;
+    width: 6.5em;
+    height: 1.2em;
+    background-color: var(--green);
+    z-index: -1;
+}
+
+.personal-information-container {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 
+  Be careful: this margin only works with "PersonalInfoCrad element".
+  You will need to change the ".personal-info-card" part 
+  if you want it to work with other elemnt types.
+*/
+.personal-information-container .personal-info-card:nth-child(2) {
+    margin-left: 15%;
+}
+
+.personal-information-container .personal-info-card:nth-child(3) {
+    margin-left: 30%;
+}
+
+/* --- (END) Left part of the Contact Page --- */
+
+/* --- (START) Right part of the Contact Page --- */
+
+.contact-form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--glass-background);
+    border-radius: 10px;
+    /* padding: 60px; */
+}
+
+.contact-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-block: 30px;
+}
+
+.contact-input,
+.contact-message {
+    font-size: var(--text-size);
+    position: relative;
+}
+
+.contact-input {
+    margin-left: 15px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: var(--detail-input-width);
+}
+
+.contact-input:focus {
+    outline: none;
+    /* border-bottom: 1px solid var(--green); */
+}
+
+::placeholder {
+    color: #ffffffb2;
+    opacity: 0.8;
+}
+
+.contact-input-label {
+    font-size: 20px;
+}
+
+.contact-input-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-input-container::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 0;
+    left: 1.2rem;
+    position: relative;
+    border-top: 3px solid #42ff3fa8;
+    animation: move-border 5s linear infinite alternate;
+}
+
+@keyframes move-border {
+    0% {
+        left: -15px;
+    }
+    100% {
+        left: calc(var(--detail-input-width) - 35px);
+    }
+}
+
+.contact-input-container {
+    overflow: hidden;
+}
+
+.contact-input-container:has(.contact-input:focus)::after {
+    transition: all 1s ease;
+    left: 0%;
+    width: var(--detail-input-width);
+    animation: none;
+    border-top: 3px solid var(--green);
+}
+
+.contact-message {
+    background: transparent;
+    border: none;
+    padding: 20px;
+    width: 400px;
+    height: 500px;
+}
+
+.contact-messaage-box {
+    /* position: absolute; */
+    /* width: 300px; */
+    height: 0px;
+    border: 3px solid var(--green);
+}
+
+.contact-message:focus {
+    outline: none;
+    border: 1px solid var(--green); /* Custom border */
+}
+
+.contact-message {
+    box-shadow: 0 0 10px #42ff3f7a; /* Add a shadow effect */
+    border-radius: 7px;
+}
+
+.contact-message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-submit-button {
+    font-size: var(--text-size);
+    width: 9rem;
+    height: 3.5rem;
+    background-color: var(--green);
+    border: none;
+    color: var(--background);
+    font-weight: 600;
+}
