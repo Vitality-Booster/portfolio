@@ -5,10 +5,14 @@ export default function PersonalInfoCard({
     icon,
     title,
     value,
+    size = 80,
+    boxPadding = 8
 }: {
     icon: StaticImageData
     title: string
     value: string
+    size?: number
+    boxPadding?: number
 }) {
     return (
         <div className="personal-info-card">
@@ -17,7 +21,8 @@ export default function PersonalInfoCard({
                     className="personal-info-icon"
                     src={icon}
                     alt="Email icon"
-                    width={70}
+                    width={size}
+                    style={{padding: boxPadding}}
                 />
             </div>
             <div className="personal-info-text-container">

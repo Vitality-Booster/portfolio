@@ -1,3 +1,5 @@
+"use client"
+
 import "./contactPage.css"
 import PersonalInfoCard from "./personal_info_card/PersonalInfoCard"
 
@@ -5,7 +7,40 @@ import EmailIcon from "@/public/contact_page/email.png"
 import PhoneIcon from "@/public/contact_page/call-phone.png"
 import AddressIcon from "@/public/contact_page/location.png"
 
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { useRef } from "react"
+
+gsap.registerPlugin(useGSAP);
+
 export default function ContactPage() {
+    const buttonRef = useRef(null);
+    const buttonContRef = useRef(null);
+    const buttonEffectTl = useRef(gsap.timeline())
+    const {contextSafe} = useGSAP({scope: buttonContRef})
+
+    useGSAP(() => {
+        buttonEffectTl.current.to(buttonRef.current, {
+            width: "+=2rem",
+            color: "#fff",
+            duration: 0.5,
+            ease: "power1",
+        })
+
+        buttonEffectTl.current.pause();
+    }, [buttonEffectTl])
+
+    
+
+    const buttonHoverHandler = contextSafe(() => {
+        console.log("I am hjere!")
+        buttonEffectTl.current.restart()
+    })
+
+    const buttonLeaveHandler = contextSafe(() => {
+        buttonEffectTl.current.reverse()
+    })
+
     return (
         <div className="contact-main-container">
             <div className="contact-information-container">
@@ -32,6 +67,7 @@ export default function ContactPage() {
                         icon={PhoneIcon}
                         title="Phone"
                         value="+31 6 51394215"
+                        boxPadding={12}
                     />
                     <PersonalInfoCard
                         icon={AddressIcon}
@@ -47,34 +83,43 @@ export default function ContactPage() {
                         <input
                             className="contact-input"
                             type="text"
-                            placeholder="Full Name"
+                            placeholder="Elon Musk"
                             required
                         />
                     </div>
                     <div className="contact-input-container">
+                    <label className="contact-input-label">Email</label>
                         <input
                             className="contact-input"
                             type="email"
-                            placeholder="Email"
+                            placeholder="elonmusk@tesla.com"
                             required
                         />
                     </div>
                     <div className="contact-input-container">
+                    <label className="contact-input-label">Subject</label>
                         <input
                             className="contact-input"
                             type="text"
-                            placeholder="Subject"
+                            placeholder="Job Opportynity"
                         />
                     </div>
                 <div className="contact-message-container">
+                    <label className="contact-input-label">Message</label>
                     <textarea
                         className="contact-message"
-                        placeholder="Message"
+                        placeholder="Your text here"
                         required
-                    />
-                    <button className="contact-submit-button">Submit</button>
-                    {/* <div className="contact-messaage-box"/> */}
+                    />                    
                 </div>
+                </div>
+                <div className="button-container" ref={buttonContRef}>
+                    <button 
+                    className="contact-submit-button" 
+                    ref={buttonRef}
+                    onMouseEnter={buttonHoverHandler}
+                    onMouseLeave={buttonLeaveHandler}
+                    >Send email</button>
                 </div>
             </form>
         </div>

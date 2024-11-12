@@ -7,9 +7,7 @@
 
 .personal-info-icon {
     border: 1px solid #ffffff79;
-    padding: 8px;
-    width: 80px;
-    height: 80px;
+    /* padding: 8px; */
     border-radius: 10px;
     background-color: var(--glass-background);
 }

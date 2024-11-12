@@ -5,7 +5,7 @@
     gap: 20px;
 
     --text-size: 23px;
-    --detail-input-width: 200px;
+    --detail-input-width: 100%;
 }
 
 /* --- (START) Left part of the Contact Page --- */
@@ -73,7 +73,8 @@
 .contact-form {
     flex: 1;
     display: flex;
-    justify-content: center;
+    position: relative;
+    /* justify-content: center; */
 
     background-color: var(--glass-background);
     border-radius: 10px;
@@ -83,28 +84,32 @@
 .contact-details-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-block: 30px;
+    gap: 16px;
+    width: 85%;
+    margin: 30px auto;
+    /* padding: 30px; */
 }
 
 .contact-input,
 .contact-message {
     font-size: var(--text-size);
     position: relative;
+    width: var(--detail-input-width);
+    background: var(--light-background);
+    border: #ffffff3a 1px solid;
+    border-radius: 7px;
 }
 
 .contact-input {
-    margin-left: 15px;
-    padding: 10px;
-    background: transparent;
-    border: none;
+    /* margin-left: 15px; */
+    padding: 13px;
+    padding-left: 20px;
     color: #fff;
-    width: var(--detail-input-width);
 }
 
-.contact-input:focus {
+.contact-input:focus, .contact-message:focus {
     outline: none;
-    /* border-bottom: 1px solid var(--green); */
+    border: 1px solid var(--green); /* Custom border */
 }
 
 ::placeholder {
@@ -113,7 +118,10 @@
 }
 
 .contact-input-label {
-    font-size: 20px;
+    font-size: 23px;
+    position: relative;
+    left: -15px;
+    margin-bottom: 5px;
 }
 
 .contact-input-container {
@@ -121,77 +129,56 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-bottom: 15px;
 }
 
-.contact-input-container::after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 0;
-    left: 1.2rem;
-    position: relative;
-    border-top: 3px solid #42ff3fa8;
-    animation: move-border 5s linear infinite alternate;
-}
 
-@keyframes move-border {
-    0% {
-        left: -15px;
-    }
-    100% {
-        left: calc(var(--detail-input-width) - 35px);
-    }
-}
-
-.contact-input-container {
-    overflow: hidden;
-}
-
-.contact-input-container:has(.contact-input:focus)::after {
-    transition: all 1s ease;
-    left: 0%;
-    width: var(--detail-input-width);
-    animation: none;
-    border-top: 3px solid var(--green);
-}
+/* --- (START) Contact Message Field --- */
 
 .contact-message {
-    background: transparent;
-    border: none;
     padding: 20px;
-    width: 400px;
-    height: 500px;
-}
-
-.contact-messaage-box {
-    /* position: absolute; */
-    /* width: 300px; */
-    height: 0px;
-    border: 3px solid var(--green);
-}
-
-.contact-message:focus {
-    outline: none;
-    border: 1px solid var(--green); /* Custom border */
-}
-
-.contact-message {
-    box-shadow: 0 0 10px #42ff3f7a; /* Add a shadow effect */
+    height: 200px;
+    /* box-shadow: 0 0 10px #42ff3f7a; */
     border-radius: 7px;
 }
 
 .contact-message-container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 5px;
+}
+
+/* --- (END) Contact Message Field --- */
+
+/* --- (START) Bottom of the Contact Form --- */
+
+.button-container {
+    /* display: flex; */
+    position: absolute;
+    /* justify-content: end;
+    align-items: center; */
+    margin-top: 5rem;
+    width: 100%;
+    height: 5rem;
+    top: calc(100% - 5rem);
+    padding-right: 60px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: var(--green);   
 }
 
 .contact-submit-button {
     font-size: var(--text-size);
-    width: 9rem;
-    height: 3.5rem;
-    background-color: var(--green);
+    width: 10rem;
+    height: 3.3rem;
+    background-color: var(--light-background);
     border: none;
-    color: var(--background);
+    color: var(--foreground);
     font-weight: 600;
+    cursor: pointer;
+    border-radius: 90px;
 }
+
+/* --- (END) Bottom of the Contact Form --- */
+
+/* --- (END) Right part of the Contact Page --- */
