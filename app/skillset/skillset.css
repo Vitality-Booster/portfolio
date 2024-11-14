@@ -1,10 +1,31 @@
-.skillset-container {
-    margin: 150px auto;
+.skillset-main-container {
+    margin: 300px auto;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
 }
 
-.skills-container {
-    height: 300px;
+.skillset-all-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 25px;
+}
+
+.skillset-all-card {
+    width: 900px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.skill-line {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill-line:nth-of-type(even) {
+    flex-direction: row-reverse;
 }

@@ -6,7 +6,7 @@ import "./projects.css"
 
 import PostgreIcon from "../../public/tech_stack/postgre.png"
 import JavaIcon from "../../public/tech_stack/java.png"
-import ReactIcon from "../../public/tech_stack/science.png"
+import ReactIcon from "../../public/tech_stack/react.png"
 import { ImageType } from "../types/ImageType"
 import { use, useRef, useState } from "react"
 import { ProjectCardInfo } from "../types/Project"

@@ -1,0 +1,25 @@
+.skillset-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-block: 30px;
+}
+
+.skillset-frame-line {
+    width: 450px;
+    height: 0px;
+    border-bottom: var(--green) 3px solid;
+}
+
+.skillset-frame-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--green);
+}
+
+.skillset-frame-all-circles {
+    display: flex;
+    gap: 15px;
+}

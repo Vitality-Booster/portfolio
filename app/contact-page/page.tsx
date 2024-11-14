@@ -7,8 +7,8 @@ import Skillset from "../skillset/Skillset"
 export default function Page() {
     return (
         // <div className="contact-root-container">
-        <ContactPage />
-        // <Skillset />
+        // <ContactPage />
+        <Skillset />
         // </div>
     )
 }

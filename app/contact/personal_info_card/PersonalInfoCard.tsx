@@ -6,7 +6,7 @@ export default function PersonalInfoCard({
     title,
     value,
     size = 80,
-    boxPadding = 8
+    boxPadding = 8,
 }: {
     icon: StaticImageData
     title: string
@@ -22,7 +22,7 @@ export default function PersonalInfoCard({
                     src={icon}
                     alt="Email icon"
                     width={size}
-                    style={{padding: boxPadding}}
+                    style={{ padding: boxPadding }}
                 />
             </div>
             <div className="personal-info-text-container">

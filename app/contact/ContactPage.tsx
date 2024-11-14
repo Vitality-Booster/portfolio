@@ -11,26 +11,35 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP)
 
 export default function ContactPage() {
-    const buttonRef = useRef(null);
-    const buttonContRef = useRef(null);
+    const buttonRef = useRef(null)
+    const buttonContRef = useRef(null)
+    const extraTextRef = useRef(null)
     const buttonEffectTl = useRef(gsap.timeline())
-    const {contextSafe} = useGSAP({scope: buttonContRef})
+    const { contextSafe } = useGSAP({ scope: buttonContRef })
 
     useGSAP(() => {
         buttonEffectTl.current.to(buttonRef.current, {
-            width: "+=2rem",
+            width: "+=2.5rem",
             color: "#fff",
             duration: 0.5,
             ease: "power1",
         })
 
-        buttonEffectTl.current.pause();
-    }, [buttonEffectTl])
+        buttonEffectTl.current.to(
+            extraTextRef.current,
+            {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power1",
+            },
+            "<",
+        )
 
-    
+        buttonEffectTl.current.pause()
+    }, [buttonEffectTl])
 
     const buttonHoverHandler = contextSafe(() => {
         console.log("I am hjere!")
@@ -88,7 +97,7 @@ export default function ContactPage() {
                         />
                     </div>
                     <div className="contact-input-container">
-                    <label className="contact-input-label">Email</label>
+                        <label className="contact-input-label">Email</label>
                         <input
                             className="contact-input"
                             type="email"
@@ -97,29 +106,38 @@ export default function ContactPage() {
                         />
                     </div>
                     <div className="contact-input-container">
-                    <label className="contact-input-label">Subject</label>
+                        <label className="contact-input-label">Subject</label>
                         <input
                             className="contact-input"
                             type="text"
                             placeholder="Job Opportynity"
                         />
                     </div>
-                <div className="contact-message-container">
-                    <label className="contact-input-label">Message</label>
-                    <textarea
-                        className="contact-message"
-                        placeholder="Your text here"
-                        required
-                    />                    
-                </div>
+                    <div className="contact-message-container">
+                        <label className="contact-input-label">Message</label>
+                        <textarea
+                            className="contact-message"
+                            placeholder="Your text here"
+                            required
+                        />
+                    </div>
                 </div>
                 <div className="button-container" ref={buttonContRef}>
-                    <button 
-                    className="contact-submit-button" 
-                    ref={buttonRef}
-                    onMouseEnter={buttonHoverHandler}
-                    onMouseLeave={buttonLeaveHandler}
-                    >Send email</button>
+                    <div className="button-wrapper">
+                        <button
+                            className="contact-submit-button"
+                            ref={buttonRef}
+                            onMouseEnter={buttonHoverHandler}
+                            onMouseLeave={buttonLeaveHandler}
+                        >
+                            <a className="button-text" ref={buttonRef}>
+                                Send email
+                            </a>
+                        </button>
+                        <a className="extra-button-text" ref={extraTextRef}>
+                            {"->"}
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>

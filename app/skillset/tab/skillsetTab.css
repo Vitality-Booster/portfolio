@@ -1,0 +1,40 @@
+.skillset-tab,
+.skillset-tab-active {
+    --bord-radius: 5px;
+    --rect-width: 170px;
+    --rect-height: 75px;
+}
+
+.skillset-tab,
+.skillset-tab-active {
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: var(--bord-radius);
+    width: var(--rect-width);
+    height: var(--rect-height);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skillset-tab {
+    border: var(--green) 1px solid;
+    background-color: var(--background);
+}
+
+.skillset-extra-rectangle {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: -30%;
+    left: -15%;
+    border-radius: var(--bord-radius);
+    background-color: var(--green);
+    z-index: -1;
+}
+
+.skillset-tab-active {
+    color: var(--background);
+    background-color: var(--green);
+}

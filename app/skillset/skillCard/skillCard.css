@@ -1,0 +1,49 @@
+.skill-card {
+    width: 375px;
+    height: 200px;
+    padding: 20px 40px;
+    background-color: var(--glass-background);
+    border-radius: 5px;
+    border: 1px solid var(--green);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    font-size: 25px;
+}
+
+.skill-card-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin-right: 100px;
+}
+
+.skill-icon-with-name {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-name {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.skill-year-experience {
+    width: 100%;
+    text-align: center;
+}
+
+.skill-number {
+    position: absolute;
+    font-size: 350px;
+    color: var(--green);
+    left: 70%;
+    top: -25%;
+    opacity: 0.4;
+    z-index: -1;
+}

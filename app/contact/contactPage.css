@@ -107,7 +107,8 @@
     color: #fff;
 }
 
-.contact-input:focus, .contact-message:focus {
+.contact-input:focus,
+.contact-message:focus {
     outline: none;
     border: 1px solid var(--green); /* Custom border */
 }
@@ -132,7 +133,6 @@
     margin-bottom: 15px;
 }
 
-
 /* --- (START) Contact Message Field --- */
 
 .contact-message {
@@ -153,18 +153,18 @@
 /* --- (START) Bottom of the Contact Form --- */
 
 .button-container {
-    /* display: flex; */
+    display: flex;
     position: absolute;
-    /* justify-content: end;
-    align-items: center; */
+    justify-content: end;
+    align-items: center;
     margin-top: 5rem;
     width: 100%;
     height: 5rem;
     top: calc(100% - 5rem);
-    padding-right: 60px;
+    padding-right: 40px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: var(--green);   
+    background-color: var(--green);
 }
 
 .contact-submit-button {
@@ -177,6 +177,36 @@
     font-weight: 600;
     cursor: pointer;
     border-radius: 90px;
+    /* position: absolute; */
+    /* margin-right: 100%; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.button-wrapper {
+    position: relative;
+    width: 13rem;
+    display: flex;
+    align-items: center;
+}
+
+.button-text {
+    /* width: 10rem; */
+    /* position:fixed; */
+    /* margin-right: 150px; */
+    /* margin-right: 100%; */
+    /* position: absolute; */
+    /* left: 10%;
+    top: 50%; */
+}
+
+.extra-button-text {
+    font-size: var(--text-size);
+    font-weight: 600;
+    position: absolute;
+    left: 10.4rem;
+    opacity: 0;
 }
 
 /* --- (END) Bottom of the Contact Form --- */
