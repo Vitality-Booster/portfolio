@@ -138,17 +138,21 @@ export default function Skillset() {
     const [hiddenSkillset, setHiddenSkillset] = useState<SkillData[]>(testHiddenSkills.filter((skill) => skill.type === currentTab))
 
     const skillsetCardsRef = useRef(null)
+    const tl = useRef(gsap.timeline())
     const {contextSafe} = useGSAP({scope: skillsetCardsRef})
 
-    // TODO: fix the animation
     const handleTabChange = contextSafe((tab: string) => {
-        gsap.to(".skill-line", {duration: 1, opacity: 0, y: "+=20px"})
         setSkillNumber(1)
         setPrevTab(currentTab)
         setCurrentTab(tab)
-        setSkillset(testSkillsData.filter((skill) => skill.type === tab))
-        setHiddenSkillset(testHiddenSkills.filter((skill) => skill.type === tab))
-        gsap.from(".skill-line", {duration: 1, opacity: 0, y: "+=20px"})
+
+        tl.current.to(skillsetCardsRef.current, {duration: 1, opacity: 0, y: "+=200px"})
+        .then(() => {
+            
+            setSkillset(testSkillsData.filter((skill) => skill.type === tab))
+            setHiddenSkillset(testHiddenSkills.filter((skill) => skill.type === tab))
+        })
+        .then(() => tl.current.to(skillsetCardsRef.current, {duration: 1, opacity: 1, y: "-=200px"}))
     })
 
     return (
@@ -162,7 +166,7 @@ export default function Skillset() {
             <div className="skillset-all-card" ref={skillsetCardsRef}>
                 {skillset.map((skill) => {
                         return (
-                            <div className="skill-line">
+                            <div className="skill-line" key={skill.type + "-" + skill.skillNumber}>
                                 <SkillCard {...skill} />
                                 <HiddenSkill {...hiddenSkillset[skill.skillNumber - 1]} />
                             </div>

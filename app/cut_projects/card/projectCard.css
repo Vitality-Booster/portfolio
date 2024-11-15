@@ -72,10 +72,10 @@
 }
 
 .card-border-path {
-    --stroke-offset-svg: 1700;
+    --stroke-offset-svg: 2800;
     --anmation-name: "";
     stroke-dasharray: var(--stroke-offset-svg);
-    stroke-dashoffset: 1700;
+    stroke-dashoffset: var(--stroke-offset-svg);
 }
 
 .project-card:hover {
@@ -88,12 +88,19 @@
 
 .card-border-svg {
     position: absolute;
-    top: -1.5%;
-    left: -0.5%;
-    z-index: 0;
+    top: -0.06%;
+    left: -2%;
+    /* top: -0.4%;
+    left: -150%; */
+    
+    z-index: 4;
     rotate: 180deg;
-    height: calc(var(--card-height) + 100px);
-    width: calc(var(--card-width) + 100px);
+    /* height: calc(var(--card-height) + 70px);
+    width: calc(var(--card-width) + 100px); */
+    height:100%;
+    /* height: calc(var(--card-height) + 150px); */
+    width: 104%;
+    
 }
 
 .card-border-svg-container {

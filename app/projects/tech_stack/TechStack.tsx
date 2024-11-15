@@ -161,7 +161,7 @@ export default function TechStack({
         tl.current.to(
             `.${circleType}`,
             {
-                borderColor: "#fff",
+                borderColor: "#43FF3F",
                 padding: `+=${animationPadding}px`,
                 duration: 0.2,
             },

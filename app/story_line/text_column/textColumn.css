@@ -1,24 +1,19 @@
-.text-column {
-    display: flex;
-    flex-direction: column;
-    max-width: 40%;
-    position: relative;
-}
-
 .main-header {
     padding-left: 30px;
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 10px;
 }
 
 .description-card {
     background-color: var(--light-gray);
-    padding-inline: 20px;
-    padding-block: 10px;
+    padding: 20px 30px;
     box-shadow: 0px 0px 10px 1px rgba(196, 247, 161, 0.1);
     border-radius: 10px;
-    height: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 300px;
-    margin-top: 10px;
+    width: 400px;
 }

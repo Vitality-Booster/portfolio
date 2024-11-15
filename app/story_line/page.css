@@ -4,38 +4,19 @@
     margin: 300px auto;
 }
 
-.central-column {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    margin-left: -3%;
-}
-
-.line-and-point {
+.new-content-row {
     display: flex;
-    justify-content: center;
-    position: relative;
-    margin-bottom: 200px;
-}
-
-.content-row {
-    display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    margin-left: 5%;
-    margin-right: 10%;
     margin-bottom: 70px;
 }
 
-.content-row:nth-of-type(even) {
-    flex-direction: row-reverse;
-    margin-left: 10%;
-    margin-right: 5%;
+.new-point-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.flex-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px;
+.new-content-row:nth-of-type(odd) {
+    flex-direction: row-reverse;
 }

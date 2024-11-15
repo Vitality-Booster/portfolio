@@ -51,12 +51,20 @@ export default function LandingPage() {
                         BESTOLKAU
                     </h1>
                 </div>
-                <div className="descriptions-container">
-                    <p className="description-word">Developer</p>
-                    <p className="description-word">Enthusiast</p>
-                    <p className="description-word">Challenger</p>
-                    <p className="hidden-word">Team Pla</p>
-                    {/* <p className="hidden-word">Innovator</p> */}
+                <div className="home-descriptions">
+                    <div className="home-description-line">
+                        <p className="hidden-home-description">Team Player</p>
+                        <p className="home-description">Developer</p>
+                    </div>
+                    <div className="home-description-line">
+                        <p className="hidden-home-description">Innovator</p>
+                        
+                        <p className="home-description">Enthusiast</p>
+                    </div>
+                    <div className="home-description-line">
+                        <p className="hidden-home-description">Problem Solver</p>
+                        <p className="home-description">Challenger</p>
+                    </div>
                 </div>
             </div>
         </div>

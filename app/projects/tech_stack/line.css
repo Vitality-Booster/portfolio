@@ -7,6 +7,6 @@
     rotate: var(--angle);
     width: var(--length);
     height: 0;
-    border: 1px solid #fff;
+    border: 1px solid var(--green);
     opacity: 0;
 }

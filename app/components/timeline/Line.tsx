@@ -18,28 +18,23 @@ export default function Line({ height = 300 }: { height?: number }) {
         gsap.to(filledLine.current, {
             scrollTrigger: {
                 trigger: dashedLine.current,
-                start: "20% center",
+                start: "10% center",
                 endTrigger: dashedLine.current,
                 end: "80% center",
-                scrub: 2,
+                scrub: 2.5,
             },
-            height: height,
-            ease: "power2.in",
+            height: "100%",
+            ease: "power1.in",
         })
     }, [filledLine, dashedLine])
 
     return (
-        // <div className="line-wrapper">
-        // <div className="filled-line" ref={filledLine}/>
         <div className="line">
             <div className="filled-line" ref={filledLine} />
             <div
                 className="dashed-line"
                 ref={dashedLine}
-                style={{ height: height }}
             />
-            {/* {children && children} */}
         </div>
-        // </div>
     )
 }

@@ -12,9 +12,7 @@
 .description-card,
 .description-card-shadow {
     padding: 20px;
-    /* margin: 20px; */
     border-radius: 10px;
-    /* width: var(--card-max-size); */
     width: 100%;
     height: 100%;
 }
@@ -23,7 +21,7 @@
     display: flex;
     flex-direction: column;
     background-color: var(--background);
-    border: 1px solid #99ff55;
+    border: 1px solid var(--green);
     position: relative;
 }
 
@@ -31,7 +29,7 @@
     position: absolute;
     top: 5%;
     left: -5%;
-    background-color: #99ff55;
+    background-color: var(--green);
     z-index: -1;
 }
 
@@ -44,10 +42,10 @@
     position: absolute;
     bottom: 5%;
     left: 10%;
-    border: 1px solid #99ff55;
+    border: 1px solid var(--green);
     border-radius: 10px;
     background-color: transparent;
-    color: #fff;
+    color: var(--foreground);
     font-size: 15px;
     padding: 10px 20px;
     display: flex;
@@ -56,7 +54,8 @@
 }
 
 .view-more-button:hover {
-    border-color: #70b44c;
-    background-color: #70b44c;
+    border-color: var(--green);
+    background-color: var(--green);
+    color: var(--background);
     cursor: pointer;
 }

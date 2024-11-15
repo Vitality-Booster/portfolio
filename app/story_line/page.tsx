@@ -20,10 +20,9 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function StoryLine() {
     useGSAP(() => {
-        gsap.from(".content-row", {
+        gsap.from(".new-content-row", {
             scrollTrigger: {
-                trigger: ".content-row",
-                // trigger: ".content-row",
+                trigger: ".new-content-row",
                 start: "top 80%",
                 endTrigger: ".story-line-wrapper",
                 end: "bottom 20%",
@@ -37,59 +36,53 @@ export default function StoryLine() {
 
     return (
         <div className="story-line-wrapper">
-            <div className="content-row">
+            <Line />
+            <div className="new-content-row">
                 <TextColumn
                     header={"Bachelor Degree"}
                     text={
                         "Finished Fontys, the university of applied science, with a degree in Computer Science"
                     }
                 />
+                <div className="new-point-col">
+                    <Point />
+                </div>
                 <IconColumn
                     iconSrc={graduateSrc}
                     duration={"Sep 2020 - Jul 2024"}
                 />
             </div>
-            <div className="content-row">
+            <div className="new-content-row">
                 <TextColumn
                     header={"Graduation Internship"}
                     text={
                         "Finished Fontys, the university of applied science, with a degree in Computer Science"
                     }
                 />
+                <div className="new-point-col">
+                    <Point />
+                </div>
                 <IconColumn
                     iconSrc={brainSrc}
                     duration={"Feb 2024 - Jun 2024"}
                     imageMarginBottom="40px"
                 />
             </div>
-            <div className="content-row">
+            <div className="new-content-row">
                 <TextColumn
                     header={"GLOW Festival"}
                     text={
                         "Finished Fontys, the university of applied science, with a degree in Computer Science"
                     }
                 />
+                <div className="new-point-col">
+                    <Point />
+                </div>
                 <IconColumn
                     iconSrc={lightBulbSrc}
                     duration={"Sep 2023 - Nov 2023"}
                     imageMarginBottom="35px"
                 />
-            </div>
-
-            {/* The complete timeline object. Maybe will need to move to a separate .tsx file later. TODO: think about <--- */}
-            <div className="central-column">
-                <div className="line-and-point">
-                    <Line />
-                    <Point />
-                </div>
-                <div className="line-and-point">
-                    <Line />
-                    <Point />
-                </div>
-                <div className="line-and-point">
-                    <Line />
-                    <Point marginTop="20px" />
-                </div>
             </div>
         </div>
     )

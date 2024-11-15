@@ -27,8 +27,8 @@ export default function Home() {
                 <LandingPage />
                 <StoryLine />
                 <Projects />
-                <ContactPage />
                 <Skillset />
+                <ContactPage />
             </div>
         </div>
     )

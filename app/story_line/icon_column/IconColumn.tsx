@@ -19,10 +19,10 @@ export default function IconColumn({
                 <Image
                     src={iconSrc}
                     alt="Artificial Intelligence image"
-                    width={100}
+                    width={150}
                 />
             </div>
-            <h2>{duration}</h2>
+            <h2 className="story-line-duration">{duration}</h2>
         </div>
     )
 }

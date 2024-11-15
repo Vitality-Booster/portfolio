@@ -47,7 +47,15 @@ export default function ProjectCard({
     return (
         <div className="project-card-wrapper">
             <div className="rectangle-shadow" ref={shadowRef} />
-            <svg
+            
+            
+            <div className="project-card" ref={cardRef}>
+
+            <svg className="card-border-svg" width="435" height="700" viewBox="0 0 437 702" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect className="card-border-path" x="0" y="0" width="436" height="701" rx="10" stroke="#43FF3F" stroke-width="1.5"/>
+            </svg>
+
+            {/* <svg
                 className="card-border-svg"
                 width="354"
                 height="512"
@@ -60,8 +68,8 @@ export default function ProjectCard({
                     d="M341 1H11C5.47715 1 1 5.47714 1 11V491C1 496.523 5.47715 501 11 501H341C346.523 501 351 496.523 351 491V11C351 5.47715 346.523 1 341 1Z"
                     stroke="#43FF3F"
                 />
-            </svg>
-            <div className="project-card" ref={cardRef}>
+            </svg> */}
+            
                 {/* <div className="card-border-svg-container"> */}
 
                 {/* </div> */}

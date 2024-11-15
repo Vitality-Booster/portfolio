@@ -22,7 +22,7 @@
     position: relative;
     flex-direction: column;
     background-color: var(--background);
-    border: 1px solid #99ff55;
+    border: 1px solid var(--green);
 }
 
 .statistics-card-shadow {
@@ -30,7 +30,7 @@
     display: flex;
     top: 5%;
     left: -5%;
-    background-color: #99ff55;
+    background-color: var(--green);
     z-index: -1;
     height: 105%;
 }
@@ -54,7 +54,7 @@
 .statistics-text::before {
     content: "";
     position: absolute;
-    border: 1px solid #99ff55;
+    border: 1px solid var(--green);
     width: 70%;
     top: -50%;
     left: 15%;
@@ -69,7 +69,7 @@
 }
 
 .project-tag {
-    color: #fff;
+    color: var(--foreground);
     background-color: var(--background);
     padding: 10px 20px;
     border-radius: 10px;

@@ -28,7 +28,8 @@
     position: absolute;
     left: 0;
     top: 5%;
-    background-color: #70b44c;
+    background-color: var(--green);
+    color: var(--background);
     font-size: 35px;
     padding: 10px 30px;
 }
@@ -39,12 +40,10 @@
     max-width: 100%;
     justify-content: space-between;
     margin-top: 40px;
-    /* margin-bottom: 50px; */
 }
 
 .project-tech-stack {
     display: flex;
     margin-top: 100px;
     margin-bottom: 50px;
-    /* height: 700px; */
 }

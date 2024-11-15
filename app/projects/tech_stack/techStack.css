@@ -8,7 +8,7 @@
 }
 
 .tech-circle:hover {
-    border-color: #fff;
+    border-color: var(--green);
     cursor: pointer;
 }
 
@@ -20,7 +20,7 @@
 .stack-title {
     position: relative;
     font-size: 70px;
-    color: #fff;
+    color: var(--foreground);
     display: flex;
     justify-content: center;
     width: 100%;

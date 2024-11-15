@@ -8,5 +8,13 @@
 .icon-column {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     position: relative;
+    max-width: 40%;
+    width: 400px;
+}
+
+.story-line-duration {
+    position: relative;
+    text-align: center;
 }

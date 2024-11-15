@@ -2,10 +2,8 @@
     position: absolute;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    /* height: 100px;
-    width: 100px; */
-    /* border: 4px dashed #adff2f;  */
+    height: 100%;
+    width: 100%;
 }
 
 .dashed-line,
@@ -15,15 +13,16 @@
 
 .dashed-line {
     /* padding-right: 1px; */
-    height: 300px;
-    border-left: 2px dashed #adff2f;
+
+    height: 100%;
+    border-left: 2px dashed var(--green);
 }
 
 .filled-line {
     /* left: 50%; */
     /* padding-right: 0.5px; */
     height: 0px;
-    border-left: 4px solid #adff2f;
+    border-left: 4px solid var(--green);
 }
 
 .first-half {
