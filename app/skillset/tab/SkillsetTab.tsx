@@ -4,20 +4,25 @@ import "./skillsetTab.css"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 gsap.registerPlugin(useGSAP)
 
 export default function SkillsetTab({
     tabText,
     active,
+    wasActive,
+    onClickCallback,
 }: {
     tabText: string
     active: boolean
+    wasActive: boolean
+    onClickCallback: (tab: string) => void
 }) {
+    const [finishedInitAnimation, setFinishedInitAnimation] = useState(false)
+
     const tabRef = useRef(null)
     const rectRef = useRef(null)
-    // const textRef = useRef(null)
     const tl = useRef(gsap.timeline())
     const { contextSafe } = useGSAP({ scope: tabRef })
 
@@ -40,29 +45,38 @@ export default function SkillsetTab({
         )
 
         tl.current.pause()
-    }, [tl])
+
+        if (wasActive && !active) {
+            console.log("I was supposed to play")
+            tl.current.reverse()
+            setFinishedInitAnimation(true)
+        } else if (wasActive && active) {
+            tl.current.play()
+            setFinishedInitAnimation(true)
+        }
+
+    }, [wasActive, active])
 
     const handleMouseEnter = contextSafe(() => {
-        tl.current.play()
+        console.log(`I am active? ${active} And Was I active? ${wasActive}`)
+        if (!active)
+            tl.current.play()
     })
 
     const handleMouseLeave = contextSafe(() => {
-        tl.current.reverse()
+        if (!active)
+            tl.current.reverse()
     })
-
-    return active ? (
-        <div className="skillset-tab-active">
-            <a className="skillset-tab-text">{tabText}</a>
-        </div>
-    ) : (
-        <div
+    
+    return    (<div
             className="skillset-tab"
             ref={tabRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={() => onClickCallback(tabText)}
         >
             <div className="skillset-extra-rectangle" ref={rectRef} />
             <a className="skillset-tab-text">{tabText}</a>
-        </div>
-    )
+        </div>)
+    
 }

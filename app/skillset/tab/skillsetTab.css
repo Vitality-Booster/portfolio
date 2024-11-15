@@ -23,6 +23,10 @@
     background-color: var(--background);
 }
 
+.skillset-tab:hover {
+    cursor: pointer;
+}
+
 .skillset-extra-rectangle {
     position: absolute;
     height: 100%;

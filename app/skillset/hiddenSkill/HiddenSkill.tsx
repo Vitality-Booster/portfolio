@@ -1,22 +1,23 @@
+import { SkillData } from "@/app/types/SkillTypes"
 import "./hiddenSkill.css"
 
-export default function HiddenSkill({skillNumber, skillName, expYears}: {skillNumber: number, skillName: string, expYears: number}) {
+export default function HiddenSkill(skillData: SkillData) {
     return (
         <div className="hidden-skill-card">
             <div
                 className="hidden-skill-number"
                 style={
-                    skillNumber % 2 === 1
-                        ? skillNumber === 1 ? { left: "-4rem"}
+                    skillData.skillNumber % 2 === 1
+                        ? skillData.skillNumber === 1 ? { left: "-4rem"}
                         : { left: "-5rem" }
                         : { left: "70%" }
                 }
-            >{skillNumber}</div>
+            >{skillData.skillNumber}</div>
             <div className="hidden-skill-name-wrapper">
-                <a className="skill-name">{skillName}</a>
+                <a className="skill-name">{skillData.skillName}</a>
             </div>
             <div className="hidden-skill-year-experience">
-                Experience: {expYears} years
+                Experience: {skillData.expYears} years
             </div>
         </div>
     )
