@@ -11,7 +11,7 @@
 
 .statistics-base {
     border-radius: 50%;
-    border: 2px solid var(--light-purple);
+    border: 2px solid var(--purple);
     height: var(--main-height);
     width: var(--main-height);
     position: relative;
@@ -24,10 +24,11 @@
 .diagonal-line-1,
 .diagonal-line-2 {
     position: absolute;
-    border-left: 2px solid var(--light-purple);
+    border-left: 2px solid var(--purple);
     height: var(--main-height);
     width: 2px;
-    /* transform-origin: center; */
+    display: flex;
+    justify-content: center;
 }
 
 .diagonal-line-1 {
@@ -45,8 +46,7 @@
 .diagonal-line-2::after,
 .diagonal-line-2::before {
     position: absolute;
-    font-size: 20px;
-    left: -16px;
+    font-size: 22px;
 }
 
 .vertical-line::after,
@@ -72,27 +72,35 @@
 }
 
 .vertical-line::after {
-    content: "Power";
+    content: "Complexity";
 }
 
 .diagonal-line-1::after {
-    content: "Dex";
+    content: "Innovation";
+    padding-left: 80px;
+    padding-bottom: 20px;
 }
 
 .diagonal-line-2::after {
-    content: "Health";
+    content: "Stress";
+    padding-right: 40px;
+    padding-bottom: 20px;
 }
 
 .vertical-line::before {
-    content: "INT";
+    content: "Fun";
 }
 
 .diagonal-line-1::before {
-    content: "LWP";
+    content: "Creativity";
+    padding-right: 80px;
+    padding-top: 40px;
 }
 
 .diagonal-line-2::before {
-    content: "Stress";
+    content: "Learning";
+    padding-left: 70px;
+    padding-top: 40px;
 }
 
 .statistics-figure {
@@ -112,7 +120,7 @@
         var(--stat5),
         var(--stat6)
     );
-    background-color: #c4f7a196;
+    background-color: #42ff3f9d;
     height: var(--main-height);
     width: var(--main-height);
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import Navbar from "./components/navbar/Navbar"
-import Cursor from "./components/cursor/Cursor"
 
 export const metadata: Metadata = {
     title: "Portfolio",

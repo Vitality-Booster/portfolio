@@ -8,7 +8,7 @@ import PostgreIcon from "../../public/tech_stack/postgre.png"
 import JavaIcon from "../../public/tech_stack/java.png"
 import ReactIcon from "../../public/tech_stack/react.png"
 import { ImageType } from "../types/ImageType"
-import { use, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { ProjectCardInfo } from "../types/Project"
 
 import gsap from "gsap"
@@ -19,6 +19,10 @@ gsap.registerPlugin(useGSAP)
 // TODO: Rename the file to the Projects.tsx later! So that
 // it behaved like a component rather than a page. Because,
 // these projects are only a component of the main page.
+
+interface ProjectMap {
+    [key: string]: ProjectCardInfo;
+}
 
 const mainImage1: ImageType = {
     src: "https://img.freepik.com/free-photo/global-business-internet-network-connection-iot-internet-things-business-intelligence-concept-busines-global-network-futuristic-technology-background-ai-generative_1258-176818.jpg",
@@ -77,7 +81,7 @@ const secondProject: ProjectCardInfo = {
     iconImage3: javaIcon,
 }
 
-const buttonProjectMap = {
+const buttonProjectMap: ProjectMap = {
     "01": helloWorldProject,
     "02": secondProject,
 }

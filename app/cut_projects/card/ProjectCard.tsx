@@ -1,14 +1,12 @@
 "use client"
 
-import { ImageType } from "@/app/types/ImageType"
 import "./projectCard.css"
-
-import Image, { StaticImageData } from "next/image"
 
 import { useRef } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ProjectCardInfo } from "@/app/types/Project"
+import Image from "next/image"
 
 gsap.registerPlugin(useGSAP)
 
@@ -18,41 +16,57 @@ export default function ProjectCard({
     projectCardInfo: ProjectCardInfo
 }) {
     const cardRef = useRef(null)
+    const tl = useRef(gsap.timeline())
     const shadowRef = useRef(null)
+    const { contextSafe } = useGSAP({ scope: cardRef })
 
     useGSAP(() => {
-        const cardTween = gsap.to(cardRef.current, {
+        // const cardTween = gsap.to(cardRef.current, {
+        //     y: "-=20px",
+        //     duration: 0.5,
+        //     paused: true,
+        // })
+        tl.current.to(cardRef.current, {
             y: "-=20px",
             duration: 0.5,
             paused: true,
         })
-
-        const shadowTween = gsap.to(shadowRef.current, {
+        tl.current.to(shadowRef.current, {
             y: "-=20px",
             duration: 0.2,
             paused: true,
         })
 
-        cardRef.current.addEventListener("mouseenter", () => {
-            cardTween.play()
-            shadowTween.play()
-        })
+        // const shadowTween = gsap.to(shadowRef.current, {
+        //     y: "-=20px",
+        //     duration: 0.2,
+        //     paused: true,
+        // })
 
-        cardRef.current.addEventListener("mouseleave", () => {
-            cardTween.reverse()
-            shadowTween.reverse()
-        })
-    }, [cardRef, shadowRef])
+
+        // if(cardRef.current) {cardRef.current.addEventListener("mouseleave", () => {
+        //     cardTween.reverse()
+        //     shadowTween.reverse()
+        // })}
+    }, [cardRef, shadowRef, tl])
+
+    const handleOnMouseEnter = contextSafe(() => {
+            tl.current.play()
+    })
+
+    const handleOnMouseLeave = contextSafe(() => {
+        tl.current.reverse()
+    })
 
     return (
         <div className="project-card-wrapper">
             <div className="rectangle-shadow" ref={shadowRef} />
             
             
-            <div className="project-card" ref={cardRef}>
+            <div className="project-card" ref={cardRef} onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
 
             <svg className="card-border-svg" width="435" height="700" viewBox="0 0 437 702" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect className="card-border-path" x="0" y="0" width="436" height="701" rx="10" stroke="#43FF3F" stroke-width="1.5"/>
+                <rect className="card-border-path" x="0" y="0" width="436" height="701" rx="10" stroke="#43FF3F" strokeWidth="2"/>
             </svg>
 
             {/* <svg

@@ -129,6 +129,10 @@ export default function ContactPage() {
                             ref={buttonRef}
                             onMouseEnter={buttonHoverHandler}
                             onMouseLeave={buttonLeaveHandler}
+                            onClick={() => {
+                                fetch("/api/projects")
+                                .then((res) => console.log("Here is the response from the projects endpoint: " + res.json()))
+                            }}
                         >
                             <a className="button-text" ref={buttonRef}>
                                 Send email

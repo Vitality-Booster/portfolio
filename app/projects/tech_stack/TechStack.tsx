@@ -2,7 +2,6 @@
 
 import "./techStack.css"
 import PostgreIcon from "@/public/tech_stack/postgre.png"
-import Image, { StaticImageData } from "next/image"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -12,7 +11,7 @@ import {
     TechCircleType,
 } from "@/app/types/TechCircle"
 import { generateAllCircles, generateLines } from "./functions"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import Line from "./Line"
 import Circle from "./Circle"
 

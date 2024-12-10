@@ -2,8 +2,6 @@ import "./descriptionCard.css"
 import Arrow from "../../../public/right-arrow.png"
 import Image from "next/image"
 
-const arrow_src = "../../../public/right-arrow.png"
-
 export default function DescriptionCard() {
     return (
         <div className="description-card-container">

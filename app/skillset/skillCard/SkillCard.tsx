@@ -1,6 +1,6 @@
 import { SkillCardDataType } from "@/app/types/SkillTypes"
 import "./skillCard.css"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 
 export default function SkillCard(skillCardData: SkillCardDataType) {
     // skillNumber % 2 === 0 &&

@@ -4,7 +4,7 @@ import "./skillsetTab.css"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 gsap.registerPlugin(useGSAP)
 
@@ -19,7 +19,7 @@ export default function SkillsetTab({
     wasActive: boolean
     onClickCallback: (tab: string) => void
 }) {
-    const [finishedInitAnimation, setFinishedInitAnimation] = useState(false)
+    // const [finishedInitAnimation, setFinishedInitAnimation] = useState(false)
 
     const tabRef = useRef(null)
     const rectRef = useRef(null)
@@ -49,10 +49,10 @@ export default function SkillsetTab({
         if (wasActive && !active) {
             console.log("I was supposed to play")
             tl.current.reverse()
-            setFinishedInitAnimation(true)
+            // setFinishedInitAnimation(true)
         } else if (wasActive && active) {
             tl.current.play()
-            setFinishedInitAnimation(true)
+            // setFinishedInitAnimation(true)
         }
 
     }, [wasActive, active])

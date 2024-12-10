@@ -17,8 +17,13 @@ export default function Point({ marginTop = "20px" }: { marginTop?: string }) {
     const tl = useRef(gsap.timeline())
 
     useGSAP(() => {
+        tl.current.to(point.current, {
+            scale: 1.3,
+            skew: 20,
+            duration: 1,
+        })
         tl.current.to(line.current, {
-            width: "+=100",
+            width: "+=150",
             duration: 1,
             ease: "power1.in",
             // paused: true,
@@ -46,7 +51,7 @@ export default function Point({ marginTop = "20px" }: { marginTop?: string }) {
                     )
                     if (obj.progress === 1 && !animationComplete) {
                         console.log("Reached the thing")
-                        gsap.to(".main-circle-wrapper", {
+                        gsap.to(point.current, {
                             "--lightning-opacity": 0,
                             duration: 2,
                         })
@@ -55,17 +60,21 @@ export default function Point({ marginTop = "20px" }: { marginTop?: string }) {
                     }
                     if (obj.direction === -1 && obj.progress <= 0.9) {
                         console.log("Leaving the thing")
-                        gsap.to(".main-circle-wrapper", {
-                            "--lightning-opacity": 1,
-                            duration: 2,
-                        })
                         tl.current.reverse()
+                        .then(() => {
+                            gsap.to(point.current, {
+                                "--lightning-opacity": 1,
+                                duration: 2,
+                            })
+                        })
+                        
+                        
                         // setAnimationComplete(false)
                     }
                 },
             },
-            scale: 1.5,
-            skex: 20,
+            // scale: 1.3,
+            // skew: 20,
         })
     }, [point, littleCircle, tl, line, animationComplete, setAnimationComplete])
 

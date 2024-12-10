@@ -6,7 +6,6 @@ import {
     TechCircleType,
 } from "@/app/types/TechCircle"
 import { randomInt } from "crypto"
-import Line from "./Line"
 
 export async function generateAllCircles({
     rawCircles,

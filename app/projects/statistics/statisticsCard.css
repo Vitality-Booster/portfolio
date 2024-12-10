@@ -32,7 +32,7 @@
     left: -5%;
     background-color: var(--green);
     z-index: -1;
-    height: 105%;
+    height: 120%;
 }
 
 .statistics-container {
@@ -56,9 +56,18 @@
     position: absolute;
     border: 1px solid var(--green);
     width: 70%;
-    top: -50%;
+    top: -20%;
     left: 15%;
     z-index: 2;
+}
+
+.single-statistics-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    line-height: 2rem;
 }
 
 .project-tags-wrapper {

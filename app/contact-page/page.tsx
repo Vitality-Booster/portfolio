@@ -1,4 +1,3 @@
-import ContactPage from "../contact/ContactPage"
 import Skillset from "../skillset/Skillset"
 
 /**

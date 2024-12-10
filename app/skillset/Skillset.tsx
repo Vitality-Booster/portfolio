@@ -1,6 +1,5 @@
 "use client"
 
-import Skill from "./checkLater/Skill"
 import SkillsetFrame from "./frame/SkillsetFrame"
 import SkillCard from "./skillCard/SkillCard"
 import "./skillset.css"
@@ -133,7 +132,7 @@ const tabs = ["CI/CD", "Front-end", "Back-end"]
 export default function Skillset() {
     const [prevTab, setPrevTab] = useState("Front-end")
     const [currentTab, setCurrentTab] = useState("Front-end")
-    const [skillNumber, setSkillNumber] = useState(1)
+    // const [skillNumber, setSkillNumber] = useState(1)
     const [skillset, setSkillset] = useState<SkillCardDataType[]>(testSkillsData.filter((skill) => skill.type === currentTab))
     const [hiddenSkillset, setHiddenSkillset] = useState<SkillData[]>(testHiddenSkills.filter((skill) => skill.type === currentTab))
 
@@ -142,7 +141,7 @@ export default function Skillset() {
     const {contextSafe} = useGSAP({scope: skillsetCardsRef})
 
     const handleTabChange = contextSafe((tab: string) => {
-        setSkillNumber(1)
+        // setSkillNumber(1)
         setPrevTab(currentTab)
         setCurrentTab(tab)
 

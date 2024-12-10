@@ -1,12 +1,10 @@
 "use client"
 
-import { useRef } from "react"
 import "./page.css"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import Line from "../components/timeline/Line"
 import Point from "../components/timeline/Point"
-import Image from "next/image"
 
 import brainSrc from "../../public/story_line/brain.png"
 import graduateSrc from "../../public/story_line/graduate.png"

@@ -9,12 +9,12 @@ export default function StatisticsCard() {
                     <StatisticsDiagram />
                 </div>
                 <div className="statistics-text">
-                    <h3>Power: A</h3>
-                    <h3>Dex: D</h3>
-                    <h3>Stress: S</h3>
-                    <h3>INT: E</h3>
-                    <h3>LWP: B</h3>
-                    <h3>Health: B</h3>
+                    <a className="single-statistics-text">Complexity: <strong>B</strong></a>
+                    <a className="single-statistics-text">Innovation: <strong>B</strong></a>
+                    <a className="single-statistics-text">Learning: <strong>B</strong></a>
+                    <a className="single-statistics-text">Fun: <strong>B</strong></a>
+                    <a className="single-statistics-text">Creativity: <strong>B</strong></a>
+                    <a className="single-statistics-text">Stress: <strong>B</strong></a>
                 </div>
             </div>
             <div className="project-tags-wrapper">

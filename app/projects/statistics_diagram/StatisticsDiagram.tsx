@@ -5,11 +5,14 @@ import "./statisticsDiagram.css"
 import { useRef } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { stat } from "fs/promises"
 
 gsap.registerPlugin(useGSAP)
 
-const Stat1Map = {
+interface StatMap {
+    [key: string]: string;
+}
+
+const Stat1Map: StatMap = {
     S: "50% 0%",
     A: "50% 10%",
     B: "50% 17%",
@@ -18,7 +21,7 @@ const Stat1Map = {
     E: "50% 40%",
 }
 
-const Stat2Map = {
+const Stat2Map: StatMap = {
     S: "93% 25%",
     A: "86% 29%",
     B: "81% 32%",
@@ -27,7 +30,7 @@ const Stat2Map = {
     E: "58% 45.5%",
 }
 
-const Stat3Map = {
+const Stat3Map: StatMap = {
     S: "93% 75%",
     A: "86% 71%",
     B: "81% 68%",
@@ -36,7 +39,7 @@ const Stat3Map = {
     E: "58% 54.5%",
 }
 
-const Stat4Map = {
+const Stat4Map: StatMap = {
     S: "50% 100%",
     A: "50% 90%",
     B: "50% 83%",
@@ -45,7 +48,7 @@ const Stat4Map = {
     E: "50% 60%",
 }
 
-const Stat5Map = {
+const Stat5Map: StatMap = {
     S: "7% 75%",
     A: "14% 71%",
     B: "19% 68%",
@@ -54,7 +57,7 @@ const Stat5Map = {
     E: "42.5% 54.5%",
 }
 
-const Stat6Map = {
+const Stat6Map: StatMap = {
     S: "7% 25%",
     A: "14% 29%",
     B: "19% 32%",
@@ -63,7 +66,8 @@ const Stat6Map = {
     E: "42.5% 45.5%",
 }
 
-const statArray = ["A", "D", "S", "E", "B", "B"]
+const statArray = ["B", "C", "B", "S", "A", "A"]
+// const statArray = ["S", "S", "S", "S", "S", "S"]
 
 export default function StatisticsDiagram() {
     const figureRef = useRef(null)
