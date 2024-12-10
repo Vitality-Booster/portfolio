@@ -60,15 +60,13 @@ export default function Point({ marginTop = "20px" }: { marginTop?: string }) {
                     }
                     if (obj.direction === -1 && obj.progress <= 0.9) {
                         console.log("Leaving the thing")
-                        tl.current.reverse()
-                        .then(() => {
+                        tl.current.reverse().then(() => {
                             gsap.to(point.current, {
                                 "--lightning-opacity": 1,
                                 duration: 2,
                             })
                         })
-                        
-                        
+
                         // setAnimationComplete(false)
                     }
                 },

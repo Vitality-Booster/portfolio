@@ -9,7 +9,7 @@ import { useGSAP } from "@gsap/react"
 gsap.registerPlugin(useGSAP)
 
 interface StatMap {
-    [key: string]: string;
+    [key: string]: string
 }
 
 const Stat1Map: StatMap = {

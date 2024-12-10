@@ -92,15 +92,14 @@
     left: -2%;
     /* top: -0.4%;
     left: -150%; */
-    
+
     z-index: 4;
     rotate: 180deg;
     /* height: calc(var(--card-height) + 70px);
     width: calc(var(--card-width) + 100px); */
-    height:100%;
+    height: 100%;
     /* height: calc(var(--card-height) + 150px); */
     width: 104%;
-    
 }
 
 .card-border-svg-container {

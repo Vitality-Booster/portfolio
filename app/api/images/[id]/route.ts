@@ -1,7 +1,7 @@
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { NextRequest } from "next/server";
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3"
+import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers"
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
+import { NextRequest } from "next/server"
 
 type IdParams = {
     params: {
@@ -28,20 +28,23 @@ const client = new S3Client({
     //]
     //
     credentials: fromCognitoIdentityPool({
-    clientConfig: { region: process.env.S3_CLIENT_REGION },
-    identityPoolId: process.env.S3_IDENTITY_POOL_ID ?? "",
+        clientConfig: { region: process.env.S3_CLIENT_REGION },
+        identityPoolId: process.env.S3_IDENTITY_POOL_ID ?? "",
     }),
-});
+})
 
 export async function GET(request: NextRequest, { params }: IdParams) {
-    const {id} = params
-    const signedUrl = await signUrl(process.env.S3_BUCKET_NAME ?? "", id.toString())
+    const { id } = params
+    const signedUrl = await signUrl(
+        process.env.S3_BUCKET_NAME ?? "",
+        id.toString(),
+    )
 
-    return Response.json({imageUrl: signedUrl})
+    return Response.json({ imageUrl: signedUrl })
 }
 
 async function signUrl(bucket: string, key: string): Promise<string> {
-    const command = new GetObjectCommand({ Bucket: bucket, Key: key });
-    const url = await getSignedUrl(client, command, { expiresIn: 3600 });
-    return url;
+    const command = new GetObjectCommand({ Bucket: bucket, Key: key })
+    const url = await getSignedUrl(client, command, { expiresIn: 3600 })
+    return url
 }

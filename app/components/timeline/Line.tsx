@@ -31,10 +31,7 @@ export default function Line() {
     return (
         <div className="line">
             <div className="filled-line" ref={filledLine} />
-            <div
-                className="dashed-line"
-                ref={dashedLine}
-            />
+            <div className="dashed-line" ref={dashedLine} />
         </div>
     )
 }

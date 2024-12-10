@@ -21,7 +21,7 @@ gsap.registerPlugin(useGSAP)
 // these projects are only a component of the main page.
 
 interface ProjectMap {
-    [key: string]: ProjectCardInfo;
+    [key: string]: ProjectCardInfo
 }
 
 const mainImage1: ImageType = {

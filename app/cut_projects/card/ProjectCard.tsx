@@ -43,7 +43,6 @@ export default function ProjectCard({
         //     paused: true,
         // })
 
-
         // if(cardRef.current) {cardRef.current.addEventListener("mouseleave", () => {
         //     cardTween.reverse()
         //     shadowTween.reverse()
@@ -51,7 +50,7 @@ export default function ProjectCard({
     }, [cardRef, shadowRef, tl])
 
     const handleOnMouseEnter = contextSafe(() => {
-            tl.current.play()
+        tl.current.play()
     })
 
     const handleOnMouseLeave = contextSafe(() => {
@@ -61,15 +60,34 @@ export default function ProjectCard({
     return (
         <div className="project-card-wrapper">
             <div className="rectangle-shadow" ref={shadowRef} />
-            
-            
-            <div className="project-card" ref={cardRef} onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
 
-            <svg className="card-border-svg" width="435" height="700" viewBox="0 0 437 702" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect className="card-border-path" x="0" y="0" width="436" height="701" rx="10" stroke="#43FF3F" strokeWidth="2"/>
-            </svg>
+            <div
+                className="project-card"
+                ref={cardRef}
+                onMouseEnter={handleOnMouseEnter}
+                onMouseLeave={handleOnMouseLeave}
+            >
+                <svg
+                    className="card-border-svg"
+                    width="435"
+                    height="700"
+                    viewBox="0 0 437 702"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <rect
+                        className="card-border-path"
+                        x="0"
+                        y="0"
+                        width="436"
+                        height="701"
+                        rx="10"
+                        stroke="#43FF3F"
+                        strokeWidth="2"
+                    />
+                </svg>
 
-            {/* <svg
+                {/* <svg
                 className="card-border-svg"
                 width="354"
                 height="512"
@@ -83,7 +101,7 @@ export default function ProjectCard({
                     stroke="#43FF3F"
                 />
             </svg> */}
-            
+
                 {/* <div className="card-border-svg-container"> */}
 
                 {/* </div> */}

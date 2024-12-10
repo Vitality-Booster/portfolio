@@ -7,7 +7,7 @@
     --light-background: #2e324b;
     --glass-background: #2e324b83;
     --green: #43ff3f;
-    --purple: #FB3FFF;
+    --purple: #fb3fff;
 }
 
 @media (prefers-color-scheme: light) {

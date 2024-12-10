@@ -54,21 +54,19 @@ export default function SkillsetTab({
             tl.current.play()
             // setFinishedInitAnimation(true)
         }
-
     }, [wasActive, active])
 
     const handleMouseEnter = contextSafe(() => {
         console.log(`I am active? ${active} And Was I active? ${wasActive}`)
-        if (!active)
-            tl.current.play()
+        if (!active) tl.current.play()
     })
 
     const handleMouseLeave = contextSafe(() => {
-        if (!active)
-            tl.current.reverse()
+        if (!active) tl.current.reverse()
     })
-    
-    return    (<div
+
+    return (
+        <div
             className="skillset-tab"
             ref={tabRef}
             onMouseEnter={handleMouseEnter}
@@ -77,6 +75,6 @@ export default function SkillsetTab({
         >
             <div className="skillset-extra-rectangle" ref={rectRef} />
             <a className="skillset-tab-text">{tabText}</a>
-        </div>)
-    
+        </div>
+    )
 }

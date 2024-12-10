@@ -10,8 +10,9 @@ export default function SkillCard(skillCardData: SkillCardDataType) {
                 className="skill-number"
                 style={
                     skillCardData.skillNumber % 2 === 1
-                        ? skillCardData.skillNumber === 1 ? { left: "-4rem"}
-                        : { left: "-5rem" }
+                        ? skillCardData.skillNumber === 1
+                            ? { left: "-4rem" }
+                            : { left: "-5rem" }
                         : { left: "70%" }
                 }
             >
@@ -22,7 +23,11 @@ export default function SkillCard(skillCardData: SkillCardDataType) {
                 src={skillCardData.icon}
                 alt={skillCardData.skillName + " icon"}
                 height={skillCardData.iconHeight}
-                width={skillCardData.iconWidth ? skillCardData.iconWidth : skillCardData.iconHeight}
+                width={
+                    skillCardData.iconWidth
+                        ? skillCardData.iconWidth
+                        : skillCardData.iconHeight
+                }
             />
             <div className="skill-icon-with-name">
                 <a className="skill-name">{skillCardData.skillName}</a>
