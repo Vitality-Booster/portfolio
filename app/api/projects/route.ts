@@ -16,6 +16,10 @@
 // //     projects INT[] REFERENCES projects(id)
 // // );'
 
+export async function GET() {
+    return Response.json({ projects: [] })
+}
+
 // export async function GET() {
 //     const result = await executeQuery({
 //         query: 'CREATE TABLE skills ('
