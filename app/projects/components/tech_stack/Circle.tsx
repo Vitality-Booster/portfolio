@@ -1,6 +1,6 @@
 import { TechCircleType } from "@/app/types/TechCircle"
 import "./circle.css"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 
 export default function Circle({
     techCircle,
@@ -11,7 +11,7 @@ export default function Circle({
     onLeaveCallback,
 }: {
     techCircle: TechCircleType
-    src: StaticImageData
+    src: string
     alt: string
     iconSize: number
     onHoverCallback: (type: string) => void
@@ -33,7 +33,7 @@ export default function Circle({
             onMouseLeave={() => onLeaveCallback()}
             style={{ padding: `${(techCircle.size - iconSize) / 2}px` }}
         >
-            <Image className={iconType} src={src} alt={alt} width={iconSize} />
+            <Image className={iconType} src={src} alt={alt} width={iconSize} height={iconSize}/>
             <h3 className={`tech-circle-name ${nameType}`}>
                 {techCircle.name}
             </h3>

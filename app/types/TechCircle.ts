@@ -1,10 +1,8 @@
-import { StaticImageData } from "next/image"
-
 export type TechCircleType = {
     id: string
     newX: number
     newY: number
-    src?: StaticImageData
+    src: string
     type: string
     name: string
     size: number

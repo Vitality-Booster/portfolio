@@ -1,39 +1,41 @@
 import { SkillCardDataType } from "@/app/types/SkillTypes"
 import "./skillCard.css"
 import Image from "next/image"
+import { Skill } from "@prisma/client"
 
-export default function SkillCard(skillCardData: SkillCardDataType) {
+export default function SkillCard({skillData, skillIndex}: {skillData: Skill, skillIndex: number}) {
     // skillNumber % 2 === 0 &&
     return (
         <div className="skill-card">
             <div
                 className="skill-number"
                 style={
-                    skillCardData.skillNumber % 2 === 1
-                        ? skillCardData.skillNumber === 1
+                    skillIndex % 2 === 1
+                        ? skillIndex === 1
                             ? { left: "-4rem" }
                             : { left: "-5rem" }
                         : { left: "70%" }
                 }
             >
-                {skillCardData.skillNumber}
+                {skillIndex}
             </div>
             <Image
                 className="skill-card-icon"
-                src={skillCardData.icon}
-                alt={skillCardData.skillName + " icon"}
-                height={skillCardData.iconHeight}
-                width={
-                    skillCardData.iconWidth
-                        ? skillCardData.iconWidth
-                        : skillCardData.iconHeight
-                }
+                src={skillData.image}
+                alt={skillData.name + " icon"}
+                height={60}
+                width={60}
+                // width={
+                //     skillCardData.iconWidth
+                //         ? skillCardData.iconWidth
+                //         : skillCardData.iconHeight
+                // }
             />
             <div className="skill-icon-with-name">
-                <a className="skill-name">{skillCardData.skillName}</a>
+                <a className="skill-name">{skillData.name}</a>
             </div>
             <div className="skill-year-experience">
-                Experience: {skillCardData.expYears} years
+                Experience: {skillData.experience} years
             </div>
         </div>
     )

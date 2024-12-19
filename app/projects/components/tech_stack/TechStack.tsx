@@ -14,6 +14,7 @@ import { generateAllCircles, generateLines } from "./functions"
 import { useRef, useState } from "react"
 import Line from "./Line"
 import Circle from "./Circle"
+import { Skill } from "@prisma/client"
 
 gsap.registerPlugin(useGSAP)
 
@@ -79,10 +80,12 @@ export default function TechStack({
     circleSize,
     iconSize,
     animationPadding,
+    skills
 }: {
     circleSize: number
     iconSize: number
-    animationPadding: number
+    animationPadding: number,
+    skills: Skill[]
 }) {
     // TODO: Think about using GSAP to move the tech stack in the very beginning of the render
     // And make it look like the positions of the Technologies are "flexible" and always different.
@@ -97,7 +100,7 @@ export default function TechStack({
 
     const getAllCircles = async () => {
         const allCircles: TechCircleType[] = await generateAllCircles({
-            rawCircles: allRawCircles,
+            skills: skills,
             maxX: 1200,
             maxY: 400,
             size: circleSize,
@@ -235,8 +238,8 @@ export default function TechStack({
                         <Circle
                             key={circle.id}
                             techCircle={circle}
-                            src={PostgreIcon}
-                            alt="PostgreSQL logo"
+                            src={circle.src}
+                            alt={`${circle.name} logo`}
                             iconSize={iconSize}
                             onHoverCallback={circleHoverHandler}
                             onLeaveCallback={circleLeaveHandler}

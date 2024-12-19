@@ -5,49 +5,36 @@ import "./projectCard.css"
 import { useRef } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { ProjectCardInfo } from "@/app/types/Project"
+import { ProjectWithSkills } from "@/app/types/Project"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 gsap.registerPlugin(useGSAP)
 
 export default function ProjectCard({
-    projectCardInfo,
+    project,
 }: {
-    projectCardInfo: ProjectCardInfo
+    project: ProjectWithSkills
 }) {
+    const router = useRouter()
     const cardRef = useRef(null)
     const tl = useRef(gsap.timeline())
     const shadowRef = useRef(null)
-    const { contextSafe } = useGSAP({ scope: cardRef })
+    const wrapperRef = useRef(null)
+    const { contextSafe } = useGSAP({ scope: wrapperRef })
 
     useGSAP(() => {
-        // const cardTween = gsap.to(cardRef.current, {
-        //     y: "-=20px",
-        //     duration: 0.5,
-        //     paused: true,
-        // })
         tl.current.to(cardRef.current, {
-            y: "-=20px",
+            y: "-=40px",
             duration: 0.5,
-            paused: true,
         })
         tl.current.to(shadowRef.current, {
-            y: "-=20px",
-            duration: 0.2,
-            paused: true,
-        })
+            y: "-=40px",
+            duration: 0.4,
+        }, "<+0.25")
 
-        // const shadowTween = gsap.to(shadowRef.current, {
-        //     y: "-=20px",
-        //     duration: 0.2,
-        //     paused: true,
-        // })
-
-        // if(cardRef.current) {cardRef.current.addEventListener("mouseleave", () => {
-        //     cardTween.reverse()
-        //     shadowTween.reverse()
-        // })}
-    }, [cardRef, shadowRef, tl])
+        tl.current.pause()
+    }, [])
 
     const handleOnMouseEnter = contextSafe(() => {
         tl.current.play()
@@ -58,7 +45,7 @@ export default function ProjectCard({
     })
 
     return (
-        <div className="project-card-wrapper">
+        <div className="project-card-wrapper" ref={wrapperRef}>
             <div className="rectangle-shadow" ref={shadowRef} />
 
             <div
@@ -66,6 +53,7 @@ export default function ProjectCard({
                 ref={cardRef}
                 onMouseEnter={handleOnMouseEnter}
                 onMouseLeave={handleOnMouseLeave}
+                onClick={() => router.push(`/projects/${project.id}`)}
             >
                 <svg
                     className="card-border-svg"
@@ -87,72 +75,42 @@ export default function ProjectCard({
                     />
                 </svg>
 
-                {/* <svg
-                className="card-border-svg"
-                width="354"
-                height="512"
-                viewBox="0 0 352 502"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                    className="card-border-path"
-                    fill="none"
-                    d="M341 1H11C5.47715 1 1 5.47714 1 11V491C1 496.523 5.47715 501 11 501H341C346.523 501 351 496.523 351 491V11C351 5.47715 346.523 1 341 1Z"
-                    stroke="#43FF3F"
-                />
-            </svg> */}
-
-                {/* <div className="card-border-svg-container"> */}
-
-                {/* </div> */}
-
                 <img
                     className="project-card-image"
                     src={
-                        typeof projectCardInfo.mainImage.src === "string"
-                            ? projectCardInfo.mainImage.src
-                            : ""
+                        project.mainPicture
                     }
-                    alt={projectCardInfo.mainImage.alt}
+                    alt={project.name + " image"}
                 />
                 <div className="card-text-area">
                     <div className="project-card-title-box">
-                        <h2>{projectCardInfo.projectName}</h2>
+                        <h2>{project.name}</h2>
                     </div>
                     <div className="project-card-description">
-                        {projectCardInfo.projectDescription}
+                        {project.shortDescription}
                     </div>
                 </div>
                 <div className="project-card-footer">
                     <Image
                         className="project-card-icon"
-                        src={projectCardInfo.iconImage1.src}
-                        alt={projectCardInfo.iconImage1.alt}
-                        width={
-                            projectCardInfo.iconImage1.width
-                                ? projectCardInfo.iconImage1.width
-                                : 35
-                        }
+                        src={project.skills[0].image}
+                        alt={project.skills[0].name + " icon"}
+                        width={35}
+                        height={35}
                     />
                     <Image
                         className="project-card-icon"
-                        src={projectCardInfo.iconImage2.src}
-                        alt={projectCardInfo.iconImage2.alt}
-                        width={
-                            projectCardInfo.iconImage2.width
-                                ? projectCardInfo.iconImage2.width
-                                : 35
-                        }
+                        src={project.skills[1].image}
+                        alt={project.skills[1].name + " icon"}
+                        width={35}
+                        height={35}
                     />
                     <Image
                         className="project-card-icon"
-                        src={projectCardInfo.iconImage3.src}
-                        alt={projectCardInfo.iconImage3.alt}
-                        width={
-                            projectCardInfo.iconImage3.width
-                                ? projectCardInfo.iconImage3.width
-                                : 35
-                        }
+                        src={project.skills[2].image}
+                        alt={project.skills[2].name + " icon"}
+                        width={35}
+                        height={35}
                     />
                 </div>
             </div>

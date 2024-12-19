@@ -6,14 +6,14 @@ export default function ProjectButton({
     active = false,
     callback,
 }: {
-    index: string
+    index: number
     projectName: string
     active?: boolean
-    callback: (index: string) => void
+    callback: (index: number) => void
 }) {
     return (
         <div className="button-with-index">
-            <h2 className="project-index">{index}</h2>
+            <h2 className="project-index">0{index}</h2>
             <button
                 className={
                     active

@@ -1,38 +1,50 @@
 import StatisticsDiagram from "../statistics_diagram/StatisticsDiagram"
 import "./statisticsCard.css"
 
-export default function StatisticsCard() {
+export type StatisticsType = {
+    "Fun": string,
+    "Stress": string,
+    "Learning": string,
+    "Complexity": string,
+    "Creativity": string,
+    "Innovation": string
+}
+
+export default function StatisticsCard({stats, tags}: {stats: StatisticsType, tags: string[]}) {
     return (
         <div className="statistics-card-container">
             <div className="statistics-card">
                 <div className="statistics-container">
-                    <StatisticsDiagram />
+                    <StatisticsDiagram stats={stats}/>
                 </div>
                 <div className="statistics-text">
                     <a className="single-statistics-text">
-                        Complexity: <strong>B</strong>
+                        Complexity: <strong>{stats.Complexity}</strong>
                     </a>
                     <a className="single-statistics-text">
-                        Innovation: <strong>B</strong>
+                        Innovation: <strong>{stats.Innovation}</strong>
                     </a>
                     <a className="single-statistics-text">
-                        Learning: <strong>B</strong>
+                        Learning: <strong>{stats.Learning}</strong>
                     </a>
                     <a className="single-statistics-text">
-                        Fun: <strong>B</strong>
+                        Fun: <strong>{stats.Fun}</strong>
                     </a>
                     <a className="single-statistics-text">
-                        Creativity: <strong>B</strong>
+                        Creativity: <strong>{stats.Creativity}</strong>
                     </a>
                     <a className="single-statistics-text">
-                        Stress: <strong>B</strong>
+                        Stress: <strong>{stats.Stress}</strong>
                     </a>
                 </div>
             </div>
             <div className="project-tags-wrapper">
-                <div className="project-tag">Web Development</div>
+                {tags.map((tag, index) => (
+                    <div className="project-tag" key={index}>{tag}</div>
+                ))}
+                {/* <div className="project-tag">Web Development</div>
                 <div className="project-tag">Animals</div>
-                <div className="project-tag">Personal Project</div>
+                <div className="project-tag">Personal Project</div> */}
             </div>
             <div className="statistics-card-shadow" />
         </div>

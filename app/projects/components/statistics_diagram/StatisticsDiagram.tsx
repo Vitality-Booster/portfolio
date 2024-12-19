@@ -5,6 +5,7 @@ import "./statisticsDiagram.css"
 import { useRef } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import { StatisticsType } from "../statistics/StatisticsCard"
 
 gsap.registerPlugin(useGSAP)
 
@@ -69,17 +70,17 @@ const Stat6Map: StatMap = {
 const statArray = ["B", "C", "B", "S", "A", "A"]
 // const statArray = ["S", "S", "S", "S", "S", "S"]
 
-export default function StatisticsDiagram() {
+export default function StatisticsDiagram({stats}: {stats: StatisticsType}) {
     const figureRef = useRef(null)
 
     useGSAP(() => {
         gsap.to(figureRef.current, {
-            "--stat1": Stat1Map[statArray[0]],
-            "--stat2": Stat2Map[statArray[1]],
-            "--stat3": Stat3Map[statArray[2]],
-            "--stat4": Stat4Map[statArray[3]],
-            "--stat5": Stat5Map[statArray[4]],
-            "--stat6": Stat6Map[statArray[5]],
+            "--stat1": Stat1Map[stats.Complexity],
+            "--stat2": Stat2Map[stats.Stress],
+            "--stat3": Stat3Map[stats.Learning],
+            "--stat4": Stat4Map[stats.Fun],
+            "--stat5": Stat5Map[stats.Creativity],
+            "--stat6": Stat6Map[stats.Innovation],
             duration: 2,
             ease: "power2.out",
         })

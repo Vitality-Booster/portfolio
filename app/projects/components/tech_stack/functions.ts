@@ -5,16 +5,17 @@ import {
     RawCircleType,
     TechCircleType,
 } from "@/app/types/TechCircle"
+import { Skill } from "@prisma/client"
 import { randomInt } from "crypto"
 
 export async function generateAllCircles({
-    rawCircles,
+    skills,
     maxX,
     maxY,
     size,
     animationPadding,
 }: {
-    rawCircles: RawCircleType[]
+    skills: Skill[]
     maxX: number
     maxY: number
     size: number
@@ -23,7 +24,7 @@ export async function generateAllCircles({
     const allCircles: TechCircleType[] = []
     const realMaxX = maxX - size
     const realMaxY = maxY - size
-    rawCircles.forEach((rawCircle) => {
+    skills.forEach((skill) => {
         let newX,
             newY = 0
         for (;;) {
@@ -55,10 +56,13 @@ export async function generateAllCircles({
         }
 
         allCircles.push({
-            ...rawCircle,
             size,
             newX,
             newY,
+            id: `tech-circle-${skill.id}`,
+            type: skill.tags[0],
+            name: skill.name,
+            src: skill.image
         })
     })
 

@@ -8,83 +8,18 @@ import PostgreIcon from "../../public/tech_stack/postgre.png"
 import JavaIcon from "../../public/tech_stack/java.png"
 import ReactIcon from "../../public/tech_stack/react.png"
 import { ImageType } from "../types/ImageType"
-import { useRef, useState } from "react"
-import { ProjectCardInfo } from "../types/Project"
+import { useEffect, useRef, useState } from "react"
+import { ProjectCardInfo, ProjectWithSkills } from "../types/Project"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import { useMainStore } from "../stores/mainStore"
 
 gsap.registerPlugin(useGSAP)
 
 // TODO: Rename the file to the Projects.tsx later! So that
 // it behaved like a component rather than a page. Because,
 // these projects are only a component of the main page.
-
-interface ProjectMap {
-    [key: string]: ProjectCardInfo
-}
-
-const mainImage1: ImageType = {
-    src: "https://img.freepik.com/free-photo/global-business-internet-network-connection-iot-internet-things-business-intelligence-concept-busines-global-network-futuristic-technology-background-ai-generative_1258-176818.jpg",
-    alt: "Project image",
-}
-
-const projectName1 = "Hello World!"
-const projectDescription1 =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptate distinctio rem ea culpa architecto ullam, animi eum incidunt consequuntur est praesentium, voluptatem facilis accusamus possimus! Quo sequi ex consequuntur!"
-
-const postgreIcon: ImageType = {
-    src: PostgreIcon,
-    alt: "PostgreSQL logo",
-    width: 35,
-    height: 35,
-}
-
-const javaIcon: ImageType = {
-    src: JavaIcon,
-    alt: "Java logo",
-    width: 35,
-    height: 35,
-}
-
-const reactIcon: ImageType = {
-    src: ReactIcon,
-    alt: "React logo",
-    width: 35,
-    height: 35,
-}
-
-const helloWorldProject: ProjectCardInfo = {
-    mainImage: mainImage1,
-    projectName: projectName1,
-    projectDescription: projectDescription1,
-    iconImage1: postgreIcon,
-    iconImage2: javaIcon,
-    iconImage3: reactIcon,
-}
-
-const mainImage2: ImageType = {
-    src: "https://cdn.pixabay.com/photo/2024/02/05/16/23/labrador-8554882_640.jpg",
-    alt: "Project image",
-}
-
-const projectName2 = "Good Boy Project"
-const projectDescription2 =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptate distinctio rem ea culpa architecto ullam, animi eum incidunt consequuntur est praesentium, voluptatem facilis accusamus possimus! Quo sequi ex consequuntur!"
-
-const secondProject: ProjectCardInfo = {
-    mainImage: mainImage2,
-    projectName: projectName2,
-    projectDescription: projectDescription2,
-    iconImage1: reactIcon,
-    iconImage2: postgreIcon,
-    iconImage3: javaIcon,
-}
-
-const buttonProjectMap: ProjectMap = {
-    "01": helloWorldProject,
-    "02": secondProject,
-}
 
 const cardAppear = {
     y: "+=200px",
@@ -108,108 +43,115 @@ const cardFadeOut = {
 }
 
 export default function Projects() {
-    const [activeButton, setActiveButton] = useState<string>("01")
-    const [firstCardActive, setFirstCardActive] = useState<boolean>(true)
-    const [firstCardProject, setFirstCardProject] = useState<ProjectCardInfo>(
-        buttonProjectMap["01"],
-    )
-    const [secondCardProject, setSecondCardProject] = useState<ProjectCardInfo>(
-        buttonProjectMap["01"],
-    )
+    const {projects: allProjects, setProjects, setSkills, skills} = useMainStore()
+    const [activeProjectId, setActiveProjectId] = useState<number>(1)
     const projectsRef = useRef(null)
     const { contextSafe } = useGSAP({ scope: projectsRef })
     const tl = useRef(gsap.timeline())
 
+    const getProjectCardId = (project: ProjectWithSkills) => {
+        const formattedName = project.name.trim().replaceAll(" ", "-")
+
+        return formattedName
+    }
+
     useGSAP(() => {
-        gsap.from("#first-card", {
-            ...cardAppear,
-        })
-        gsap.to("#second-card", {
-            ...cardFadeOut,
-        })
-    }, [])
+        if (allProjects.length > 0) {
+            for (let i = 1; i < allProjects.length; i++) {
+                gsap.to(`#${getProjectCardId(allProjects[i])}`, {
+                    ...cardFadeOut,
+                })
+            }
+            gsap.from(`#${getProjectCardId(allProjects[0])}`, {
+                opacity: 0,
+                duration: 0.01,
+            })
+        }
+    }, [allProjects])
+
+    useEffect(() => {
+        
+        async function fetchSkills() {
+            const res = await fetch("/api/skills", {
+                cache: "force-cache",
+            })
+            const data = await res.json()
+            setSkills(data.skills)    
+        }
+
+        async function fetchProjects() {
+            const res = await fetch("/api/projects", {
+                cache: "force-cache",
+            })
+            const data = await res.json()
+            setProjects(data.projects)
+        }
+
+        if (skills.length === 0){ 
+            fetchSkills()
+        }
+        if (skills.length > 0 && allProjects.length === 0) {
+            fetchProjects()
+        }
+    }, [skills, allProjects])
 
     /**
      * Handles card animation and changes the active button
      */
-    const handleButtonClick = contextSafe((index: string) => {
-        setActiveButton(index)
-        if (firstCardActive) {
-            setSecondCardProject(buttonProjectMap[index])
+    const handleButtonClick = contextSafe((index: number) => {
+        if (activeProjectId !== index) {
+            const currProjectCardId = `#${getProjectCardId(allProjects[activeProjectId - 1])}`
+            const newProjectCardId = `#${getProjectCardId(allProjects[index - 1])}`
 
-            tl.current
-                .to("#first-card", {
-                    ...cardFadeOut,
-                })
-                .then(() => {
-                    // setFirstCardActive(false)
-                })
-
+            tl.current.to(currProjectCardId, {
+                ...cardFadeOut,
+            })
             tl.current.to(
-                "#second-card",
+                newProjectCardId,
                 {
                     ...cardReappear,
                 },
                 ">",
             )
-            setFirstCardActive(false)
-        } else {
-            setFirstCardProject(buttonProjectMap[index])
-
-            tl.current
-                .to("#second-card", {
-                    ...cardFadeOut,
-                })
-                .then(() => {
-                    // setFirstCardActive(true)
-                })
-
-            tl.current.to(
-                "#first-card",
-                {
-                    ...cardReappear,
-                },
-                ">",
-            )
-            setFirstCardActive(true)
+            // .then(() => )
+            setActiveProjectId(index)
+            
         }
     })
 
     return (
         <div className="main-projects" ref={projectsRef}>
             <div className="all-project-buttons">
-                <ProjectButton
-                    index="01"
-                    projectName="Project name"
-                    active={activeButton === "01"}
-                    callback={handleButtonClick}
-                />
-                <ProjectButton
-                    index="02"
-                    projectName="Another project"
-                    active={activeButton === "02"}
-                    callback={handleButtonClick}
-                />
-                <ProjectButton
-                    index="03"
-                    projectName="Yet another project"
-                    active={activeButton === "03"}
-                    callback={handleButtonClick}
-                />
+                {allProjects.length > 0 &&
+                    allProjects.map((project, index) => {
+                        return (
+                            <ProjectButton
+                                index={project.id}
+                                projectName={project.name}
+                                active={activeProjectId === project.id}
+                                callback={handleButtonClick}
+                                key={project.id}
+                            />
+                        )
+                    })}
             </div>
             <div className="card-wrapper">
-                <div
-                    id="first-card"
-                    className={!firstCardActive ? "card-hidden" : ""}
-                >
-                    <ProjectCard projectCardInfo={firstCardProject} />
-                </div>
-                <div
-                    id="second-card"
-                    className={firstCardActive ? "card-hidden" : ""}
-                >
-                    <ProjectCard projectCardInfo={secondCardProject} />
-                </div>
+                {allProjects.length > 0 &&
+                    allProjects.map((project, index) => {
+                        return (
+                            <div
+                                key={project.id}
+                                id={getProjectCardId(project)}
+                                className={
+                                    activeProjectId !== project.id
+                                        ? "card-hidden"
+                                        : ""
+                                }
+                            >
+                                <ProjectCard project={project} />
+                            </div>
+                        )
+                    })}
             </div>
         </div>
     )

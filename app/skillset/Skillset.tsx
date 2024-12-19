@@ -20,6 +20,8 @@ import Docker from "../../public/tech_stack/docker.png"
 import GsapIcon from "../../public/tech_stack/gsap.png"
 import NextJS from "../../public/tech_stack/nextjs.png"
 import { useRef, useState } from "react"
+import { useMainStore } from "../stores/mainStore"
+import { Skill } from "@prisma/client"
 
 const testSkillsData: SkillCardDataType[] = [
     {
@@ -127,14 +129,18 @@ const testHiddenSkills: SkillData[] = [
     },
 ]
 
-const tabs = ["CI/CD", "Front-end", "Back-end"]
+const tabs = ["Front-end", "Back-end", "CI/CD", "Data Science", "Blockchain"]
 
 export default function Skillset() {
-    const [prevTab, setPrevTab] = useState("Front-end")
-    const [currentTab, setCurrentTab] = useState("Front-end")
+    const {skills} = useMainStore()
+    const [prevTab, setPrevTab] = useState("Back-end")
+    const [currentTab, setCurrentTab] = useState("Back-end")
     // const [skillNumber, setSkillNumber] = useState(1)
-    const [skillset, setSkillset] = useState<SkillCardDataType[]>(
-        testSkillsData.filter((skill) => skill.type === currentTab),
+    // const [skillset, setSkillset] = useState<SkillCardDataType[]>(
+    //     testSkillsData.filter((skill) => skill.type === currentTab),
+    // )
+    const [skillset, setSkillset] = useState<Skill[]>(
+        skills.filter((skill) => skill.tags.includes(currentTab)),
     )
     const [hiddenSkillset, setHiddenSkillset] = useState<SkillData[]>(
         testHiddenSkills.filter((skill) => skill.type === currentTab),
@@ -157,7 +163,7 @@ export default function Skillset() {
             })
             .then(() => {
                 setSkillset(
-                    testSkillsData.filter((skill) => skill.type === tab),
+                    skills.filter((skill) => skill.tags.includes(tab)),
                 )
                 setHiddenSkillset(
                     testHiddenSkills.filter((skill) => skill.type === tab),
@@ -175,7 +181,18 @@ export default function Skillset() {
     return (
         <div className="skillset-main-container">
             <div className="skillset-all-tabs">
-                <SkillsetTab
+                {tabs.map((tab, index) => {
+                    return (
+                        <SkillsetTab
+                    tabText={tab}
+                    active={currentTab === tab}
+                    wasActive={prevTab === tab}
+                    onClickCallback={handleTabChange}
+                    key={index}
+                />
+                    )
+                })}
+                {/* <SkillsetTab
                     tabText={tabs[0]}
                     active={currentTab === tabs[0]}
                     wasActive={prevTab === tabs[0]}
@@ -192,19 +209,19 @@ export default function Skillset() {
                     active={currentTab === tabs[2]}
                     wasActive={prevTab === tabs[2]}
                     onClickCallback={handleTabChange}
-                />
+                /> */}
             </div>
             <SkillsetFrame />
             <div className="skillset-all-card" ref={skillsetCardsRef}>
-                {skillset.map((skill) => {
+                {skillset.map((skill, index) => {
                     return (
                         <div
                             className="skill-line"
-                            key={skill.type + "-" + skill.skillNumber}
+                            key={skill.image}
                         >
-                            <SkillCard {...skill} />
+                            <SkillCard skillData={skill} skillIndex={index + 1}                             />
                             <HiddenSkill
-                                {...hiddenSkillset[skill.skillNumber - 1]}
+                                {...hiddenSkillset[index]}
                             />
                         </div>
                     )
