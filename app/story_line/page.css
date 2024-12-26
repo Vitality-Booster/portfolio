@@ -1,7 +1,8 @@
 .story-line-wrapper {
     position: relative;
     max-width: 1200px;
-    margin: 300px auto;
+    padding-top: 200px;
+    margin-inline: auto;
 }
 
 .new-content-row {

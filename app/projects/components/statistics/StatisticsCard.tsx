@@ -2,20 +2,26 @@ import StatisticsDiagram from "../statistics_diagram/StatisticsDiagram"
 import "./statisticsCard.css"
 
 export type StatisticsType = {
-    "Fun": string,
-    "Stress": string,
-    "Learning": string,
-    "Complexity": string,
-    "Creativity": string,
-    "Innovation": string
+    Fun: string
+    Stress: string
+    Learning: string
+    Complexity: string
+    Creativity: string
+    Innovation: string
 }
 
-export default function StatisticsCard({stats, tags}: {stats: StatisticsType, tags: string[]}) {
+export default function StatisticsCard({
+    stats,
+    tags,
+}: {
+    stats: StatisticsType
+    tags: string[]
+}) {
     return (
         <div className="statistics-card-container">
             <div className="statistics-card">
                 <div className="statistics-container">
-                    <StatisticsDiagram stats={stats}/>
+                    <StatisticsDiagram stats={stats} />
                 </div>
                 <div className="statistics-text">
                     <a className="single-statistics-text">
@@ -40,7 +46,9 @@ export default function StatisticsCard({stats, tags}: {stats: StatisticsType, ta
             </div>
             <div className="project-tags-wrapper">
                 {tags.map((tag, index) => (
-                    <div className="project-tag" key={index}>{tag}</div>
+                    <div className="project-tag" key={index}>
+                        {tag}
+                    </div>
                 ))}
                 {/* <div className="project-tag">Web Development</div>
                 <div className="project-tag">Animals</div>

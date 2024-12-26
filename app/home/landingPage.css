@@ -1,6 +1,19 @@
 .landing-container {
-    margin: 30px auto;
+    margin-inline: auto;
+    padding-top: 125px;
     max-width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width: var(--lg)) {
+    .landing-container {
+        max-width: 100%;
+    }
+}
+
+.line-face-container {
+    position: relative;
     display: flex;
 }
 

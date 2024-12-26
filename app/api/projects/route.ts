@@ -7,17 +7,13 @@ const prisma = new PrismaClient()
 export async function GET() {
     const projects: ProjectWithSkills[] = await prisma.project.findMany({
         include: { skills: true },
-        orderBy: {id: "asc"}
+        orderBy: { id: "asc" },
     })
 
-    for (let i = 0; i < projects.length; i++) {
-        const newImage = await imagePathToUrl(projects[i].mainPicture, ImageType.Project)
-        projects[i].mainPicture = newImage
-    }
+    // for (let i = 0; i < projects.length; i++) {
+    //     const newImage = await imagePathToUrl(projects[i].mainPicture, ImageType.Project)
+    //     projects[i].mainPicture = newImage
+    // }
 
     return Response.json({ projects: projects })
 }
-
-
-
-

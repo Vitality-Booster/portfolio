@@ -33,7 +33,13 @@ export default function Circle({
             onMouseLeave={() => onLeaveCallback()}
             style={{ padding: `${(techCircle.size - iconSize) / 2}px` }}
         >
-            <Image className={iconType} src={src} alt={alt} width={iconSize} height={iconSize}/>
+            <Image
+                className={iconType}
+                src={src}
+                alt={alt}
+                width={iconSize}
+                height={iconSize}
+            />
             <h3 className={`tech-circle-name ${nameType}`}>
                 {techCircle.name}
             </h3>

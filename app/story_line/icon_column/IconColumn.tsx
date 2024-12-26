@@ -1,12 +1,12 @@
 import "./iconColumn.css"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 
 export default function IconColumn({
     iconSrc,
     duration,
-    imageMarginBottom = "0px",
+    imageMarginBottom = "30px",
 }: {
-    iconSrc: StaticImageData
+    iconSrc: string
     duration: string
     imageMarginBottom?: string
 }) {
@@ -19,7 +19,8 @@ export default function IconColumn({
                 <Image
                     src={iconSrc}
                     alt="Artificial Intelligence image"
-                    width={150}
+                    width={200}
+                    height={200}
                 />
             </div>
             <h2 className="story-line-duration">{duration}</h2>

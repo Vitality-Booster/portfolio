@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
+    /* Colors */
     --background: #1f2133;
     --dark-blue: #1f2133;
     --foreground: #fff;
@@ -8,6 +9,11 @@
     --glass-background: #2e324b83;
     --green: #43ff3f;
     --purple: #fb3fff;
+
+    /* Breakpoints */
+    --sm: 480px;
+    --md: 768px;
+    --lg: 1024px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -15,6 +21,10 @@
         --background: #f1bf98;
         --foreground: #25283d;
     }
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 html,

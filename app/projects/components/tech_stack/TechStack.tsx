@@ -80,11 +80,11 @@ export default function TechStack({
     circleSize,
     iconSize,
     animationPadding,
-    skills
+    skills,
 }: {
     circleSize: number
     iconSize: number
-    animationPadding: number,
+    animationPadding: number
     skills: Skill[]
 }) {
     // TODO: Think about using GSAP to move the tech stack in the very beginning of the render

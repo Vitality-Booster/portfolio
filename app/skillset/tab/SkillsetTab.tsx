@@ -47,17 +47,17 @@ export default function SkillsetTab({
         tl.current.pause()
 
         if (wasActive && !active) {
-            console.log("I was supposed to play")
             tl.current.reverse()
             // setFinishedInitAnimation(true)
         } else if (wasActive && active) {
             tl.current.play()
             // setFinishedInitAnimation(true)
+        } else if (active && !wasActive) {
+            tl.current.play()
         }
     }, [wasActive, active])
 
     const handleMouseEnter = contextSafe(() => {
-        console.log(`I am active? ${active} And Was I active? ${wasActive}`)
         if (!active) tl.current.play()
     })
 

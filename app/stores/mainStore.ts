@@ -1,42 +1,42 @@
 import { create } from "zustand"
 import { ProjectWithSkills } from "../types/Project"
-import { SkillWithProjects } from "../types/SkillTypes"
-import { Skill } from "@prisma/client"
+import {
+    HiddenSkillWithProjectNames,
+    SkillWithProjectNames,
+} from "../types/SkillTypes"
+import { StoryPart } from "@prisma/client"
 
 export interface StoreState {
     projects: ProjectWithSkills[]
-    skills: SkillWithProjects[]
+    skills: SkillWithProjectNames[]
     setProjects: (projects: ProjectWithSkills[]) => void
-    setSkills: (skills: SkillWithProjects[]) => void
+    setSkills: (skills: SkillWithProjectNames[]) => void
+    hiddenSkills: HiddenSkillWithProjectNames[]
+    setHiddenSkills: (storyParts: HiddenSkillWithProjectNames[]) => void
+    storyParts: StoryPart[]
+    setStoryParts: (storyParts: StoryPart[]) => void
 }
 
 export const useMainStore = create<StoreState>((set, get) => ({
     projects: [],
     skills: [],
     setProjects: (projects: ProjectWithSkills[]) => {
-        if (get().skills.length > 0)
-            set({ projects: updateProjectsSkills(projects, get().skills) })
-        else set({ projects })
+        set({ projects })
     },
-    setSkills: (skills: SkillWithProjects[]) => {
-        const currentProjects = get().projects
-        // Check if the Projects have already been pulled from the Database
-        if (currentProjects.length > 0) {
-            const singleSkill = currentProjects[0].skills[0]
-            // Check if the Skill images in Projects have already been updated with signed S3 urls.
-            // If the "image" in Project Skill is not equal to the "image" from the Skill in "skills",
-            // then Project Skill is not up-to-date.
-            // Note: Skill images are assumed to already have their "image" property as a signed S3 url.
-            if (singleSkill.image !== skills[singleSkill.id - 1].image)
-                set({ projects: updateProjectsSkills(get().projects, skills) })
-        }
+    setSkills: (skills: SkillWithProjectNames[]) => {
         set({ skills })
     },
+    hiddenSkills: [],
+    setHiddenSkills: (hiddenSkills: HiddenSkillWithProjectNames[]) =>
+        set({ hiddenSkills }),
+    storyParts: [],
+    setStoryParts: (storyParts: StoryPart[]) => set({ storyParts }),
 }))
 
-export const updateProjectsSkills = (
+// OBSOLETE
+const updateProjectsSkills = (
     projects: ProjectWithSkills[],
-    skills: SkillWithProjects[],
+    skills: SkillWithProjectNames[],
 ): ProjectWithSkills[] => {
     for (let i = 0; i < projects.length; i++) {
         for (let j = 0; j < projects[i].skills.length; j++) {

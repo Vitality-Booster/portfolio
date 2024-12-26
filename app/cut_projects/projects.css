@@ -1,5 +1,6 @@
 .main-projects {
-    margin: 100px auto;
+    padding-top: 175px;
+    margin-inline: auto;
     max-width: 1200px;
     display: flex;
     justify-content: space-around;

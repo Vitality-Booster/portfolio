@@ -1,5 +1,6 @@
 .skillset-main-container {
-    margin: 300px auto;
+    padding-top: 200px;
+    margin-inline: auto;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
@@ -10,6 +11,9 @@
     justify-content: center;
     gap: 50px;
     margin-bottom: 25px;
+    width: 60%;
+    margin-inline: auto;
+    flex-wrap: wrap;
 }
 
 .skillset-all-card {

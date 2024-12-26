@@ -4,8 +4,11 @@ import SkillsetFrame from "./frame/SkillsetFrame"
 import SkillCard from "./skillCard/SkillCard"
 import "./skillset.css"
 import SkillsetTab from "./tab/SkillsetTab"
-import HiddenSkill from "./hiddenSkill/HiddenSkill"
-import { SkillCardDataType, SkillData } from "../types/SkillTypes"
+import HiddenSkillCard from "./hiddenSkill/HiddenSkill"
+import {
+    HiddenSkillWithProjectNames,
+    SkillWithProjectNames,
+} from "../types/SkillTypes"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 
@@ -19,139 +22,51 @@ import Spring from "../../public/tech_stack/spring.png"
 import Docker from "../../public/tech_stack/docker.png"
 import GsapIcon from "../../public/tech_stack/gsap.png"
 import NextJS from "../../public/tech_stack/nextjs.png"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useMainStore } from "../stores/mainStore"
-import { Skill } from "@prisma/client"
-
-const testSkillsData: SkillCardDataType[] = [
-    {
-        icon: Java,
-        skillName: "Java",
-        expYears: 3,
-        skillNumber: 1,
-        iconHeight: 60,
-        iconWidth: 65,
-        type: "Back-end",
-    },
-    {
-        icon: PostgreSQL,
-        skillName: "PostgreSQL",
-        expYears: 1,
-        skillNumber: 2,
-        iconHeight: 55,
-        type: "Back-end",
-    },
-    {
-        icon: Spring,
-        skillName: "Spring",
-        expYears: 2,
-        skillNumber: 3,
-        iconHeight: 55,
-        iconWidth: 70,
-        type: "Back-end",
-    },
-    {
-        icon: Docker,
-        skillName: "Docker",
-        expYears: 2,
-        skillNumber: 4,
-        iconHeight: 55,
-        type: "Back-end",
-    },
-    {
-        icon: React,
-        skillName: "React",
-        expYears: 2,
-        skillNumber: 1,
-        iconHeight: 60,
-        type: "Front-end",
-    },
-    {
-        icon: GsapIcon,
-        skillName: "GSAP",
-        expYears: 1,
-        skillNumber: 2,
-        iconHeight: 55,
-        type: "Front-end",
-    },
-    {
-        icon: NextJS,
-        skillName: "NextJS",
-        expYears: 2,
-        skillNumber: 3,
-        iconHeight: 55,
-        type: "Front-end",
-    },
-]
-
-const testHiddenSkills: SkillData[] = [
-    {
-        skillName: "Team work",
-        expYears: 3,
-        skillNumber: 1,
-        type: "Front-end",
-    },
-    {
-        skillName: "Innovation",
-        expYears: 3,
-        skillNumber: 2,
-        type: "Front-end",
-    },
-    {
-        skillName: "Research & Development",
-        expYears: 4,
-        skillNumber: 3,
-        type: "Front-end",
-    },
-    {
-        skillName: "Team work",
-        expYears: 3,
-        skillNumber: 1,
-        type: "Back-end",
-    },
-    {
-        skillName: "Innovation",
-        expYears: 3,
-        skillNumber: 2,
-        type: "Back-end",
-    },
-    {
-        skillName: "Research & Development",
-        expYears: 4,
-        skillNumber: 3,
-        type: "Back-end",
-    },
-    {
-        skillName: "Time management",
-        expYears: 4,
-        skillNumber: 4,
-        type: "Back-end",
-    },
-]
+import { HiddenSkill, Skill } from "@prisma/client"
 
 const tabs = ["Front-end", "Back-end", "CI/CD", "Data Science", "Blockchain"]
 
 export default function Skillset() {
-    const {skills} = useMainStore()
-    const [prevTab, setPrevTab] = useState("Back-end")
+    const { skills, projects, hiddenSkills } = useMainStore()
     const [currentTab, setCurrentTab] = useState("Back-end")
-    // const [skillNumber, setSkillNumber] = useState(1)
-    // const [skillset, setSkillset] = useState<SkillCardDataType[]>(
-    //     testSkillsData.filter((skill) => skill.type === currentTab),
-    // )
-    const [skillset, setSkillset] = useState<Skill[]>(
+    const [prevTab, setPrevTab] = useState("Back-end")
+    // const [hiddenSkills, setHiddenSkills] = useState<HiddenSkillWithProjectNames[]>([])
+    const [skillset, setSkillset] = useState<SkillWithProjectNames[]>(
         skills.filter((skill) => skill.tags.includes(currentTab)),
-    )
-    const [hiddenSkillset, setHiddenSkillset] = useState<SkillData[]>(
-        testHiddenSkills.filter((skill) => skill.type === currentTab),
     )
 
     const skillsetCardsRef = useRef(null)
     const tl = useRef(gsap.timeline())
     const { contextSafe } = useGSAP({ scope: skillsetCardsRef })
+    console.log("The number of normal skills that I have:", skills.length)
+    console.log("The number of normal projects that I have:", projects.length)
+
+    useEffect(() => {
+        // const fetchHiddenSkills = async () => {
+        //     const response = await fetch("/api/hidden-skills", {
+        //         cache: "force-cache"
+        //     })
+        //     const data = await response.json()
+        //     setHiddenSkills(data.hiddenSkills)
+        // }
+
+        if (
+            skills &&
+            skills.length > 0 &&
+            (!skillset || skillset.length === 0)
+        ) {
+            setSkillset(
+                skills.filter((skill) => skill.tags.includes(currentTab)),
+            )
+        }
+        // if (hiddenSkills.length <= 0) {
+        //     fetchHiddenSkills()
+        // }
+    }, [skills])
 
     const handleTabChange = contextSafe((tab: string) => {
-        // setSkillNumber(1)
         setPrevTab(currentTab)
         setCurrentTab(tab)
 
@@ -162,12 +77,7 @@ export default function Skillset() {
                 y: "+=200px",
             })
             .then(() => {
-                setSkillset(
-                    skills.filter((skill) => skill.tags.includes(tab)),
-                )
-                setHiddenSkillset(
-                    testHiddenSkills.filter((skill) => skill.type === tab),
-                )
+                setSkillset(skills.filter((skill) => skill.tags.includes(tab)))
             })
             .then(() =>
                 tl.current.to(skillsetCardsRef.current, {
@@ -178,50 +88,42 @@ export default function Skillset() {
             )
     })
 
+    if (
+        !skills ||
+        !hiddenSkills ||
+        skills.length === 0 ||
+        hiddenSkills.length === 0
+    ) {
+        return <div>Loading...</div>
+    }
+
     return (
-        <div className="skillset-main-container">
+        <div id="skills" className="skillset-main-container">
             <div className="skillset-all-tabs">
                 {tabs.map((tab, index) => {
                     return (
                         <SkillsetTab
-                    tabText={tab}
-                    active={currentTab === tab}
-                    wasActive={prevTab === tab}
-                    onClickCallback={handleTabChange}
-                    key={index}
-                />
+                            tabText={tab}
+                            active={currentTab === tab}
+                            wasActive={prevTab === tab}
+                            onClickCallback={handleTabChange}
+                            key={index}
+                        />
                     )
                 })}
-                {/* <SkillsetTab
-                    tabText={tabs[0]}
-                    active={currentTab === tabs[0]}
-                    wasActive={prevTab === tabs[0]}
-                    onClickCallback={handleTabChange}
-                />
-                <SkillsetTab
-                    tabText={tabs[1]}
-                    active={currentTab === tabs[1]}
-                    wasActive={prevTab === tabs[1]}
-                    onClickCallback={handleTabChange}
-                />
-                <SkillsetTab
-                    tabText={tabs[2]}
-                    active={currentTab === tabs[2]}
-                    wasActive={prevTab === tabs[2]}
-                    onClickCallback={handleTabChange}
-                /> */}
             </div>
             <SkillsetFrame />
             <div className="skillset-all-card" ref={skillsetCardsRef}>
                 {skillset.map((skill, index) => {
                     return (
-                        <div
-                            className="skill-line"
-                            key={skill.image}
-                        >
-                            <SkillCard skillData={skill} skillIndex={index + 1}                             />
-                            <HiddenSkill
-                                {...hiddenSkillset[index]}
+                        <div className="skill-line" key={skill.image}>
+                            <SkillCard
+                                skillData={skill}
+                                skillIndex={index + 1}
+                            />
+                            <HiddenSkillCard
+                                hiddenSkill={hiddenSkills[index]}
+                                index={index + 1}
                             />
                         </div>
                     )

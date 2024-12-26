@@ -11,10 +11,12 @@ import TextPlugin from "gsap/TextPlugin"
 
 gsap.registerPlugin(useGSAP, TextPlugin)
 
+const LINE_FACE_URL =
+    "https://profile-website-bucket.s3.us-east-1.amazonaws.com/welcome_page/line_face.png"
+
 export default function LandingPage() {
     const bestRectRef = useRef(null)
     const tl = useRef(gsap.timeline())
-    const [pics, setPics] = useState<string[]>([])
 
     useGSAP(() => {
         tl.current.from(
@@ -34,39 +36,16 @@ export default function LandingPage() {
         })
     }, [bestRectRef, tl])
 
-    // TODO: Finish later
-    useEffect(() => {
-        async function fetchPics() {
-            const res = await fetch(
-                "/api/images?path=welcome_page/line_face.png",
-                {
-                    cache: "force-cache",
-                }
-            )
-            // const res = await fetch("/api/images?path=react.png&type=skill")
-            const data = await res.json()
-            console.log("Data:", data)
-            setPics([data.imageUrl])
-        }
-
-        fetchPics()
-    }, [])
-
     return (
-        <div className="landing-container">
+        <div id="home" className="landing-container">
             <div className="line-face-container">
-                {/* <Image src={LineFace} alt="Line Face" width={800} />
-                <Image src={"s3://profile-website-bucket/line_face.png"} alt="Face" width={800}/> */}
-                {/* <div>{pics[0]?.Key}</div> */}
-                {pics && pics[0] && (
-                    <Image
-                        src={pics[0]}
-                        className="line-face-picture"
-                        alt="Face"
-                        width={800}
-                        height={800}
-                    />
-                )}
+                <Image
+                    src={LINE_FACE_URL}
+                    className="line-face-picture"
+                    alt="Face"
+                    width={800}
+                    height={800}
+                />
             </div>
             <div className="text-container">
                 <div className="name-container">

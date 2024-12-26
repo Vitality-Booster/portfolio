@@ -43,7 +43,12 @@ const cardFadeOut = {
 }
 
 export default function Projects() {
-    const {projects: allProjects, setProjects, setSkills, skills} = useMainStore()
+    const {
+        projects: allProjects,
+        setProjects,
+        setSkills,
+        skills,
+    } = useMainStore()
     const [activeProjectId, setActiveProjectId] = useState<number>(1)
     const projectsRef = useRef(null)
     const { contextSafe } = useGSAP({ scope: projectsRef })
@@ -54,6 +59,8 @@ export default function Projects() {
 
         return formattedName
     }
+
+    console.log("I am being refreshed as well every time!")
 
     useGSAP(() => {
         if (allProjects.length > 0) {
@@ -69,31 +76,31 @@ export default function Projects() {
         }
     }, [allProjects])
 
-    useEffect(() => {
-        
-        async function fetchSkills() {
-            const res = await fetch("/api/skills", {
-                cache: "force-cache",
-            })
-            const data = await res.json()
-            setSkills(data.skills)    
-        }
+    // useEffect(() => {
 
-        async function fetchProjects() {
-            const res = await fetch("/api/projects", {
-                cache: "force-cache",
-            })
-            const data = await res.json()
-            setProjects(data.projects)
-        }
+    //     async function fetchSkills() {
+    //         const res = await fetch("/api/skills", {
+    //             cache: "force-cache",
+    //         })
+    //         const data = await res.json()
+    //         setSkills(data.skills)
+    //     }
 
-        if (skills.length === 0){ 
-            fetchSkills()
-        }
-        if (skills.length > 0 && allProjects.length === 0) {
-            fetchProjects()
-        }
-    }, [skills, allProjects])
+    //     async function fetchProjects() {
+    //         const res = await fetch("/api/projects", {
+    //             cache: "force-cache",
+    //         })
+    //         const data = await res.json()
+    //         setProjects(data.projects)
+    //     }
+
+    //     if (skills.length === 0){
+    //         fetchSkills()
+    //     }
+    //     if (skills.length > 0 && allProjects.length === 0) {
+    //         fetchProjects()
+    //     }
+    // }, [skills, allProjects])
 
     /**
      * Handles card animation and changes the active button
@@ -115,12 +122,11 @@ export default function Projects() {
             )
             // .then(() => )
             setActiveProjectId(index)
-            
         }
     })
 
     return (
-        <div className="main-projects" ref={projectsRef}>
+        <div id="projects" className="main-projects" ref={projectsRef}>
             <div className="all-project-buttons">
                 {allProjects.length > 0 &&
                     allProjects.map((project, index) => {

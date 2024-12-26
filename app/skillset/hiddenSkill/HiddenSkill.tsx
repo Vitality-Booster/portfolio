@@ -1,26 +1,39 @@
-import { SkillData } from "@/app/types/SkillTypes"
+import { HiddenSkillWithProjectNames } from "@/app/types/SkillTypes"
 import "./hiddenSkill.css"
+import { HiddenSkill } from "@prisma/client"
 
-export default function HiddenSkill(skillData: SkillData) {
+export default function HiddenSkillCard({
+    hiddenSkill,
+    index,
+}: {
+    hiddenSkill: HiddenSkillWithProjectNames
+    index: number
+}) {
     return (
         <div className="hidden-skill-card">
             <div
                 className="hidden-skill-number"
                 style={
-                    skillData.skillNumber % 2 === 1
-                        ? skillData.skillNumber === 1
+                    index % 2 === 1
+                        ? index === 1
                             ? { left: "-4rem" }
                             : { left: "-5rem" }
                         : { left: "70%" }
                 }
             >
-                {skillData.skillNumber}
+                {index}
             </div>
             <div className="hidden-skill-name-wrapper">
-                <a className="skill-name">{skillData.skillName}</a>
+                <a className="skill-name">{hiddenSkill.name}</a>
             </div>
-            <div className="hidden-skill-year-experience">
-                Experience: {skillData.expYears} years
+            <div className="hidden-main-skill-text">
+                <div className="hidden-skill-year-experience">
+                    <strong>Experience</strong>: {hiddenSkill.experience} years
+                </div>
+                <div className="hidden-skill-year-experience">
+                    <strong>Projects</strong>:{" "}
+                    {hiddenSkill.projects.slice(0, 3).join(", ")}
+                </div>
             </div>
         </div>
     )

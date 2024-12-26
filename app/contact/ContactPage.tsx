@@ -9,7 +9,8 @@ import AddressIcon from "@/public/contact_page/location.png"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import { format } from "path"
 
 gsap.registerPlugin(useGSAP)
 
@@ -19,6 +20,14 @@ export default function ContactPage() {
     const extraTextRef = useRef(null)
     const buttonEffectTl = useRef(gsap.timeline())
     const { contextSafe } = useGSAP({ scope: buttonContRef })
+
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        message: "",
+        subject: "",
+    })
+    const [status, setStatus] = useState("")
 
     useGSAP(() => {
         buttonEffectTl.current.to(buttonRef.current, {
@@ -50,8 +59,37 @@ export default function ContactPage() {
         buttonEffectTl.current.reverse()
     })
 
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setStatus("Sending...")
+
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+
+        console.log("The response is:", response)
+
+        if (response.ok) {
+            setStatus("Email sent successfully!")
+            setFormData({ fullName: "", email: "", message: "", subject: "" })
+        } else {
+            setStatus("Error sending email.")
+        }
+    }
+
     return (
-        <div className="contact-main-container">
+        <div id="contact" className="contact-main-container">
             <div className="contact-information-container">
                 <a className="cta-text-highlited">* Contact me *</a>
                 <h1 className="contact-main-text">
@@ -85,14 +123,17 @@ export default function ContactPage() {
                     />
                 </div>
             </div>
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="contact-details-container">
                     <div className="contact-input-container">
                         <label className="contact-input-label">Full Name</label>
                         <input
                             className="contact-input"
+                            name="fullName"
                             type="text"
                             placeholder="Elon Musk"
+                            value={formData.fullName}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -100,8 +141,11 @@ export default function ContactPage() {
                         <label className="contact-input-label">Email</label>
                         <input
                             className="contact-input"
+                            name="email"
                             type="email"
                             placeholder="elonmusk@tesla.com"
+                            value={formData.email}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -110,14 +154,21 @@ export default function ContactPage() {
                         <input
                             className="contact-input"
                             type="text"
+                            name="subject"
                             placeholder="Job Opportynity"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="contact-message-container">
                         <label className="contact-input-label">Message</label>
                         <textarea
                             className="contact-message"
+                            name="message"
                             placeholder="Your text here"
+                            value={formData.message}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -126,17 +177,18 @@ export default function ContactPage() {
                     <div className="button-wrapper">
                         <button
                             className="contact-submit-button"
+                            type="submit"
                             ref={buttonRef}
                             onMouseEnter={buttonHoverHandler}
                             onMouseLeave={buttonLeaveHandler}
-                            onClick={() => {
-                                fetch("/api/projects").then((res) =>
-                                    console.log(
-                                        "Here is the response from the projects endpoint: " +
-                                            res.json(),
-                                    ),
-                                )
-                            }}
+                            // onClick={() => {
+                            //     fetch("/api/projects").then((res) =>
+                            //         console.log(
+                            //             "Here is the response from the projects endpoint: " +
+                            //                 res.json(),
+                            //         ),
+                            //     )
+                            // }}
                         >
                             <a className="button-text" ref={buttonRef}>
                                 Send email

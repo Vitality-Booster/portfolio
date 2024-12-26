@@ -70,7 +70,11 @@ const Stat6Map: StatMap = {
 const statArray = ["B", "C", "B", "S", "A", "A"]
 // const statArray = ["S", "S", "S", "S", "S", "S"]
 
-export default function StatisticsDiagram({stats}: {stats: StatisticsType}) {
+export default function StatisticsDiagram({
+    stats,
+}: {
+    stats: StatisticsType
+}) {
     const figureRef = useRef(null)
 
     useGSAP(() => {

@@ -5,18 +5,32 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import Line from "../components/timeline/Line"
 import Point from "../components/timeline/Point"
-
-import brainSrc from "../../public/story_line/brain.png"
-import graduateSrc from "../../public/story_line/graduate.png"
-import lightBulbSrc from "../../public/story_line/light_bulb.png"
 import TextColumn from "./text_column/TextColumn"
 import IconColumn from "./icon_column/IconColumn"
 
 import ScrollTrigger from "gsap/ScrollTrigger"
+import { useStorylineStore } from "../stores/storylineStore"
+import { useEffect } from "react"
+import { useMainStore } from "../stores/mainStore"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function StoryLine() {
+    // const {storyParts, setStoryParts} = useStorylineStore()
+    const { storyParts, setStoryParts } = useMainStore()
+
+    // useEffect(() => {
+    //     async function fetchStoryParts() {
+    //         const res = await fetch("/api/storyline", {
+    //             cache: "force-cache",
+    //         })
+    //         const data = await res.json()
+    //         setStoryParts(data.storyParts)
+    //     }
+
+    //     fetchStoryParts()
+    // }, [])
+
     useGSAP(() => {
         gsap.from(".new-content-row", {
             scrollTrigger: {
@@ -30,58 +44,27 @@ export default function StoryLine() {
             opacity: 0,
             duration: 2,
         })
-    })
+    }, [])
 
     return (
-        <div className="story-line-wrapper">
+        <div id="story-line" className="story-line-wrapper">
             <Line />
-            <div className="new-content-row">
-                <TextColumn
-                    header={"Bachelor Degree"}
-                    text={
-                        "Finished Fontys, the university of applied science, with a degree in Computer Science"
-                    }
-                />
-                <div className="new-point-col">
-                    <Point />
-                </div>
-                <IconColumn
-                    iconSrc={graduateSrc}
-                    duration={"Sep 2020 - Jul 2024"}
-                />
-            </div>
-            <div className="new-content-row">
-                <TextColumn
-                    header={"Graduation Internship"}
-                    text={
-                        "Finished Fontys, the university of applied science, with a degree in Computer Science"
-                    }
-                />
-                <div className="new-point-col">
-                    <Point />
-                </div>
-                <IconColumn
-                    iconSrc={brainSrc}
-                    duration={"Feb 2024 - Jun 2024"}
-                    imageMarginBottom="40px"
-                />
-            </div>
-            <div className="new-content-row">
-                <TextColumn
-                    header={"GLOW Festival"}
-                    text={
-                        "Finished Fontys, the university of applied science, with a degree in Computer Science"
-                    }
-                />
-                <div className="new-point-col">
-                    <Point />
-                </div>
-                <IconColumn
-                    iconSrc={lightBulbSrc}
-                    duration={"Sep 2023 - Nov 2023"}
-                    imageMarginBottom="35px"
-                />
-            </div>
+            {storyParts.length > 0 &&
+                storyParts.map((storyPart) => (
+                    <div className="new-content-row" key={storyPart.id}>
+                        <TextColumn
+                            header={storyPart.title}
+                            text={storyPart.description}
+                        />
+                        <div className="new-point-col">
+                            <Point />
+                        </div>
+                        <IconColumn
+                            iconSrc={storyPart.icon}
+                            duration={storyPart.date}
+                        />
+                    </div>
+                ))}
         </div>
     )
 }

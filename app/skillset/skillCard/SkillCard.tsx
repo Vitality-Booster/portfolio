@@ -1,9 +1,15 @@
-import { SkillCardDataType } from "@/app/types/SkillTypes"
+import { SkillWithProjectNames } from "@/app/types/SkillTypes"
 import "./skillCard.css"
 import Image from "next/image"
 import { Skill } from "@prisma/client"
 
-export default function SkillCard({skillData, skillIndex}: {skillData: Skill, skillIndex: number}) {
+export default function SkillCard({
+    skillData,
+    skillIndex,
+}: {
+    skillData: SkillWithProjectNames
+    skillIndex: number
+}) {
     // skillNumber % 2 === 0 &&
     return (
         <div className="skill-card">
@@ -34,8 +40,14 @@ export default function SkillCard({skillData, skillIndex}: {skillData: Skill, sk
             <div className="skill-icon-with-name">
                 <a className="skill-name">{skillData.name}</a>
             </div>
-            <div className="skill-year-experience">
-                Experience: {skillData.experience} years
+            <div className="main-skill-text">
+                <div className="skill-year-experience">
+                    <strong>Experience</strong>: {skillData.experience} years
+                </div>
+                <div className="skill-year-experience">
+                    <strong>Projects</strong>:{" "}
+                    {skillData.projects.slice(0, 3).join(", ")}
+                </div>
             </div>
         </div>
     )

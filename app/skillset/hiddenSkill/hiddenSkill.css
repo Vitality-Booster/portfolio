@@ -1,11 +1,11 @@
 .hidden-skill-card {
     width: 375px;
-    height: 200px;
+    height: 250px;
     padding: 20px 40px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     position: relative;
 
@@ -15,10 +15,10 @@
 
 .hidden-skill-number {
     position: absolute;
-    font-size: 350px;
+    font-size: 400px;
     /* color: var(--green); */
     left: 70%;
-    top: -25%;
+    top: -33%;
     opacity: 0.4;
     z-index: -1;
 }
@@ -32,5 +32,13 @@
 
 .hidden-skill-year-experience {
     width: 100%;
-    text-align: center;
+    text-align: left;
+}
+
+.hidden-main-skill-text {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
 }

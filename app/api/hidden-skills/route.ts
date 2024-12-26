@@ -1,20 +1,19 @@
 import {
-    SkillWithProjectNames,
+    HiddenSkillWithProjectNames,
     SkillWithProjects,
 } from "@/app/types/SkillTypes"
 import { imagePathToUrl, ImageType } from "@/app/utils/imagePathConverter"
-import { PrismaClient } from "@prisma/client"
+import { HiddenSkill, PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
 export async function GET() {
-    const skills = await prisma.skill.findMany({
+    const hiddenSkills = await prisma.hiddenSkill.findMany({
         select: {
             id: true,
             name: true,
             tags: true,
             experience: true,
-            image: true,
             projects: {
                 select: {
                     name: true, // Only fetch the 'name' of each related Project
@@ -25,11 +24,11 @@ export async function GET() {
     })
 
     // Map the result to convert `projects` from an array of objects to an array of strings
-    const formattedSkills: SkillWithProjectNames[] = skills.map((skill) => ({
-        ...skill,
-        projects: skill.projects.map((project) => project.name),
-    }))
+    const formattedHiddenSkills: HiddenSkillWithProjectNames[] =
+        hiddenSkills.map((hiddenSkill) => ({
+            ...hiddenSkill,
+            projects: hiddenSkill.projects.map((project) => project.name),
+        }))
 
-    // console.log("The project names of the skills that I get with a new approach:", skills[0].projects)
-    return Response.json({ skills: formattedSkills })
+    return Response.json({ hiddenSkills: formattedHiddenSkills })
 }

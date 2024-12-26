@@ -28,10 +28,14 @@ export default function ProjectCard({
             y: "-=40px",
             duration: 0.5,
         })
-        tl.current.to(shadowRef.current, {
-            y: "-=40px",
-            duration: 0.4,
-        }, "<+0.25")
+        tl.current.to(
+            shadowRef.current,
+            {
+                y: "-=40px",
+                duration: 0.4,
+            },
+            "<+0.25",
+        )
 
         tl.current.pause()
     }, [])
@@ -77,9 +81,7 @@ export default function ProjectCard({
 
                 <img
                     className="project-card-image"
-                    src={
-                        project.mainPicture
-                    }
+                    src={project.mainPicture}
                     alt={project.name + " image"}
                 />
                 <div className="card-text-area">

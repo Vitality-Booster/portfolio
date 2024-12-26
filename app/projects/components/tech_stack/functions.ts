@@ -62,7 +62,7 @@ export async function generateAllCircles({
             id: `tech-circle-${skill.id}`,
             type: skill.tags[0],
             name: skill.name,
-            src: skill.image
+            src: skill.image,
         })
     })
 

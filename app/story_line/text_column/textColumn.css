@@ -19,6 +19,12 @@
     width: 400px;
 }
 
+.text-column {
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
+}
+
 .text-column:nth-last-of-type(odd) .description-card {
     box-shadow: 100px 60px 50% 1px #42ff3f57;
     border: 2px solid #42ff3f36;
