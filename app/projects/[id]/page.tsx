@@ -6,7 +6,7 @@ import StatisticsCard, {
     StatisticsType,
 } from "../components/statistics/StatisticsCard"
 import TechStack from "../components/tech_stack/TechStack"
-import { updateProjectsSkills, useMainStore } from "@/app/stores/mainStore"
+import { useMainStore } from "@/app/stores/mainStore"
 import { ProjectWithSkills } from "@/app/types/Project"
 import { useEffect, useState } from "react"
 

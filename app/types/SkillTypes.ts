@@ -1,11 +1,8 @@
-import { StaticImageData } from "next/image"
 import { HiddenSkill, Prisma, Skill } from "@prisma/client"
 
-const skillWithProjects = Prisma.validator<Prisma.SkillDefaultArgs>()({
-    include: { projects: true },
-})
-
-export type SkillWithProjects = Prisma.SkillGetPayload<typeof skillWithProjects>
+export type SkillWithProjects = Prisma.SkillGetPayload<{
+    include: { projects: true }
+}>
 
 export type SkillWithProjectNames = Skill & {
     projects: string[]

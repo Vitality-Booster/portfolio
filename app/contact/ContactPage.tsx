@@ -10,7 +10,6 @@ import AddressIcon from "@/public/contact_page/location.png"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef, useState } from "react"
-import { format } from "path"
 
 gsap.registerPlugin(useGSAP)
 
@@ -27,7 +26,8 @@ export default function ContactPage() {
         message: "",
         subject: "",
     })
-    const [status, setStatus] = useState("")
+    // TODO: Use it later
+    // const [status, setStatus] = useState("")
 
     useGSAP(() => {
         buttonEffectTl.current.to(buttonRef.current, {
@@ -68,7 +68,7 @@ export default function ContactPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        setStatus("Sending...")
+        // setStatus("Sending...")
 
         const response = await fetch("/api/contact", {
             method: "POST",
@@ -81,10 +81,10 @@ export default function ContactPage() {
         console.log("The response is:", response)
 
         if (response.ok) {
-            setStatus("Email sent successfully!")
+            // setStatus("Email sent successfully!")
             setFormData({ fullName: "", email: "", message: "", subject: "" })
         } else {
-            setStatus("Error sending email.")
+            // setStatus("Error sending email.")
         }
     }
 

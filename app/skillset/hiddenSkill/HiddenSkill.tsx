@@ -1,6 +1,5 @@
 import { HiddenSkillWithProjectNames } from "@/app/types/SkillTypes"
 import "./hiddenSkill.css"
-import { HiddenSkill } from "@prisma/client"
 
 export default function HiddenSkillCard({
     hiddenSkill,

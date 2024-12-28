@@ -1,13 +1,8 @@
 // "use server";
 
-import {
-    GetObjectCommand,
-    ListObjectsCommand,
-    S3Client,
-} from "@aws-sdk/client-s3"
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3"
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers"
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
-import { NextRequest } from "next/server"
 // import "dotenv/config"
 
 // TODO: Finish it

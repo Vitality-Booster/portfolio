@@ -1,17 +1,14 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation"
 import "./navbar.css"
 import NavLink from "./navlink/NavLink"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import { useGSAP } from "@gsap/react"
-import { useMainStore } from "@/app/stores/mainStore"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const ALL_SECTIONS = ["home", "story-line", "projects", "skills", "contact"]
+// const ALL_SECTIONS = ["home", "story-line", "projects", "skills", "contact"]
 
 export default function Page() {
     const [activeSection, setActiveSection] = useState<string>(
@@ -20,7 +17,6 @@ export default function Page() {
     const [prevActiveSection, setPrevActiveSection] = useState<string>(
         window.location.hash.split("#")[1] || "",
     )
-    const router = usePathname()
 
     // useEffect(() => {
     //     if (sections[0] === null){

@@ -9,27 +9,13 @@ import TextColumn from "./text_column/TextColumn"
 import IconColumn from "./icon_column/IconColumn"
 
 import ScrollTrigger from "gsap/ScrollTrigger"
-import { useStorylineStore } from "../stores/storylineStore"
-import { useEffect } from "react"
 import { useMainStore } from "../stores/mainStore"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function StoryLine() {
     // const {storyParts, setStoryParts} = useStorylineStore()
-    const { storyParts, setStoryParts } = useMainStore()
-
-    // useEffect(() => {
-    //     async function fetchStoryParts() {
-    //         const res = await fetch("/api/storyline", {
-    //             cache: "force-cache",
-    //         })
-    //         const data = await res.json()
-    //         setStoryParts(data.storyParts)
-    //     }
-
-    //     fetchStoryParts()
-    // }, [])
+    const { storyParts } = useMainStore()
 
     useGSAP(() => {
         gsap.from(".new-content-row", {

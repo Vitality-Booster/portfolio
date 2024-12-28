@@ -1,10 +1,6 @@
 "use server"
 
-import {
-    LineDataType,
-    RawCircleType,
-    TechCircleType,
-} from "@/app/types/TechCircle"
+import { LineDataType, TechCircleType } from "@/app/types/TechCircle"
 import { Skill } from "@prisma/client"
 import { randomInt } from "crypto"
 

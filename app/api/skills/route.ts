@@ -1,8 +1,4 @@
-import {
-    SkillWithProjectNames,
-    SkillWithProjects,
-} from "@/app/types/SkillTypes"
-import { imagePathToUrl, ImageType } from "@/app/utils/imagePathConverter"
+import { SkillWithProjectNames } from "@/app/types/SkillTypes"
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()

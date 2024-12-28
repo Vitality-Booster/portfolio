@@ -1,15 +1,10 @@
 "use client"
 
 import "./techStack.css"
-import PostgreIcon from "@/public/tech_stack/postgre.png"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import {
-    LineDataType,
-    RawCircleType,
-    TechCircleType,
-} from "@/app/types/TechCircle"
+import { LineDataType, TechCircleType } from "@/app/types/TechCircle"
 import { generateAllCircles, generateLines } from "./functions"
 import { useRef, useState } from "react"
 import Line from "./Line"
@@ -17,64 +12,6 @@ import Circle from "./Circle"
 import { Skill } from "@prisma/client"
 
 gsap.registerPlugin(useGSAP)
-
-const allRawCircles: RawCircleType[] = [
-    {
-        id: "c1",
-        type: "Front-end Development",
-        name: "React",
-    },
-    {
-        id: "c2",
-        type: "Back-end Development",
-        name: "NodeJS",
-    },
-    {
-        id: "c3",
-        type: "Data Management",
-        name: "PostgreSQL",
-    },
-    {
-        id: "c4",
-        type: "Data Science",
-        name: "PyTorch",
-    },
-    {
-        id: "c5",
-        type: "CI / CD",
-        name: "Docker",
-    },
-    {
-        id: "c6",
-        type: "Front-end Development",
-        name: "NextJS",
-    },
-    {
-        id: "c7",
-        type: "Front-end Development",
-        name: "GSAP",
-    },
-    {
-        id: "c8",
-        type: "Data Management",
-        name: "Hibernate",
-    },
-    {
-        id: "c9",
-        type: "Front-end Development",
-        name: "CSS",
-    },
-    {
-        id: "c10",
-        type: "Data Science",
-        name: "TensorFlow",
-    },
-    {
-        id: "c11",
-        type: "Data Management",
-        name: "MongoDB",
-    },
-]
 
 export default function TechStack({
     circleSize,

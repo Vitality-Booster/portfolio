@@ -4,12 +4,8 @@ import ProjectButton from "./button/ProjectButton"
 import ProjectCard from "./card/ProjectCard"
 import "./projects.css"
 
-import PostgreIcon from "../../public/tech_stack/postgre.png"
-import JavaIcon from "../../public/tech_stack/java.png"
-import ReactIcon from "../../public/tech_stack/react.png"
-import { ImageType } from "../types/ImageType"
-import { useEffect, useRef, useState } from "react"
-import { ProjectCardInfo, ProjectWithSkills } from "../types/Project"
+import { useRef, useState } from "react"
+import { ProjectWithSkills } from "../types/Project"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -17,16 +13,12 @@ import { useMainStore } from "../stores/mainStore"
 
 gsap.registerPlugin(useGSAP)
 
-// TODO: Rename the file to the Projects.tsx later! So that
-// it behaved like a component rather than a page. Because,
-// these projects are only a component of the main page.
-
-const cardAppear = {
-    y: "+=200px",
-    opacity: 0,
-    duration: 2,
-    ease: "elastic.out(0.5,0.4)",
-}
+// const cardAppear = {
+//     y: "+=200px",
+//     opacity: 0,
+//     duration: 2,
+//     ease: "elastic.out(0.5,0.4)",
+// }
 
 const cardReappear = {
     y: "-=200px",
@@ -43,12 +35,7 @@ const cardFadeOut = {
 }
 
 export default function Projects() {
-    const {
-        projects: allProjects,
-        setProjects,
-        setSkills,
-        skills,
-    } = useMainStore()
+    const { projects: allProjects } = useMainStore()
     const [activeProjectId, setActiveProjectId] = useState<number>(1)
     const projectsRef = useRef(null)
     const { contextSafe } = useGSAP({ scope: projectsRef })
@@ -129,7 +116,7 @@ export default function Projects() {
         <div id="projects" className="main-projects" ref={projectsRef}>
             <div className="all-project-buttons">
                 {allProjects.length > 0 &&
-                    allProjects.map((project, index) => {
+                    allProjects.map((project) => {
                         return (
                             <ProjectButton
                                 index={project.id}
@@ -143,7 +130,7 @@ export default function Projects() {
             </div>
             <div className="card-wrapper">
                 {allProjects.length > 0 &&
-                    allProjects.map((project, index) => {
+                    allProjects.map((project) => {
                         return (
                             <div
                                 key={project.id}

@@ -1,7 +1,6 @@
 import { SkillWithProjectNames } from "@/app/types/SkillTypes"
 import "./skillCard.css"
 import Image from "next/image"
-import { Skill } from "@prisma/client"
 
 export default function SkillCard({
     skillData,

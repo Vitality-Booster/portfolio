@@ -1,9 +1,5 @@
-import {
-    HiddenSkillWithProjectNames,
-    SkillWithProjects,
-} from "@/app/types/SkillTypes"
-import { imagePathToUrl, ImageType } from "@/app/utils/imagePathConverter"
-import { HiddenSkill, PrismaClient } from "@prisma/client"
+import { HiddenSkillWithProjectNames } from "@/app/types/SkillTypes"
+import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 

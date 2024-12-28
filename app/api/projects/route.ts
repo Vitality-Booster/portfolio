@@ -1,6 +1,5 @@
 import { ProjectWithSkills } from "@/app/types/Project"
-import { imagePathToUrl, ImageType } from "@/app/utils/imagePathConverter"
-import { PrismaClient, Project, Skill } from "@prisma/client"
+import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 

@@ -17,7 +17,7 @@ export interface StoreState {
     setStoryParts: (storyParts: StoryPart[]) => void
 }
 
-export const useMainStore = create<StoreState>((set, get) => ({
+export const useMainStore = create<StoreState>((set) => ({
     projects: [],
     skills: [],
     setProjects: (projects: ProjectWithSkills[]) => {
@@ -34,15 +34,16 @@ export const useMainStore = create<StoreState>((set, get) => ({
 }))
 
 // OBSOLETE
-const updateProjectsSkills = (
-    projects: ProjectWithSkills[],
-    skills: SkillWithProjectNames[],
-): ProjectWithSkills[] => {
-    for (let i = 0; i < projects.length; i++) {
-        for (let j = 0; j < projects[i].skills.length; j++) {
-            const skillPosition = projects[i].skills[j].id - 1 // Because, all the skills that I get from the DB are sorted by ID by default. So, their placement in an array will skill.id - 1.
-            projects[i].skills[j].image = skills[skillPosition].image
-        }
-    }
-    return projects
-}
+
+// const updateProjectsSkills = (
+//     projects: ProjectWithSkills[],
+//     skills: SkillWithProjectNames[],
+// ): ProjectWithSkills[] => {
+//     for (let i = 0; i < projects.length; i++) {
+//         for (let j = 0; j < projects[i].skills.length; j++) {
+//             const skillPosition = projects[i].skills[j].id - 1 // Because, all the skills that I get from the DB are sorted by ID by default. So, their placement in an array will skill.id - 1.
+//             projects[i].skills[j].image = skills[skillPosition].image
+//         }
+//     }
+//     return projects
+// }

@@ -5,26 +5,14 @@ import SkillCard from "./skillCard/SkillCard"
 import "./skillset.css"
 import SkillsetTab from "./tab/SkillsetTab"
 import HiddenSkillCard from "./hiddenSkill/HiddenSkill"
-import {
-    HiddenSkillWithProjectNames,
-    SkillWithProjectNames,
-} from "../types/SkillTypes"
+import { SkillWithProjectNames } from "../types/SkillTypes"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 
 gsap.registerPlugin(useGSAP)
 
-// Skill Icons imports
-import Java from "../../public/tech_stack/java.png"
-import PostgreSQL from "../../public/tech_stack/postgre.png"
-import React from "../../public/tech_stack/react.png"
-import Spring from "../../public/tech_stack/spring.png"
-import Docker from "../../public/tech_stack/docker.png"
-import GsapIcon from "../../public/tech_stack/gsap.png"
-import NextJS from "../../public/tech_stack/nextjs.png"
 import { useEffect, useRef, useState } from "react"
 import { useMainStore } from "../stores/mainStore"
-import { HiddenSkill, Skill } from "@prisma/client"
 
 const tabs = ["Front-end", "Back-end", "CI/CD", "Data Science", "Blockchain"]
 
