@@ -1,3 +1,5 @@
+"use server"
+
 import { ProjectWithSkills } from "@/app/types/Project"
 import { PrismaClient } from "@prisma/client"
 
