@@ -16,5 +16,5 @@ export async function GET() {
     //     projects[i].mainPicture = newImage
     // }
 
-    return Response.json({ projects: projects })
+    return Response.json({ projects: projects }, {status: 200})
 }

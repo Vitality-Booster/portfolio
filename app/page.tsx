@@ -29,34 +29,39 @@ export default function Home() {
     } = useMainStore()
     // const {storyParts, setStoryParts} = useStorylineStore()
 
-    const { data: projectsData } = useSWR("/api/projects", fetcher)
-    const { data: skillsData } = useSWR("/api/skills", fetcher)
-    const { data: hiddenSkillsData } = useSWR("/api/skills/hidden", fetcher)
-    const { data: storyPartsData } = useSWR("/api/storyline", fetcher)
+    const { data: projectsData } = useSWR("/cut_projects/api", fetcher)
+    const { data: skillsData } = useSWR("/skillset/api", fetcher)
+    const { data: hiddenSkillsData } = useSWR("/skillset/api/hidden", fetcher)
+    const { data: storyPartsData } = useSWR("/story_line/api", fetcher)
     const tl = useRef(gsap.timeline())
 
     useEffect(() => {
         if (projectsData) {
             setProjects(projectsData.projects)
+            // console.log("Projects data is", projectsData.projects)
         }
     }, [projectsData, setProjects])
 
     useEffect(() => {
         if (skillsData) {
             setSkills(skillsData.skills)
+            // console.log("Skill data is", skillsData.skills)
         }
     }, [skillsData, setSkills])
 
     useEffect(() => {
         if (hiddenSkillsData) {
             setHiddenSkills(hiddenSkillsData.hiddenSkills)
+            // console.log("Hidden Skill data is", hiddenSkillsData.hiddenSkills)
         }
     }, [hiddenSkillsData, setHiddenSkills])
 
     useEffect(() => {
         if (storyPartsData) {
             setStoryParts(storyPartsData.storyParts)
+            // console.log("Story parts data is", storyPartsData.storyParts)
         }
+        
     }, [storyPartsData, setStoryParts])
 
     // useEffect(() => {

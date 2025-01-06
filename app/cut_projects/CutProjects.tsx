@@ -47,8 +47,6 @@ export default function Projects() {
         return formattedName
     }
 
-    console.log("I am being refreshed as well every time!")
-
     useGSAP(() => {
         if (allProjects.length > 0) {
             for (let i = 1; i < allProjects.length; i++) {
