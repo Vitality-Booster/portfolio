@@ -31,7 +31,7 @@ export default function Home() {
 
     const { data: projectsData } = useSWR("/api/projects", fetcher)
     const { data: skillsData } = useSWR("/api/skills", fetcher)
-    const { data: hiddenSkillsData } = useSWR("/api/hidden-skills", fetcher)
+    const { data: hiddenSkillsData } = useSWR("/api/skills/hidden", fetcher)
     const { data: storyPartsData } = useSWR("/api/storyline", fetcher)
     const tl = useRef(gsap.timeline())
 
