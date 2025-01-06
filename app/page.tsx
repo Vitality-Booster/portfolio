@@ -2,8 +2,8 @@
 
 import "./page.css"
 import LandingPage from "./home/LandingPage"
-import StoryLine from "./story_line/page"
-import Projects from "./cut_projects/page"
+import StoryLine from "./story_line/StoryLine"
+import Projects from "./cut_projects/CutProjects"
 import Cursor from "./components/cursor/Cursor"
 import { useEffect, useRef } from "react"
 import ContactPage from "./contact/ContactPage"

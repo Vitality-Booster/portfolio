@@ -2,7 +2,7 @@
 
 import "./navbar.css"
 import NavLink from "./navlink/NavLink"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 
@@ -10,13 +10,23 @@ gsap.registerPlugin(ScrollTrigger)
 
 // const ALL_SECTIONS = ["home", "story-line", "projects", "skills", "contact"]
 
-export default function Page() {
+export default function Navbar() {
     const [activeSection, setActiveSection] = useState<string>(
-        window.location.hash.split("#")[1] || "",
+        // window ? window.location.hash.split("#")[1] : "",
+        ""
     )
     const [prevActiveSection, setPrevActiveSection] = useState<string>(
-        window.location.hash.split("#")[1] || "",
+        // window ? window.location.hash.split("#")[1] : "",
+        ""
     )
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const currentSection = window.location.hash.split("#")[1] || "";
+            setActiveSection(currentSection);
+            setPrevActiveSection(currentSection);
+        }
+    }, []);
 
     // useEffect(() => {
     //     if (sections[0] === null){
