@@ -29,10 +29,10 @@ export default function Home() {
     } = useMainStore()
     // const {storyParts, setStoryParts} = useStorylineStore()
 
-    const { data: projectsData } = useSWR("/cut_projects/api", fetcher)
-    const { data: skillsData } = useSWR("/skillset/api", fetcher)
-    const { data: hiddenSkillsData } = useSWR("/skillset/api/hidden", fetcher)
-    const { data: storyPartsData } = useSWR("/story_line/api", fetcher)
+    const { data: projectsData } = useSWR("/api/projects", fetcher)
+    const { data: skillsData } = useSWR("/api/skills", fetcher)
+    const { data: hiddenSkillsData } = useSWR("/api/skills/hidden", fetcher)
+    const { data: storyPartsData } = useSWR("/api/storyline", fetcher)
     const tl = useRef(gsap.timeline())
 
     useEffect(() => {
