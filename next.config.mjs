@@ -2,14 +2,22 @@
 
 const fullHostname = process.env.S3_BUCKET_NAME + ".s3.us-east-1.amazonaws.com"
 const nextConfig = {
-    images: {
-        remotePatterns: [
+    // images: {
+    //     remotePatterns: [
+    //         {
+    //             protocol: "https",
+    //             hostname: fullHostname,
+    //             port: "",
+    //         },
+    //     ],
+    // },
+    async rewrites() {
+        return [
             {
-                protocol: "https",
-                hostname: fullHostname,
-                port: "",
+                source: '/api/:path*',
+                destination: '/api/:path*',
             },
-        ],
+        ]
     },
 }
 
