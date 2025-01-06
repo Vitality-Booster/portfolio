@@ -6,6 +6,7 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 
 export async function GET() {
+    try{
     const projects: ProjectWithSkills[] = await prisma.project.findMany({
         include: { skills: true },
         orderBy: { id: "asc" },
@@ -16,5 +17,8 @@ export async function GET() {
     //     projects[i].mainPicture = newImage
     // }
 
-    return Response.json({ projects: projects }, {status: 200})
+    return Response.json({ projects: projects }, {status: 200})}
+    catch(error){
+        return Response.json({ error: error }, { status: 500 })
+    }
 }
