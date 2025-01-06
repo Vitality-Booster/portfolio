@@ -13,20 +13,20 @@ gsap.registerPlugin(ScrollTrigger)
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState<string>(
         // window ? window.location.hash.split("#")[1] : "",
-        ""
+        "",
     )
     const [prevActiveSection, setPrevActiveSection] = useState<string>(
         // window ? window.location.hash.split("#")[1] : "",
-        ""
+        "",
     )
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const currentSection = window.location.hash.split("#")[1] || "";
-            setActiveSection(currentSection);
-            setPrevActiveSection(currentSection);
+            const currentSection = window.location.hash.split("#")[1] || ""
+            setActiveSection(currentSection)
+            setPrevActiveSection(currentSection)
         }
-    }, []);
+    }, [])
 
     // useEffect(() => {
     //     if (sections[0] === null){

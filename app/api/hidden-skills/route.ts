@@ -4,27 +4,34 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 
 export async function GET() {
-    const hiddenSkills = await prisma.hiddenSkill.findMany({
-        select: {
-            id: true,
-            name: true,
-            tags: true,
-            experience: true,
-            projects: {
-                select: {
-                    name: true, // Only fetch the 'name' of each related Project
+    try {
+        const hiddenSkills = await prisma.hiddenSkill.findMany({
+            select: {
+                id: true,
+                name: true,
+                tags: true,
+                experience: true,
+                projects: {
+                    select: {
+                        name: true, // Only fetch the 'name' of each related Project
+                    },
                 },
             },
-        },
-        orderBy: { id: "asc" },
-    })
+            orderBy: { id: "asc" },
+        })
 
-    // Map the result to convert `projects` from an array of objects to an array of strings
-    const formattedHiddenSkills: HiddenSkillWithProjectNames[] =
-        hiddenSkills.map((hiddenSkill) => ({
-            ...hiddenSkill,
-            projects: hiddenSkill.projects.map((project) => project.name),
-        }))
+        // Map the result to convert `projects` from an array of objects to an array of strings
+        const formattedHiddenSkills: HiddenSkillWithProjectNames[] =
+            hiddenSkills.map((hiddenSkill) => ({
+                ...hiddenSkill,
+                projects: hiddenSkill.projects.map((project) => project.name),
+            }))
 
-    return Response.json({ hiddenSkills: formattedHiddenSkills })
+        return Response.json(
+            { hiddenSkills: formattedHiddenSkills },
+            { status: 200 },
+        )
+    } catch (error) {
+        return Response.json({ error: error }, { status: 500 })
+    }
 }
