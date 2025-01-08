@@ -34,6 +34,7 @@ export default function StoryLine() {
 
     return (
         <div id="story-line" className="story-line-wrapper">
+            <h1 className="section-heading">Story Line</h1>
             <Line />
             {storyParts.length > 0 &&
                 storyParts.map((storyPart) => (

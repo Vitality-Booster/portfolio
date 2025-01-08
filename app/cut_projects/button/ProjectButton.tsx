@@ -13,7 +13,7 @@ export default function ProjectButton({
 }) {
     return (
         <div className="button-with-index">
-            <h2 className="project-index">0{index}</h2>
+            <a className="project-index">0{index}</a>
             <button
                 className={
                     active
@@ -22,7 +22,7 @@ export default function ProjectButton({
                 }
                 onClick={() => callback(index)}
             >
-                {projectName}
+                <h3>{projectName}</h3>
             </button>
         </div>
     )

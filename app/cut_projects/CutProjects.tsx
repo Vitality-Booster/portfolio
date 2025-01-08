@@ -112,6 +112,7 @@ export default function Projects() {
 
     return (
         <div id="projects" className="main-projects" ref={projectsRef}>
+            <h1 className="section-heading">Projects</h1>
             <div className="all-project-buttons">
                 {allProjects.length > 0 &&
                     allProjects.map((project) => {

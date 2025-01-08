@@ -3,15 +3,15 @@
     backdrop-filter: blur(16px) saturate(200%);
     -webkit-backdrop-filter: blur(16px) saturate(200%);
     margin: 30px auto;
-    width: 40%;
-    padding: 20px;
-    left: 30%;
+    width: 750px;
+    /* padding: 20px; */
+    padding: 20px 10px;
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
     text-align: center;
-    position: fixed;
-    z-index: 2;
+    position: relative;
+    z-index: 200;
 }
 
 .navbar ul {
@@ -21,4 +21,11 @@
 .navbar ul li {
     display: inline;
     margin-inline: 20px;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        width: 650px;
+        flex-wrap: wrap;
+    }
 }

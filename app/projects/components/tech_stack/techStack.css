@@ -27,6 +27,11 @@
     margin: 50px auto;
 }
 
+.stack-title h1 {
+    font-size: 70px;
+
+}
+
 .circles-and-lines {
     position: relative;
     width: 100%;

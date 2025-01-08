@@ -6,9 +6,9 @@
     justify-content: space-evenly;
 }
 
-@media (max-width: var(--lg)) {
+@media (max-width: 1024px) {
     .landing-container {
-        max-width: 100%;
+        flex-direction: column;
     }
 }
 
@@ -17,10 +17,21 @@
     display: flex;
 }
 
+@media (max-width: 1024px) {
+    .line-face-container {
+        justify-content: center;
+    }
+}
+
 .text-container {
     position: relative;
     margin-top: 7%;
     width: 100%;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .full-name {
@@ -38,6 +49,21 @@
     position: relative;
     left: 10%;
     color: var(--background);
+}
+
+@media (max-width: 1024px) {
+    .full-name {
+        font-size: 110px;
+    }
+
+    .first-name {
+        left: 0;
+    }
+
+    .last-name {
+        left: 20%;
+        margin-top: 10px;
+    }
 }
 
 .last-name-rectangle {
@@ -64,6 +90,12 @@
     margin-right: 10%;
 }
 
+/* .home-descriptions h2 {
+    font-size: 45px;
+    font-weight: 500;
+    font-style: italic;
+} */
+
 .home-description-line {
     display: flex;
     gap: 40px;
@@ -76,6 +108,21 @@
 .home-description-line:nth-child(2) {
     justify-content: center;
     margin-left: 15%;
+}
+
+@media (max-width: 1024px) {
+    .home-descriptions {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .home-description-line {
+        width: 100%;
+    }
+
+    .home-description-line:nth-child(2) {
+        margin-left: 8%;
+    }
 }
 
 .hidden-home-description {

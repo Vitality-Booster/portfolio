@@ -9,7 +9,7 @@ export default function DescriptionCard({
 }) {
     return (
         <div className="description-card-container">
-            <div className="description-card">
+            <div className="description-project-card">
                 <div className="description-text">{description}</div>
                 <button
                     className="view-more-button"

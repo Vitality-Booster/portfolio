@@ -189,7 +189,7 @@ export default function TechStack({
                         </div>
                     ))}
             </div>
-            <div className="stack-title">{stackTitle}</div>
+            <div className="stack-title"><h1>{stackTitle}</h1></div>
         </div>
     )
 }

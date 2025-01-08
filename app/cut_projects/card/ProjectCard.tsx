@@ -85,9 +85,7 @@ export default function ProjectCard({
                     alt={project.name + " image"}
                 />
                 <div className="card-text-area">
-                    <div className="project-card-title-box">
-                        <h2>{project.name}</h2>
-                    </div>
+                    <h2 className="project-card-title">{project.name}</h2>
                     <div className="project-card-description">
                         {project.shortDescription}
                     </div>

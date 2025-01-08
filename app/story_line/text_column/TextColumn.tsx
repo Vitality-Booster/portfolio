@@ -9,7 +9,7 @@ export default function TextColumn({
 }) {
     return (
         <div className="text-column">
-            <h2 className="main-header">{header}</h2>
+            <h1 className="main-header">{header}</h1>
             <div className="description-card">
                 <p>{text}</p>
             </div>

@@ -31,18 +31,20 @@
     flex-direction: column;
 }
 
-.project-card-title-box {
+.project-card-title {
     margin-left: 10px;
+    position: relative;
 }
 
-.project-card-title-box::before {
+.project-card-title::before {
     content: "";
     display: block;
     left: 10%;
+    top: 80%;
     width: 80px;
-    height: 1.8rem;
+    height: 3px;
     position: absolute;
-    border-bottom: 3px solid var(--green);
+    background-color: var(--green);
 }
 
 .project-card-description {

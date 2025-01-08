@@ -3,10 +3,10 @@
 import "./navbar.css"
 import NavLink from "./navlink/NavLink"
 import { useEffect, useState } from "react"
-import gsap from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
+// import gsap from "gsap"
+// import ScrollTrigger from "gsap/ScrollTrigger"
 
-gsap.registerPlugin(ScrollTrigger)
+// gsap.registerPlugin(ScrollTrigger)
 
 // const ALL_SECTIONS = ["home", "story-line", "projects", "skills", "contact"]
 

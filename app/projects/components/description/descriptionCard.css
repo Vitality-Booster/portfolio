@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.description-card,
+.description-project-card,
 .description-card-shadow {
     padding: 20px;
     border-radius: 10px;
@@ -17,7 +17,7 @@
     height: 100%;
 }
 
-.description-card {
+.description-project-card {
     display: flex;
     flex-direction: column;
     background-color: var(--background);
@@ -31,11 +31,6 @@
     left: -5%;
     background-color: var(--green);
     z-index: -1;
-}
-
-.description-text {
-    display: flex;
-    font-size: 18px;
 }
 
 .view-more-button {

@@ -49,14 +49,14 @@ export default function LandingPage() {
             </div>
             <div className="text-container">
                 <div className="name-container">
-                    <h1 className="full-name first-name">VITALI</h1>
-                    <h1 className="full-name last-name">
+                    <a className="full-name first-name">VITALI</a>
+                    <a className="full-name last-name">
                         <div
                             className="last-name-rectangle"
                             ref={bestRectRef}
                         />
                         BESTOLKAU
-                    </h1>
+                    </a>
                 </div>
                 <div className="home-descriptions">
                     <div className="home-description-line">
