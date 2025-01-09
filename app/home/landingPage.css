@@ -51,9 +51,25 @@
     color: var(--background);
 }
 
+.last-name-rectangle {
+    display: block;
+    position: absolute;
+    left: -0.2em;
+    height: 1em;
+    width: 6.4em;
+    background-color: var(--green);
+    z-index: -1;
+}
+
 @media (max-width: 1024px) {
+
+    .name-container {
+        width: 80%;
+        margin-inline: auto;
+    }
+
     .full-name {
-        font-size: 110px;
+        font-size: 90px;
     }
 
     .first-name {
@@ -64,16 +80,15 @@
         left: 20%;
         margin-top: 10px;
     }
+
+    .last-name-rectangle {
+        top: -0.1em;
+        width: 6em;
+    }
 }
 
-.last-name-rectangle {
-    display: block;
-    position: absolute;
-    left: -0.2em;
-    height: 1em;
-    width: 6.4em;
-    background-color: var(--green);
-    z-index: -1;
+@media (max-width: 1024px) {
+    
 }
 
 .best-name-part {

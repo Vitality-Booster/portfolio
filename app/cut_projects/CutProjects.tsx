@@ -111,8 +111,9 @@ export default function Projects() {
     })
 
     return (
-        <div id="projects" className="main-projects" ref={projectsRef}>
+        <div id="projects" className="full-page-section" ref={projectsRef}>
             <h1 className="section-heading">Projects</h1>
+            <div className="main-projects">
             <div className="all-project-buttons">
                 {allProjects.length > 0 &&
                     allProjects.map((project) => {
@@ -144,6 +145,7 @@ export default function Projects() {
                             </div>
                         )
                     })}
+            </div>
             </div>
         </div>
     )

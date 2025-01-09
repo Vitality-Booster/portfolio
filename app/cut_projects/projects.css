@@ -1,11 +1,9 @@
 .main-projects {
-    padding-top: 175px;
     margin-inline: auto;
     max-width: 1200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 300px;
     gap: 100px;
 }
 

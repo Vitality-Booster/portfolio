@@ -1,5 +1,9 @@
+#skills {
+    margin-bottom: 0px;
+}
+
 .skillset-main-container {
-    padding-top: 200px;
+    margin-top: 50px;
     margin-inline: auto;
     max-width: 1200px;
     display: flex;

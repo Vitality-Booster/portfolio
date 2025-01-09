@@ -89,17 +89,19 @@ export default function ContactPage() {
     }
 
     return (
-        <div id="contact" className="contact-main-container">
+        <div id="contact" className="full-page-section">
+            <h1 className="section-heading">Contact Me</h1>
+            <div className="contact-main-container">
             <div className="contact-information-container">
-                <a className="cta-text-highlited">* Contact me *</a>
-                <h1 className="contact-main-text">
+                {/* <a className="cta-text-highlited">* Contact me *</a> */}
+                <a className="contact-main-text">
                     Looking for a {``}
                     <span className="contact-main-text-highlighted">
                         professional
                         <div className="highlighted-rectangle" />
                     </span>
                     ? You found him
-                </h1>
+                </a>
                 {/**
                  * Be careful: this margin only works with "PersonalInfoCrad element".
                  * For more check the CSS code.
@@ -200,6 +202,7 @@ export default function ContactPage() {
                     </div>
                 </div>
             </form>
+            </div>
         </div>
     )
 }

@@ -108,7 +108,7 @@ a {
 .section-heading {
     font-size: 80px;
     font-weight: 500;
-    margin-left: 5%;
+    margin-left: 20%;
     position: relative;
 }
 
@@ -122,6 +122,12 @@ a {
     left: -5%;
     display: block;
     background-color: var(--green);
+}
+
+.full-page-section {
+    padding-top: 175px;
+    margin-inline: auto;
+    margin-bottom: 75px;
 }
 
 @media (prefers-color-scheme: dark) {

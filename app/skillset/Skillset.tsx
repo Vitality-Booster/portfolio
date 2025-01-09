@@ -86,7 +86,9 @@ export default function Skillset() {
     }
 
     return (
-        <div id="skills" className="skillset-main-container">
+        <div id="skills" className="full-page-section">
+            <h1 className="section-heading">Expertiese</h1>
+            <div className="skillset-main-container">
             <div className="skillset-all-tabs">
                 {tabs.map((tab, index) => {
                     return (
@@ -118,6 +120,7 @@ export default function Skillset() {
                 })}
             </div>
             <SkillsetFrame />
+            </div>
         </div>
     )
 }

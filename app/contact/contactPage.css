@@ -1,5 +1,7 @@
 .contact-main-container {
-    margin: 150px auto;
+    /* margin-top: 10px; */
+    margin-bottom: 100px;
+    margin-inline: auto;
     max-width: 1200px;
     display: flex;
     gap: 20px;
@@ -10,6 +12,7 @@
 
 /* --- (START) Left part of the Contact Page --- */
 .contact-main-text {
+    margin-top: 30px;
     font-size: 60px;
     font-weight: 400;
     color: var(--foreground);

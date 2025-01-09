@@ -33,8 +33,9 @@ export default function StoryLine() {
     }, [])
 
     return (
-        <div id="story-line" className="story-line-wrapper">
+        <div id="story-line" className="full-page-section">
             <h1 className="section-heading">Story Line</h1>
+            <div className="story-line-wrapper">
             <Line />
             {storyParts.length > 0 &&
                 storyParts.map((storyPart) => (
@@ -52,6 +53,7 @@ export default function StoryLine() {
                         />
                     </div>
                 ))}
+                </div>
         </div>
     )
 }
