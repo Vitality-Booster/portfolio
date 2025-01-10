@@ -19,8 +19,10 @@ export default function RootLayout({
             {/* <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"> */}
             {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
             <body>
-                <div className="navbar-container"><Navbar /></div>
-                
+                <div className="navbar-container">
+                    <Navbar />
+                </div>
+
                 {children}
             </body>
         </html>

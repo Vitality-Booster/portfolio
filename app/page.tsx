@@ -61,7 +61,6 @@ export default function Home() {
             setStoryParts(storyPartsData.storyParts)
             // console.log("Story parts data is", storyPartsData.storyParts)
         }
-        
     }, [storyPartsData, setStoryParts])
 
     // useEffect(() => {

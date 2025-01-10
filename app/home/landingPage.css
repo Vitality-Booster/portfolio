@@ -1,9 +1,12 @@
+/* The main container/wrapper and picture css  */
+
 .landing-container {
     margin-inline: auto;
     padding-top: 125px;
     max-width: 90%;
     display: flex;
     justify-content: space-evenly;
+    line-height: normal;
 }
 
 @media (max-width: 1024px) {
@@ -22,6 +25,19 @@
         justify-content: center;
     }
 }
+
+@media (max-width: 768px) {
+    .landing-container {
+        padding-top: 50px;
+    }
+
+    .line-face-picture {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* The main name and the rectangle styles */
 
 .text-container {
     position: relative;
@@ -62,7 +78,6 @@
 }
 
 @media (max-width: 1024px) {
-
     .name-container {
         width: 80%;
         margin-inline: auto;
@@ -87,13 +102,45 @@
     }
 }
 
-@media (max-width: 1024px) {
-    
+@media (max-width: 768px) {
+    .name-container {
+        width: 80%;
+        /* margin-left: 10px; */
+        /* margin-inline: auto; */
+    }
+
+    .full-name {
+        font-size: 70px;
+    }
+
+    .first-name {
+        left: 0;
+    }
+
+    .last-name {
+        left: 20%;
+        margin-top: 0px;
+    }
+
+    .last-name-rectangle {
+        /* top: 0em; */
+        width: 8em;
+    }
 }
 
-.best-name-part {
-    color: var(--background);
+@media (max-width: 550px) {
+    .full-name {
+        font-size: 50px;
+    }
 }
+
+@media (max-width: 400px) {
+    .full-name {
+        font-size: 40px;
+    }
+}
+
+/* The desriptions styles  */
 
 .home-descriptions {
     display: flex;
@@ -104,12 +151,6 @@
     margin-top: 20%;
     margin-right: 10%;
 }
-
-/* .home-descriptions h2 {
-    font-size: 45px;
-    font-weight: 500;
-    font-style: italic;
-} */
 
 .home-description-line {
     display: flex;
@@ -123,6 +164,11 @@
 .home-description-line:nth-child(2) {
     justify-content: center;
     margin-left: 15%;
+}
+
+.hidden-home-description {
+    color: var(--background);
+    cursor: default;
 }
 
 @media (max-width: 1024px) {
@@ -140,7 +186,50 @@
     }
 }
 
-.hidden-home-description {
-    color: var(--background);
-    cursor: default;
+@media (max-width: 768px) {
+    .home-descriptions {
+        font-size: 35px;
+        width: 100%;
+        margin-top: 30px;
+        gap: 5px;
+    }
+
+    .home-description-line {
+        width: 100%;
+        justify-content: end;
+    }
+
+    .home-description-line:nth-child(2) {
+        justify-content: end;
+        margin-left: 0%;
+        padding-right: 5%;
+    }
+
+    .home-description-line:nth-child(3) {
+        padding-right: 10%;
+    }
+}
+
+@media (max-width: 550px) {
+    .home-descriptions {
+        font-size: 30px;
+    }
+
+    .home-description-line {
+        gap: 10px;
+    }
+
+    .home-description-line:nth-child(2) {
+        padding-right: 7%;
+    }
+
+    .home-description-line:nth-child(3) {
+        padding-right: 14%;
+    }
+}
+
+@media (max-width: 400px) {
+    .home-descriptions {
+        font-size: 22px;
+    }
 }

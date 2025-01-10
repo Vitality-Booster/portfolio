@@ -12,6 +12,7 @@
     position: relative;
 
     font-size: 25px;
+    line-height: 1.25;
 }
 
 .skill-card-icon {
@@ -48,6 +49,7 @@
     top: -33%;
     opacity: 0.4;
     z-index: -1;
+    line-height: normal;
 }
 
 .main-skill-text {

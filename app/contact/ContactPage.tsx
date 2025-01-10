@@ -92,116 +92,122 @@ export default function ContactPage() {
         <div id="contact" className="full-page-section">
             <h1 className="section-heading">Contact Me</h1>
             <div className="contact-main-container">
-            <div className="contact-information-container">
-                {/* <a className="cta-text-highlited">* Contact me *</a> */}
-                <a className="contact-main-text">
-                    Looking for a {``}
-                    <span className="contact-main-text-highlighted">
-                        professional
-                        <div className="highlighted-rectangle" />
-                    </span>
-                    ? You found him
-                </a>
-                {/**
-                 * Be careful: this margin only works with "PersonalInfoCrad element".
-                 * For more check the CSS code.
-                 */}
-                <div className="personal-information-container">
-                    <PersonalInfoCard
-                        icon={EmailIcon}
-                        title="Email"
-                        value="bestolkovv@gmail.com"
-                    />
-                    <PersonalInfoCard
-                        icon={PhoneIcon}
-                        title="Phone"
-                        value="+31 6 51394215"
-                        boxPadding={12}
-                    />
-                    <PersonalInfoCard
-                        icon={AddressIcon}
-                        title="Address"
-                        value="Amsterdam, Netherlands"
-                    />
-                </div>
-            </div>
-            <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="contact-details-container">
-                    <div className="contact-input-container">
-                        <label className="contact-input-label">Full Name</label>
-                        <input
-                            className="contact-input"
-                            name="fullName"
-                            type="text"
-                            placeholder="Elon Musk"
-                            value={formData.fullName}
-                            onChange={handleChange}
-                            required
+                <div className="contact-information-container">
+                    {/* <a className="cta-text-highlited">* Contact me *</a> */}
+                    <a className="contact-main-text">
+                        Looking for a {``}
+                        <span className="contact-main-text-highlighted">
+                            professional
+                            <div className="highlighted-rectangle" />
+                        </span>
+                        ? You found him
+                    </a>
+                    {/**
+                     * Be careful: this margin only works with "PersonalInfoCrad element".
+                     * For more check the CSS code.
+                     */}
+                    <div className="personal-information-container">
+                        <PersonalInfoCard
+                            icon={EmailIcon}
+                            title="Email"
+                            value="bestolkovv@gmail.com"
                         />
-                    </div>
-                    <div className="contact-input-container">
-                        <label className="contact-input-label">Email</label>
-                        <input
-                            className="contact-input"
-                            name="email"
-                            type="email"
-                            placeholder="elonmusk@tesla.com"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
+                        <PersonalInfoCard
+                            icon={PhoneIcon}
+                            title="Phone"
+                            value="+31 6 51394215"
+                            boxPadding={12}
                         />
-                    </div>
-                    <div className="contact-input-container">
-                        <label className="contact-input-label">Subject</label>
-                        <input
-                            className="contact-input"
-                            type="text"
-                            name="subject"
-                            placeholder="Job Opportynity"
-                            value={formData.subject}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="contact-message-container">
-                        <label className="contact-input-label">Message</label>
-                        <textarea
-                            className="contact-message"
-                            name="message"
-                            placeholder="Your text here"
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
+                        <PersonalInfoCard
+                            icon={AddressIcon}
+                            title="Address"
+                            value="Amsterdam, Netherlands"
                         />
                     </div>
                 </div>
-                <div className="button-container" ref={buttonContRef}>
-                    <div className="button-wrapper">
-                        <button
-                            className="contact-submit-button"
-                            type="submit"
-                            ref={buttonRef}
-                            onMouseEnter={buttonHoverHandler}
-                            onMouseLeave={buttonLeaveHandler}
-                            // onClick={() => {
-                            //     fetch("/api/projects").then((res) =>
-                            //         console.log(
-                            //             "Here is the response from the projects endpoint: " +
-                            //                 res.json(),
-                            //         ),
-                            //     )
-                            // }}
-                        >
-                            <a className="button-text" ref={buttonRef}>
-                                Send email
+                <form className="contact-form" onSubmit={handleSubmit}>
+                    <div className="contact-details-container">
+                        <div className="contact-input-container">
+                            <label className="contact-input-label">
+                                Full Name
+                            </label>
+                            <input
+                                className="contact-input"
+                                name="fullName"
+                                type="text"
+                                placeholder="Elon Musk"
+                                value={formData.fullName}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="contact-input-container">
+                            <label className="contact-input-label">Email</label>
+                            <input
+                                className="contact-input"
+                                name="email"
+                                type="email"
+                                placeholder="elonmusk@tesla.com"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="contact-input-container">
+                            <label className="contact-input-label">
+                                Subject
+                            </label>
+                            <input
+                                className="contact-input"
+                                type="text"
+                                name="subject"
+                                placeholder="Job Opportynity"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="contact-message-container">
+                            <label className="contact-input-label">
+                                Message
+                            </label>
+                            <textarea
+                                className="contact-message"
+                                name="message"
+                                placeholder="Your text here"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div className="button-container" ref={buttonContRef}>
+                        <div className="button-wrapper">
+                            <button
+                                className="contact-submit-button"
+                                type="submit"
+                                ref={buttonRef}
+                                onMouseEnter={buttonHoverHandler}
+                                onMouseLeave={buttonLeaveHandler}
+                                // onClick={() => {
+                                //     fetch("/api/projects").then((res) =>
+                                //         console.log(
+                                //             "Here is the response from the projects endpoint: " +
+                                //                 res.json(),
+                                //         ),
+                                //     )
+                                // }}
+                            >
+                                <a className="button-text" ref={buttonRef}>
+                                    Send email
+                                </a>
+                            </button>
+                            <a className="extra-button-text" ref={extraTextRef}>
+                                {"->"}
                             </a>
-                        </button>
-                        <a className="extra-button-text" ref={extraTextRef}>
-                            {"->"}
-                        </a>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
     )

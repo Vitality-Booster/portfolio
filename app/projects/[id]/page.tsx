@@ -44,7 +44,9 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
                     className="project-main-image"
                     src={currentProject.mainPicture}
                 />
-                <div className="project-name-label"><h2>{currentProject.name}</h2></div>
+                <div className="project-name-label">
+                    <h2>{currentProject.name}</h2>
+                </div>
             </div>
             <div className="description-with-stats-container">
                 <DescriptionCard

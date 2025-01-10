@@ -89,37 +89,37 @@ export default function Skillset() {
         <div id="skills" className="full-page-section">
             <h1 className="section-heading">Expertiese</h1>
             <div className="skillset-main-container">
-            <div className="skillset-all-tabs">
-                {tabs.map((tab, index) => {
-                    return (
-                        <SkillsetTab
-                            tabText={tab}
-                            active={currentTab === tab}
-                            wasActive={prevTab === tab}
-                            onClickCallback={handleTabChange}
-                            key={index}
-                        />
-                    )
-                })}
-            </div>
-            <SkillsetFrame />
-            <div className="skillset-all-card" ref={skillsetCardsRef}>
-                {skillset.map((skill, index) => {
-                    return (
-                        <div className="skill-line" key={skill.image}>
-                            <SkillCard
-                                skillData={skill}
-                                skillIndex={index + 1}
+                <div className="skillset-all-tabs">
+                    {tabs.map((tab, index) => {
+                        return (
+                            <SkillsetTab
+                                tabText={tab}
+                                active={currentTab === tab}
+                                wasActive={prevTab === tab}
+                                onClickCallback={handleTabChange}
+                                key={index}
                             />
-                            <HiddenSkillCard
-                                hiddenSkill={hiddenSkills[index]}
-                                index={index + 1}
-                            />
-                        </div>
-                    )
-                })}
-            </div>
-            <SkillsetFrame />
+                        )
+                    })}
+                </div>
+                <SkillsetFrame />
+                <div className="skillset-all-card" ref={skillsetCardsRef}>
+                    {skillset.map((skill, index) => {
+                        return (
+                            <div className="skill-line" key={skill.image}>
+                                <SkillCard
+                                    skillData={skill}
+                                    skillIndex={index + 1}
+                                />
+                                <HiddenSkillCard
+                                    hiddenSkill={hiddenSkills[index]}
+                                    index={index + 1}
+                                />
+                            </div>
+                        )
+                    })}
+                </div>
+                <SkillsetFrame />
             </div>
         </div>
     )
