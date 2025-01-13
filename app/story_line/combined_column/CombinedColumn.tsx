@@ -2,20 +2,18 @@ import { StoryPart } from "@prisma/client"
 import "./combinedColumn.css"
 
 import Image from "next/image"
-import useWindowSize from "@/app/utils/windowSize"
 
 export default function CombinedColumn({
     storyParts,
 }: {
     storyParts: StoryPart[]
 }) {
-    const {width: windowWidth} = useWindowSize()
 
     return (
         <div className="combined-story-line-wrapper">
             {storyParts.length > 0 &&
                 storyParts.map((storyPart) => (
-                    <div className="content-row">
+                    <div className="content-row" key={storyPart.id}>
                         <div className="combined-text-column">
                             <div className="combined-header-full">
                                 {/* {windowWidth < 768 && <h2 className="combined-story-line-duration">{storyPart.date}</h2>} */}
