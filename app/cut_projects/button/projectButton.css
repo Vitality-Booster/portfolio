@@ -9,7 +9,7 @@
     position: absolute;
     color: var(--foreground);
     font-size: 70px;
-    top: -53%;
+    top: -70%;
     left: 3%;
     z-index: 1;
 }
@@ -42,3 +42,32 @@
     background-color: var(--green);
     color: var(--background);
 }
+
+@media (max-width: 1024px) {
+    .project-index {
+        font-size: 60px;
+    }
+
+    .project-button {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 860px) {
+    .project-button {
+        height: fit-content;
+        width: max-content;
+    }
+
+    .project-index {
+        position: absolute;
+        top: -65%;
+    }
+}
+
+@media(max-width: 1024px) {
+    .project-index {
+        font-size: 50px;
+    }
+}
+

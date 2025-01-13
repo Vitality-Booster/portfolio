@@ -1,7 +1,8 @@
+/* Project Card main */
+
 .project-card-wrapper {
     --card-width: 435px;
     --card-height: 700px;
-    /* margin-left: 100px; */
 }
 
 .project-card {
@@ -14,6 +15,33 @@
     position: relative;
 }
 
+@media (max-width: 1024px) {
+    .project-card-wrapper {
+        --card-width: 375px;
+        --card-height: 600px;
+    }
+}
+
+@media (max-width: 550px) {
+    .project-card-wrapper {
+        --card-width: 300px;
+        --card-height: 500px;
+    }
+}
+
+@media (max-width: 400px) {
+    .project-card-wrapper {
+        --card-width: 250px;
+        --card-height: 450px;
+    }
+
+    /* .project-card {
+        height: fit-content;
+    } */
+}
+
+/* Project Card Image */
+
 .project-card-image {
     position: relative;
     object-fit: cover;
@@ -24,6 +52,26 @@
     width: var(--card-width);
     height: 325px;
 }
+
+@media (max-width: 1024px) {
+    .project-card-image {
+        height: 250px;
+    }
+}
+
+@media (max-width: 550px) {
+    .project-card-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 400px) {
+    .project-card-image {
+        height: 150px;
+    }
+}
+
+/* Text Area + Project Title */
 
 .card-text-area {
     display: flex;
@@ -41,7 +89,7 @@
     display: block;
     left: 10%;
     top: 80%;
-    width: 80px;
+    width: 5rem;
     height: 3px;
     position: absolute;
     background-color: var(--green);
@@ -51,6 +99,8 @@
     margin-top: 20px;
 }
 
+/* Footer */
+
 .project-card-footer {
     display: flex;
     margin-inline: auto;
@@ -59,6 +109,29 @@
     justify-content: center;
     gap: 10px;
 }
+
+@media (max-width: 860px) {
+    .project-card-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 550px) {
+    .project-card-icon {
+        width: 27px;
+        height: 27px;
+    }
+}
+
+@media (max-width: 400px) {
+    .project-card-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Card Shadow */
 
 .rectangle-shadow {
     display: block;
@@ -72,6 +145,8 @@
     border-radius: 10px;
     z-index: -2;
 }
+
+/* Card Border + Border's animation */
 
 .card-border-path {
     --stroke-offset-svg: 2800;
@@ -104,8 +179,10 @@
     width: 104%;
 }
 
-.card-border-svg-container {
-    /* height: */
+@media(max-width: 1024px) {
+    .card-border-svg {
+        left: -2.3%;
+    }
 }
 
 @keyframes draw {

@@ -16,15 +16,15 @@ export default function PersonalInfoCard({
 }) {
     return (
         <div className="personal-info-card">
-            <div className="personal-info-image-container">
-                <Image
-                    className="personal-info-icon"
-                    src={icon}
-                    alt="Email icon"
-                    width={size}
-                    style={{ padding: boxPadding }}
-                />
-            </div>
+            {/* <div className="personal-info-image-container"> */}
+            <Image
+                className="personal-info-icon"
+                src={icon}
+                alt="Email icon"
+                width={size}
+                style={{ padding: boxPadding }}
+            />
+            {/* </div> */}
             <div className="personal-info-text-container">
                 <a className="personal-info-title">{title}</a>
                 <a className="personal-info-value">{value}</a>

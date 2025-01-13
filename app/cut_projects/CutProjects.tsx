@@ -114,20 +114,24 @@ export default function Projects() {
         <div id="projects" className="full-page-section" ref={projectsRef}>
             <h1 className="section-heading">Projects</h1>
             <div className="main-projects">
-                <div className="all-project-buttons">
-                    {allProjects.length > 0 &&
-                        allProjects.map((project) => {
-                            return (
-                                <ProjectButton
-                                    index={project.id}
-                                    projectName={project.name}
-                                    active={activeProjectId === project.id}
-                                    callback={handleButtonClick}
-                                    key={project.id}
-                                />
-                            )
-                        })}
+                <div className="buttons-with-indicator">
+                    <div className="all-project-buttons">
+                        {allProjects.length > 0 &&
+                            allProjects.map((project) => {
+                                return (
+                                    <ProjectButton
+                                        index={project.id}
+                                        projectName={project.name}
+                                        active={activeProjectId === project.id}
+                                        callback={handleButtonClick}
+                                        key={project.id}
+                                    />
+                                )
+                            })}
+                    </div>
+                    <div className="scroll-indicator">{">>>"}</div>
                 </div>
+                
                 <div className="card-wrapper">
                     {allProjects.length > 0 &&
                         allProjects.map((project) => {

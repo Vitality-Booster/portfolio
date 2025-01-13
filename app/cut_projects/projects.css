@@ -1,22 +1,13 @@
 .main-projects {
     margin-inline: auto;
     max-width: 1200px;
+    width: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 100px;
 }
 
-.all-project-buttons {
-    display: flex;
-    flex-direction: column;
-    margin: 50px;
-    position: relative;
-    z-index: 0;
-    height: 400px;
-    width: 300px;
-    overflow: scroll;
-}
 
 .card-wrapper {
     display: flex;
@@ -28,4 +19,118 @@
     position: absolute;
     opacity: 0;
     z-index: -2;
+}
+
+/* Buttons with Scroll Indicator */
+
+.buttons-with-indicator {
+    display: flex;
+    gap: 0px;
+    margin-left: 50px;
+}
+
+.all-project-buttons {
+    display: flex;
+    flex-direction: column;
+    /* margin: 50px; */
+    position: relative;
+    z-index: 0;
+    height: 400px;
+    width: 300px;
+    overflow: auto;
+}
+
+/* Scroll Indicator for Buttons */
+
+.scroll-indicator {
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--green);
+    position: relative;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    z-index: -9900;
+    rotate: 90deg;
+    display: flex;
+    align-items: center;
+    
+}
+
+.scroll-indicator::before {
+    --full-dark: #1f2133;
+    --semi-transparent: #1f2133c0;
+    --full-transparent: #1f213300;
+    content: "";
+    position: absolute;
+    display: block;
+    height: 2rem;
+    width: 400%;
+    background: linear-gradient(90deg, var(--full-dark) 0%, var(--full-dark) 22%, var(--semi-transparent) 27%, var(--full-transparent) 50%, var(--semi-transparent) 67%, var(--full-dark) 75%, var(--full-dark) 100%);
+    animation-name: show-indicator;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+/* Animation for showing the scroll-indicator (arrows) */
+
+@keyframes show-indicator {
+    0% {
+        left: -300%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-projects {
+        width: 90%;
+        gap: 10px;
+    }
+
+    .all-project-buttons {
+        width: 100%;
+    }
+
+    .buttons-with-indicator {
+        margin-left: 30px;
+    }
+
+    .scroll-indicator {
+        margin-left: -5%;
+    }
+}
+
+@media (max-width: 860px) {
+    .main-projects {
+        flex-direction: column;
+    }
+
+    .all-project-buttons {
+        flex-direction: row;
+        margin: 0;
+        height: auto;
+        gap: 20px;
+        width: 90%;
+        margin-bottom: 5px;
+        margin-inline: auto;
+    }
+
+    .card-wrapper {
+        margin-left: 10%;
+    }
+
+    .buttons-with-indicator {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .scroll-indicator {
+        margin-inline: auto;
+        rotate: 0deg;
+        font-size: 28px;
+    }
 }
