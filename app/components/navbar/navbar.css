@@ -23,9 +23,50 @@
     margin-inline: 20px;
 }
 
+.menu-container {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: var(--glass-background);
+    backdrop-filter: blur(16px) saturate(200%);
+    -webkit-backdrop-filter: blur(16px) saturate(200%);
+    position: absolute;
+    z-index: -100;
+    border-end-end-radius: 80%;
+}
+
+.navbar-wrapper {
+    margin-inline: auto;
+}
+
 @media (max-width: 1024px) {
     .navbar {
         width: 650px;
         flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-wrapper {
+        position: relative;
+        height: 100vh;
+    }
+
+    .sm-navbar {
+        opacity: 0;
+        height: 100%;
+        width: 100px;
+        margin-block: auto;
+        display: flex;
+        justify-content: space-around;
+        margin-left: 30px;
+        position: absolute;
+        left: 0;
+        top: 15%;
+    }
+
+    .sm-navbar ul li {
+        display: block;
+        margin-block: 70px;
     }
 }

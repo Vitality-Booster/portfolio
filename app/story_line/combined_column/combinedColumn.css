@@ -159,7 +159,6 @@
 
     .content-row:nth-of-type(odd) .combined-image-container {
         left: 65%;
-        
     }
 
     .combined-icon-image {
@@ -179,8 +178,6 @@
 
 @media (max-width: 500px) {
     .combined-image-container {
-
         opacity: 30%;
     }
 }
-

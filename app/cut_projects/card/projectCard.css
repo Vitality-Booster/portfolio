@@ -179,7 +179,7 @@
     width: 104%;
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
     .card-border-svg {
         left: -2.3%;
     }

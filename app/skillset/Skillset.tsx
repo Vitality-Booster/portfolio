@@ -13,11 +13,12 @@ gsap.registerPlugin(useGSAP)
 
 import { useEffect, useRef, useState } from "react"
 import { useMainStore } from "../stores/mainStore"
+import useWindowSize from "../utils/windowSize"
 
 const tabs = ["Front-end", "Back-end", "CI/CD", "Data Science", "Blockchain"]
 
 export default function Skillset() {
-    const { skills, projects, hiddenSkills } = useMainStore()
+    const { skills, hiddenSkills } = useMainStore()
     const [currentTab, setCurrentTab] = useState("Back-end")
     const [prevTab, setPrevTab] = useState("Back-end")
     // const [hiddenSkills, setHiddenSkills] = useState<HiddenSkillWithProjectNames[]>([])
@@ -28,18 +29,9 @@ export default function Skillset() {
     const skillsetCardsRef = useRef(null)
     const tl = useRef(gsap.timeline())
     const { contextSafe } = useGSAP({ scope: skillsetCardsRef })
-    console.log("The number of normal skills that I have:", skills.length)
-    console.log("The number of normal projects that I have:", projects.length)
+    const { width: windowWidth } = useWindowSize()
 
     useEffect(() => {
-        // const fetchHiddenSkills = async () => {
-        //     const response = await fetch("/api/hidden-skills", {
-        //         cache: "force-cache"
-        //     })
-        //     const data = await response.json()
-        //     setHiddenSkills(data.hiddenSkills)
-        // }
-
         if (
             skills &&
             skills.length > 0 &&
@@ -49,9 +41,6 @@ export default function Skillset() {
                 skills.filter((skill) => skill.tags.includes(currentTab)),
             )
         }
-        // if (hiddenSkills.length <= 0) {
-        //     fetchHiddenSkills()
-        // }
     }, [skills])
 
     const handleTabChange = contextSafe((tab: string) => {
@@ -102,6 +91,9 @@ export default function Skillset() {
                         )
                     })}
                 </div>
+                {windowWidth <= 650 && (
+                    <div className="scroll-indicator">{">>>"}</div>
+                )}
                 <SkillsetFrame />
                 <div className="skillset-all-card" ref={skillsetCardsRef}>
                     {skillset.map((skill, index) => {
@@ -110,11 +102,14 @@ export default function Skillset() {
                                 <SkillCard
                                     skillData={skill}
                                     skillIndex={index + 1}
+                                    windowWidth={windowWidth}
                                 />
-                                <HiddenSkillCard
-                                    hiddenSkill={hiddenSkills[index]}
-                                    index={index + 1}
-                                />
+                                {windowWidth > 768 && (
+                                    <HiddenSkillCard
+                                        hiddenSkill={hiddenSkills[index]}
+                                        index={index + 1}
+                                    />
+                                )}
                             </div>
                         )
                     })}

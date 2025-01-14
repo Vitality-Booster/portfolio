@@ -69,3 +69,10 @@
     border-bottom-color: transparent;
     border-right-color: transparent;
 }
+
+@media (max-width: 768px) {
+    .navbar-link,
+    .navbar-link-active {
+        font-size: 20px;
+    }
+}

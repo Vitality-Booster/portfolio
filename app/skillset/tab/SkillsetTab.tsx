@@ -74,7 +74,7 @@ export default function SkillsetTab({
             onClick={() => onClickCallback(tabText)}
         >
             <div className="skillset-extra-rectangle" ref={rectRef} />
-            <a className="skillset-tab-text">{tabText}</a>
+            <h3 className="skillset-tab-text">{tabText}</h3>
         </div>
     )
 }

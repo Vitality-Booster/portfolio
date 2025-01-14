@@ -17,7 +17,9 @@ export default function HiddenSkillCard({
                         ? index === 1
                             ? { left: "-4rem" }
                             : { left: "-5rem" }
-                        : { left: "70%" }
+                        : index < 10
+                          ? { left: "70%" }
+                          : { left: "40%" }
                 }
             >
                 {index}

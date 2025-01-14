@@ -8,7 +8,6 @@ export default function CombinedColumn({
 }: {
     storyParts: StoryPart[]
 }) {
-
     return (
         <div className="combined-story-line-wrapper">
             {storyParts.length > 0 &&
@@ -17,13 +16,15 @@ export default function CombinedColumn({
                         <div className="combined-text-column">
                             <div className="combined-header-full">
                                 {/* {windowWidth < 768 && <h2 className="combined-story-line-duration">{storyPart.date}</h2>} */}
-                                <h2 className="combined-story-line-duration">{storyPart.date}</h2>
-                                <h1 className="combined-main-header">{storyPart.title}</h1>
-                                
+                                <h2 className="combined-story-line-duration">
+                                    {storyPart.date}
+                                </h2>
+                                <h1 className="combined-main-header">
+                                    {storyPart.title}
+                                </h1>
                             </div>
                             <div className="combined-description-card">
                                 <p>{storyPart.description}</p>
-                                
                             </div>
                             <div
                                 className="combined-image-container"

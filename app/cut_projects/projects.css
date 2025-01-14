@@ -8,7 +8,6 @@
     gap: 100px;
 }
 
-
 .card-wrapper {
     display: flex;
     margin: 20px;
@@ -53,7 +52,6 @@
     rotate: 90deg;
     display: flex;
     align-items: center;
-    
 }
 
 .scroll-indicator::before {
@@ -65,7 +63,16 @@
     display: block;
     height: 2rem;
     width: 400%;
-    background: linear-gradient(90deg, var(--full-dark) 0%, var(--full-dark) 22%, var(--semi-transparent) 27%, var(--full-transparent) 50%, var(--semi-transparent) 67%, var(--full-dark) 75%, var(--full-dark) 100%);
+    background: linear-gradient(
+        90deg,
+        var(--full-dark) 0%,
+        var(--full-dark) 22%,
+        var(--semi-transparent) 27%,
+        var(--full-transparent) 50%,
+        var(--semi-transparent) 67%,
+        var(--full-dark) 75%,
+        var(--full-dark) 100%
+    );
     animation-name: show-indicator;
     animation-duration: 3s;
     animation-iteration-count: infinite;

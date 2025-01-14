@@ -131,7 +131,7 @@ export default function Projects() {
                     </div>
                     <div className="scroll-indicator">{">>>"}</div>
                 </div>
-                
+
                 <div className="card-wrapper">
                     {allProjects.length > 0 &&
                         allProjects.map((project) => {

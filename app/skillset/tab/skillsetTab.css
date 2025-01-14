@@ -7,8 +7,6 @@
 
 .skillset-tab,
 .skillset-tab-active {
-    font-size: 25px;
-    font-weight: 700;
     border-radius: var(--bord-radius);
     width: var(--rect-width);
     height: var(--rect-height);
@@ -16,6 +14,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.skillset-tab-text {
+    font-weight: 600;
 }
 
 .skillset-tab {
@@ -41,4 +43,34 @@
 .skillset-tab-active {
     color: var(--background);
     background-color: var(--green);
+}
+
+@media (max-width: 768px) {
+    .skillset-tab,
+    .skillset-tab-active {
+        --rect-width: 140px;
+        --rect-height: 65px;
+        position: relative;
+        min-width: var(--rect-width);
+        min-height: var(--rect-height);
+    }
+
+    .skillset-tab-text {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .skillset-tab,
+    .skillset-tab-active {
+        --rect-width: 130px;
+        --rect-height: 55px;
+        position: relative;
+        min-width: var(--rect-width);
+        min-height: var(--rect-height);
+    }
+
+    .skillset-tab-text {
+        font-size: 20px;
+    }
 }

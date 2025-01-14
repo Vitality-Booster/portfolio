@@ -1,24 +1,17 @@
 "use client"
 
+import useWindowSize from "@/app/utils/windowSize"
 import "./navbar.css"
 import NavLink from "./navlink/NavLink"
-import { useEffect, useState } from "react"
-// import gsap from "gsap"
-// import ScrollTrigger from "gsap/ScrollTrigger"
+import { useEffect, useState, useRef } from "react"
+import BurgerMenu from "./burger_menu/BurgerMenu"
 
-// gsap.registerPlugin(ScrollTrigger)
-
-// const ALL_SECTIONS = ["home", "story-line", "projects", "skills", "contact"]
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
 
 export default function Navbar() {
-    const [activeSection, setActiveSection] = useState<string>(
-        // window ? window.location.hash.split("#")[1] : "",
-        "",
-    )
-    const [prevActiveSection, setPrevActiveSection] = useState<string>(
-        // window ? window.location.hash.split("#")[1] : "",
-        "",
-    )
+    const [activeSection, setActiveSection] = useState<string>("")
+    const [prevActiveSection, setPrevActiveSection] = useState<string>("")
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -198,65 +191,147 @@ export default function Navbar() {
     //     };
     //   }, []);
 
+    const { width: windowWidth } = useWindowSize()
+    const refMenuContainer = useRef(null)
+    const refWrapper = useRef(null)
+    const refNav = useRef(null)
+    const tl = useRef(gsap.timeline())
+
+    // tl.current.to(refMenuContainer.current, {
+    //     width: "150px",
+    //     height: "100vh",
+    //     // borderBottomRightRadius: "0px",
+    //     duration: 1,
+    //     ease: "power2.in",
+    // }).to(refMenuContainer.current, {
+    //     // width: "150px",
+    //     // height: "100vh",
+    //     borderBottomRightRadius: "0px",
+    //     duration: 0.01,
+    //     ease: "power1.in",
+    // }, ">-0.01").from(
+    //     refNav.current,
+    //     {
+    //         opacity: 0,
+    //         zIndex: 10,
+    //         width: "150px",
+    //         duration: 0.3,
+    //         ease: "power2.out",
+    //     },
+    //     ">-0.1",
+    // )
+    const { contextSafe } = useGSAP({ scope: refWrapper })
+
+    useGSAP(() => {
+        if (windowWidth !== 0 && windowWidth <= 768) {
+            console.log(`The values of the windowWidth is: ${windowWidth}`)
+            tl.current.to(refMenuContainer.current, {
+                width: "150px",
+                height: "100vh",
+                duration: 1,
+                ease: "power2.in",
+            })
+            tl.current.to(
+                refMenuContainer.current,
+                {
+                    borderBottomRightRadius: "0px",
+                    duration: 0.01,
+                    ease: "power1.in",
+                },
+                ">-0.01",
+            )
+
+            tl.current.to(
+                refNav.current,
+                {
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power2.out",
+                },
+                ">-0.1",
+            )
+
+            tl.current.pause()
+        }
+    }, [windowWidth])
+
     const handleTabChange = (tab: string) => {
         setPrevActiveSection(activeSection)
         setActiveSection(tab)
     }
 
+    const handleMenuToggle = contextSafe((menuOpen: boolean) => {
+        if (menuOpen) 
+            tl.current.play()
+        else
+            tl.current.reverse()
+    })
+
     return (
-        <div className="navbar">
-            <ul>
-                <li>
-                    <NavLink
-                        text="Home"
-                        link="home"
-                        active={
-                            activeSection === "" || activeSection === "home"
-                        }
-                        wasActive={
-                            prevActiveSection === "" ||
-                            prevActiveSection === "home"
-                        }
-                        onClickCallback={handleTabChange}
-                    />
-                </li>
-                <li>
-                    <NavLink
-                        text="Story Line"
-                        link="story-line"
-                        active={activeSection === "story-line"}
-                        wasActive={prevActiveSection === "story-line"}
-                        onClickCallback={handleTabChange}
-                    />
-                </li>
-                <li>
-                    <NavLink
-                        text="Projects"
-                        link="projects"
-                        active={activeSection === "projects"}
-                        wasActive={prevActiveSection === "projects"}
-                        onClickCallback={handleTabChange}
-                    />
-                </li>
-                <li>
-                    <NavLink
-                        text="Skills"
-                        link="skills"
-                        active={activeSection === "skills"}
-                        wasActive={prevActiveSection === "skills"}
-                        onClickCallback={handleTabChange}
-                    />
-                </li>
-                <li>
-                    <NavLink
-                        text="Contact"
-                        link="contact"
-                        active={activeSection === "contact"}
-                        wasActive={prevActiveSection === "contact"}
-                        onClickCallback={handleTabChange}
-                    />
-                </li>
-            </ul>
+        <div className="navbar-wrapper">
+            {windowWidth <= 768 && (
+                <div className="menu-container" ref={refMenuContainer} />
+            )}
+            {windowWidth <= 768 && (
+                <BurgerMenu toggleHandler={handleMenuToggle} />
+            )}
+            <div
+                className={windowWidth > 768 ? "navbar" : "sm-navbar"}
+                ref={refNav}
+            >
+                <ul>
+                    <li>
+                        <NavLink
+                            text="Home"
+                            link="home"
+                            active={
+                                activeSection === "" || activeSection === "home"
+                            }
+                            wasActive={
+                                prevActiveSection === "" ||
+                                prevActiveSection === "home"
+                            }
+                            onClickCallback={handleTabChange}
+                        />
+                    </li>
+                    <li>
+                        <NavLink
+                            text="Story Line"
+                            link="story-line"
+                            active={activeSection === "story-line"}
+                            wasActive={prevActiveSection === "story-line"}
+                            onClickCallback={handleTabChange}
+                        />
+                    </li>
+                    <li>
+                        <NavLink
+                            text="Projects"
+                            link="projects"
+                            active={activeSection === "projects"}
+                            wasActive={prevActiveSection === "projects"}
+                            onClickCallback={handleTabChange}
+                        />
+                    </li>
+                    <li>
+                        <NavLink
+                            text="Skills"
+                            link="skills"
+                            active={activeSection === "skills"}
+                            wasActive={prevActiveSection === "skills"}
+                            onClickCallback={handleTabChange}
+                        />
+                    </li>
+                    <li>
+                        <NavLink
+                            text="Contact"
+                            link="contact"
+                            active={activeSection === "contact"}
+                            wasActive={prevActiveSection === "contact"}
+                            onClickCallback={handleTabChange}
+                        />
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }

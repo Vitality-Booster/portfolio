@@ -30,8 +30,7 @@
     font-weight: 500;
 }
 
-@media(max-width: 1024px) {
-
+@media (max-width: 1024px) {
     .personal-info-icon {
         width: 70px;
         height: 70px;

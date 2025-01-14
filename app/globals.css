@@ -145,9 +145,15 @@ a {
 .navbar-container {
     width: 100vw;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     position: fixed;
     z-index: 200;
+}
+
+@media (max-width: 786px) {
+    .navbar-container {
+        width: 0;
+    }
 }
 
 .section-heading {
@@ -196,7 +202,6 @@ a {
         top: calc(50% - 17px);
     }
 }
-
 
 @media (max-width: 768px) {
     .section-heading {

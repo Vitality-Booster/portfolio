@@ -1,5 +1,5 @@
 .skill-card {
-    width: 375px;
+    width: 45%;
     height: 250px;
     padding: 20px 40px;
     background-color: var(--glass-background);
@@ -7,19 +7,18 @@
     border: 1px solid var(--green);
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
-    align-items: center;
     position: relative;
-
-    font-size: 25px;
-    line-height: 1.25;
 }
 
 .skill-card-icon {
+    --icon-size: 60px;
+    --top-left-padding: 20px;
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: var(--top-left-padding);
+    left: var(--top-left-padding);
     margin-right: 100px;
+    height: var(--icon-size);
+    width: var(--icon-size);
 }
 
 .skill-icon-with-name {
@@ -53,9 +52,111 @@
 }
 
 .main-skill-text {
+    padding-left: 3%;
+    font-size: 25px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .skill-card {
+        height: 225px;
+    }
+
+    .skill-card-icon {
+        --icon-size: 50px;
+        --top-left-padding: 25px;
+    }
+
+    .skill-name {
+        font-size: 27px;
+    }
+
+    .main-skill-text {
+        font-size: 22px;
+    }
+
+    .skill-number {
+        font-size: 360px;
+        left: 70%;
+        top: -35%;
+    }
+}
+
+@media (max-width: 768px) {
+    .skill-card {
+        width: 70%;
+    }
+
+    .skill-icon-with-name {
+        margin-top: 17px;
+    }
+}
+
+@media (max-width: 600px) {
+    .skill-card {
+        height: 200px;
+        width: 80%;
+    }
+
+    .skill-card-icon {
+        --icon-size: 40px;
+    }
+
+    .skill-icon-with-name {
+        margin-top: 13px;
+    }
+
+    .skill-name {
+        font-size: 25px;
+    }
+
+    .main-skill-text {
+        font-size: 20px;
+    }
+
+    .skill-number {
+        font-size: 320px;
+        left: 70%;
+        top: -35%;
+    }
+}
+
+@media (max-width: 460px) {
+    .main-skill-text {
+        padding-left: 0%;
+        margin-left: -10%;
+    }
+
+    .skill-card {
+        height: 175px;
+        width: 90%;
+    }
+
+    .skill-card-icon {
+        --icon-size: 35px;
+        --top-left-padding: 20px;
+    }
+
+    .skill-icon-with-name {
+        margin-top: 7px;
+    }
+
+    .skill-name {
+        font-size: 23px;
+    }
+
+    .main-skill-text {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .skill-number {
+        font-size: 280px;
+        left: 70%;
+        top: -35%;
+    }
 }

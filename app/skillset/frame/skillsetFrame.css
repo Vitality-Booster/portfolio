@@ -23,3 +23,43 @@
     display: flex;
     gap: 15px;
 }
+
+@media (max-width: 1024px) {
+    .skillset-frame-line {
+        width: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .skillset-frame-circle {
+        width: 23px;
+        height: 23px;
+    }
+
+    .skillset-frame-all-circles {
+        gap: 13px;
+    }
+
+    .skillset-frame {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 450px) {
+    .skillset-frame-line {
+        width: 25%;
+    }
+
+    .skillset-frame-circle {
+        width: 20px;
+        height: 20px;
+    }
+
+    .skillset-frame-all-circles {
+        gap: 11px;
+    }
+
+    .skillset-frame {
+        gap: 25px;
+    }
+}

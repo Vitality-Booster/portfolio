@@ -1,5 +1,5 @@
 .hidden-skill-card {
-    width: 375px;
+    width: 45%;
     height: 250px;
     padding: 20px 40px;
     border-radius: 5px;
@@ -11,6 +11,7 @@
 
     font-size: 25px;
     color: var(--background);
+    cursor: default;
 }
 
 .hidden-skill-number {
@@ -18,12 +19,13 @@
     font-size: 400px;
     /* color: var(--green); */
     left: 70%;
-    top: -33%;
+    top: -48%;
     opacity: 0.4;
     z-index: -1;
 }
 
 .hidden-skill-name-wrapper {
+    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -41,4 +43,28 @@
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .hidden-skill-card {
+        height: 225px;
+    }
+
+    .hidden-skill-name {
+        font-size: 27px;
+    }
+
+    .hidden-main-skill-text {
+        font-size: 22px;
+    }
+
+    .hidden-skill-number {
+        font-size: 360px;
+        left: 70%;
+        top: -50%;
+    }
+
+    .hidden-skill-name-wrapper {
+        margin-top: 15px;
+    }
 }
