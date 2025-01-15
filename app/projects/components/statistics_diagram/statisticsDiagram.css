@@ -12,8 +12,10 @@
 .statistics-base {
     border-radius: 50%;
     border: 2px solid var(--purple);
-    height: var(--main-height);
-    width: var(--main-height);
+    /* Here the 'padding-bottom' behaves like a 'height' of the circle to keep it responsive */
+    width: 75%;
+    height: 0;
+    padding-bottom: 75%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -23,12 +25,34 @@
 .vertical-line,
 .diagonal-line-1,
 .diagonal-line-2 {
+    margin-top: 100%;
     position: absolute;
     border-left: 2px solid var(--purple);
-    height: var(--main-height);
+    height: 100%;
     width: 2px;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 850px) {
+    .statistics-base {
+        width: 80%;
+        padding-bottom: 80%;
+    }
+}
+
+@media (max-width: 600px) {
+    .statistics-base {
+        width: 90%;
+        padding-bottom: 90%;
+    }
+}
+
+@media (max-width: 450px) {
+    .statistics-base {
+        width: 100%;
+        padding-bottom: 100%;
+    }
 }
 
 .diagonal-line-1 {
@@ -47,18 +71,127 @@
 .diagonal-line-2::before {
     position: absolute;
     font-size: 22px;
+    font-weight: 600;
 }
 
 .vertical-line::after,
 .diagonal-line-1::after,
 .diagonal-line-2::after {
-    top: -17%;
+    top: -22%;
 }
 
 .vertical-line::before,
 .diagonal-line-1::before,
 .diagonal-line-2::before {
-    bottom: -17%;
+    bottom: -23%;
+}
+
+@media (max-width: 1400px) {
+    .vertical-line::before,
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-1::before,
+    .diagonal-line-2::after,
+    .diagonal-line-2::before {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-2::after {
+        top: -19%;
+    }
+
+    .vertical-line::before,
+    .diagonal-line-1::before,
+    .diagonal-line-2::before {
+        bottom: -20%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .vertical-line::before,
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-1::before,
+    .diagonal-line-2::after,
+    .diagonal-line-2::before {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-2::after {
+        top: -22%;
+    }
+
+    .vertical-line::before,
+    .diagonal-line-1::before,
+    .diagonal-line-2::before {
+        bottom: -23%;
+    }
+}
+
+@media (max-width: 850px) {
+    .vertical-line::before,
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-1::before,
+    .diagonal-line-2::after,
+    .diagonal-line-2::before {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-2::after {
+        top: -24%;
+    }
+
+    .vertical-line::before,
+    .diagonal-line-1::before,
+    .diagonal-line-2::before {
+        bottom: -25%;
+    }
+}
+
+@media (max-width: 600px) {
+    .vertical-line::before,
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-1::before,
+    .diagonal-line-2::after,
+    .diagonal-line-2::before {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-2::after {
+        top: -20%;
+    }
+
+    .vertical-line::before,
+    .diagonal-line-1::before,
+    .diagonal-line-2::before {
+        bottom: -20%;
+    }
+}
+
+@media (max-width: 450px) {
+    .vertical-line::before,
+    .vertical-line::after,
+    .diagonal-line-1::after,
+    .diagonal-line-1::before,
+    .diagonal-line-2::after,
+    .diagonal-line-2::before {
+        font-size: 18px;
+        font-weight: 600;
+    }
 }
 
 .diagonal-line-1::after,
@@ -103,6 +236,42 @@
     padding-top: 40px;
 }
 
+@media (max-width: 600px) {
+    .vertical-line::after {
+        content: "Com";
+        top: -22%;
+    }
+    
+    .diagonal-line-1::after {
+        content: "Inn";
+        padding-left: 50px;
+        padding-bottom: 20px;
+    }
+    
+    .diagonal-line-2::after {
+        content: "Str";
+        padding-right: 40px;
+        padding-bottom: 20px;
+    }
+    
+    .vertical-line::before {
+        content: "Fun";
+        top: 105%;
+    }
+    
+    .diagonal-line-1::before {
+        content: "Cre";
+        padding-right: 65px;
+        padding-top: 40px;
+    }
+    
+    .diagonal-line-2::before {
+        content: "Lea";
+        padding-left: 70px;
+        padding-top: 40px;
+    }
+}
+
 .statistics-figure {
     --stat1: 50% 40%;
     --stat2: 58% 45.5%;
@@ -121,6 +290,7 @@
         var(--stat6)
     );
     background-color: #42ff3f9d;
-    height: var(--main-height);
-    width: var(--main-height);
+    height: 100%;
+    width: 100%;
+    margin-top: 100%;
 }

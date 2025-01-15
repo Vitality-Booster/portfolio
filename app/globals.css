@@ -148,6 +148,7 @@ a {
     /* justify-content: center; */
     position: fixed;
     z-index: 200;
+    height: 0px;
 }
 
 @media (max-width: 786px) {

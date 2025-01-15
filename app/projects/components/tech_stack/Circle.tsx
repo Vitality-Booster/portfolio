@@ -7,15 +7,13 @@ export default function Circle({
     src,
     alt,
     iconSize,
-    onHoverCallback,
-    onLeaveCallback,
+    onClickCallback
 }: {
     techCircle: TechCircleType
     src: string
     alt: string
     iconSize: number
-    onHoverCallback: (type: string) => void
-    onLeaveCallback: () => void
+    onClickCallback: (type: string) => void
 }) {
     const formattedType = techCircle.type
         .toLowerCase()
@@ -26,11 +24,12 @@ export default function Circle({
     const iconType = `${formattedType}-icon`
 
     return (
+        <div id={techCircle.id} className="tech-circle-wrapper">
+
+        
         <div
             className={`tech-circle ${circleType}`}
-            id={techCircle.id}
-            onMouseEnter={() => onHoverCallback(techCircle.type)}
-            onMouseLeave={() => onLeaveCallback()}
+            onClick={() => onClickCallback(techCircle.type)}
             style={{ padding: `${(techCircle.size - iconSize) / 2}px` }}
         >
             <Image
@@ -40,7 +39,9 @@ export default function Circle({
                 width={iconSize}
                 height={iconSize}
             />
-            <h3 className={`tech-circle-name ${nameType}`}>
+            
+        </div>
+        <h3 className={`tech-circle-name ${nameType}`}>
                 {techCircle.name}
             </h3>
         </div>

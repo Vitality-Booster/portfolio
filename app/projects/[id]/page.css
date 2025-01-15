@@ -3,13 +3,20 @@
     flex-direction: column;
     /* align-items: center; */
     margin: 50px auto;
-    max-width: 1200px;
+    width: 80%;
     /* gap: 50px; */
+}
+
+@media (max-width: 600px) {
+    .all-projects-container {
+        width: 90%;
+    }
 }
 
 .main-image-container {
     display: flex;
-    max-width: 100%;
+    width: 80%;
+    margin-inline: auto;
     justify-content: center;
     position: relative;
     margin-top: 90px;
@@ -38,13 +45,32 @@
 .description-with-stats-container {
     display: flex;
     flex-direction: row;
-    max-width: 100%;
-    justify-content: space-between;
+    width: 90%;
+    margin-inline: auto;
+    justify-content: space-around;
     margin-top: 40px;
 }
 
 .project-tech-stack {
+    margin-inline: auto;
+    width: 90%;
     display: flex;
     margin-top: 100px;
     margin-bottom: 50px;
+}
+
+@media (max-width: 1400px) {
+    .description-with-stats-container {
+        flex-direction: column-reverse;
+        gap: 100px;
+        align-items: center;
+        margin-left: 8%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .description-with-stats-container {
+        width: 100%;
+        margin-left: 1%;
+    }
 }

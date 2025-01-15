@@ -261,10 +261,8 @@ export default function Navbar() {
     }
 
     const handleMenuToggle = contextSafe((menuOpen: boolean) => {
-        if (menuOpen) 
-            tl.current.play()
-        else
-            tl.current.reverse()
+        if (menuOpen) tl.current.play()
+        else tl.current.reverse()
     })
 
     return (

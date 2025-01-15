@@ -14,15 +14,11 @@ import { Skill } from "@prisma/client"
 gsap.registerPlugin(useGSAP)
 
 export default function TechStack({
-    circleSize,
-    iconSize,
-    animationPadding,
     skills,
+    windowWidth
 }: {
-    circleSize: number
-    iconSize: number
-    animationPadding: number
     skills: Skill[]
+    windowWidth: number
 }) {
     // TODO: Think about using GSAP to move the tech stack in the very beginning of the render
     // And make it look like the positions of the Technologies are "flexible" and always different.
@@ -34,11 +30,38 @@ export default function TechStack({
     const [counter, setCounter] = useState(0)
     const [stackTitle, setStackTitle] = useState("")
     const { contextSafe } = useGSAP({ scope: techContainerRef })
+    const [clickedStack, setClickedStack] = useState("")
+
+    /**
+     * Calculating the values for the Circles based on the window width
+     */
+
+    console.log("The window width is:", windowWidth)
+    let maxX = parseInt((windowWidth * 0.7).toString())
+    let circleSize = 100
+    let iconSize = 40
+    let animationPadding = 10
+
+    if (windowWidth < 1024) {
+        circleSize = 80
+        iconSize = 35
+        animationPadding = 7
+    }
+
+    if (windowWidth < 768) {
+        maxX = parseInt((windowWidth * 0.8).toString())
+    }
+
+    if (windowWidth < 600) {
+        circleSize = 70
+        iconSize = 30
+        animationPadding = 5
+    }
 
     const getAllCircles = async () => {
         const allCircles: TechCircleType[] = await generateAllCircles({
             skills: skills,
-            maxX: 1200,
+            maxX: maxX,
             maxY: 400,
             size: circleSize,
             animationPadding: animationPadding,
@@ -81,10 +104,55 @@ export default function TechStack({
         }
     }, [tl, animationComplete, techCircles, lines])
 
-    // TODO: If I decide to improve the animation, add the Timer that starts on Hover,
-    // and stops on Leave. If the spent time is
-    const circleHoverHandler = contextSafe((type: string) => {
+    const circleClickHandler = contextSafe((type: string) => 
+    {
+        if (type === clickedStack)
+            return
+
+        if (clickedStack !== "")
+        {
+            const formattedType = clickedStack
+                .toLowerCase()
+                .replaceAll(" ", "-")
+                .replace("/", "")
+            const lineType = `${formattedType}-line`
+            const circleType = `${formattedType}-circle`
+            const nameType = `${formattedType}-name`
+            const iconType = `${formattedType}-icon`
+
+            tl.current.to(`.${lineType}`, {
+                opacity: 0,
+                duration: 0.2,
+            })
+            tl.current.to(
+                `.${circleType}`,
+                {
+                    borderColor: "#5e5e5e94",
+                    duration: 0.2,
+                },
+                "<",
+            )
+            tl.current.to(
+                `.${nameType}`,
+                {
+                    opacity: 0,
+                    duration: 0.2,
+                },
+                "<",
+            )
+            tl.current.to(
+                `.${iconType}`,
+                {
+                    duration: 0.2,
+                },
+                "<",
+            )
+        }
+
+        setClickedStack(type)
+        // circleHoverHandler(type)
         setStackTitle(type)
+
         const formattedType = type
             .toLowerCase()
             .replaceAll(" ", "-")
@@ -93,6 +161,7 @@ export default function TechStack({
         const circleType = `${formattedType}-circle`
         const nameType = `${formattedType}-name`
         const iconType = `${formattedType}-icon`
+
         tl.current.to(`.${lineType}`, {
             opacity: 1,
             duration: 0.2,
@@ -101,7 +170,6 @@ export default function TechStack({
             `.${circleType}`,
             {
                 borderColor: "#43FF3F",
-                padding: `+=${animationPadding}px`,
                 duration: 0.2,
             },
             "<",
@@ -109,7 +177,6 @@ export default function TechStack({
         tl.current.to(
             `.${nameType}`,
             {
-                y: `+=${2 * animationPadding}px`,
                 opacity: 1,
                 duration: 0.2,
             },
@@ -118,53 +185,11 @@ export default function TechStack({
         tl.current.to(
             `.${iconType}`,
             {
-                y: `-=${2 * animationPadding}px`,
                 duration: 0.2,
             },
             "<",
         )
-    })
 
-    const circleLeaveHandler = contextSafe(() => {
-        const formattedType = stackTitle
-            .toLowerCase()
-            .replaceAll(" ", "-")
-            .replace("/", "")
-        const lineType = `${formattedType}-line`
-        const circleType = `${formattedType}-circle`
-        const nameType = `${formattedType}-name`
-        const iconType = `${formattedType}-icon`
-        setStackTitle("")
-        tl.current.to(`.${lineType}`, {
-            opacity: 0,
-            duration: 0.2,
-        })
-        tl.current.to(
-            `.${circleType}`,
-            {
-                borderColor: "#5e5e5e94",
-                padding: `-=${animationPadding}px`,
-                duration: 0.2,
-            },
-            "<",
-        )
-        tl.current.to(
-            `.${nameType}`,
-            {
-                y: `-=${2 * animationPadding}px`,
-                opacity: 0,
-                duration: 0.2,
-            },
-            "<",
-        )
-        tl.current.to(
-            `.${iconType}`,
-            {
-                y: `+=${2 * animationPadding}px`,
-                duration: 0.2,
-            },
-            "<",
-        )
     })
 
     return (
@@ -178,8 +203,7 @@ export default function TechStack({
                             src={circle.src}
                             alt={`${circle.name} logo`}
                             iconSize={iconSize}
-                            onHoverCallback={circleHoverHandler}
-                            onLeaveCallback={circleLeaveHandler}
+                            onClickCallback={circleClickHandler}
                         />
                     ))}
                 {lines.length > 0 &&

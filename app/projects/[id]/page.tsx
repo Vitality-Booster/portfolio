@@ -8,13 +8,23 @@ import StatisticsCard, {
 import TechStack from "../components/tech_stack/TechStack"
 import { useMainStore } from "@/app/stores/mainStore"
 import { ProjectWithSkills } from "@/app/types/Project"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import Cursor from "@/app/components/cursor/Cursor"
+import Loader from "@/app/components/loader/Loader"
+
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import useWindowSize from "@/app/utils/windowSize"
+
 
 export default function ProjectsPage({ params }: { params: { id: number } }) {
     const { id } = params
     const { projects: allProjects, setProjects } = useMainStore()
     const [currentProject, setCurrentProject] =
         useState<ProjectWithSkills | null>(null)
+
+    const tl = useRef(gsap.timeline())
+    const {width: windowWidth} = useWindowSize()
 
     useEffect(() => {
         async function fetchProjects() {
@@ -33,39 +43,62 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
         }
     }, [allProjects])
 
-    if (!currentProject) {
-        return <div>Loading...</div>
-    }
+    useGSAP(() => {
+        gsap.to(".all-projects-container", {
+            duration: 0,
+            opacity: 0,
+            overflow: "hidden",
+        })
+
+        if (
+            currentProject && currentProject.skills.length > 0
+        ) {
+            tl.current.to(".loader-container", {
+                duration: 1,
+                opacity: 0,
+                y: "-100%",
+            })
+            tl.current.to(".all-projects-container", {
+                duration: 0.5,
+                opacity: 1,
+            })
+        }
+    }, [currentProject])
 
     return (
-        <div className="all-projects-container">
-            <div className="main-image-container">
-                <img
-                    className="project-main-image"
-                    src={currentProject.mainPicture}
-                />
-                <div className="project-name-label">
-                    <h2>{currentProject.name}</h2>
+        <div className="root-container">
+            <Loader />
+            <Cursor />
+            {currentProject && (
+                <div className="all-projects-container">
+                <div className="main-image-container">
+                    <img
+                        className="project-main-image"
+                        src={currentProject.mainPicture}
+                    />
+                    <div className="project-name-label">
+                        <h2>{currentProject.name}</h2>
+                    </div>
                 </div>
+                <div className="description-with-stats-container">
+                    <DescriptionCard
+                        description={currentProject.fullDescription}
+                        link={currentProject.mainLink}
+                    />
+                    <StatisticsCard
+                            stats={currentProject.stats as StatisticsType}
+                            tags={currentProject.tags} />
+                </div>
+               {windowWidth > 0 && <div className="project-tech-stack">
+                    <TechStack
+                        skills={currentProject.skills}
+                        windowWidth={windowWidth}
+                    />
+                </div>} 
+                
             </div>
-            <div className="description-with-stats-container">
-                <DescriptionCard
-                    description={currentProject.fullDescription}
-                    link={currentProject.mainLink}
-                />
-                <StatisticsCard
-                    stats={currentProject.stats as StatisticsType}
-                    tags={currentProject.tags}
-                />
-            </div>
-            <div className="project-tech-stack">
-                <TechStack
-                    circleSize={100}
-                    iconSize={40}
-                    animationPadding={10}
-                    skills={currentProject.skills}
-                />
-            </div>
+            )}
+            
         </div>
     )
 }

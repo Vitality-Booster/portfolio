@@ -11,12 +11,13 @@ export default function DescriptionCard({
         <div className="description-card-container">
             <div className="description-project-card">
                 <div className="description-text">{description}</div>
-                <button
+                <div className="view-more-button-container"><button
                     className="view-more-button"
                     onClick={() => window.open(link, "_blank")}
                 >
-                    View
-                </button>
+                    Source
+                </button></div>
+                
             </div>
             <div className="description-card-shadow" />
         </div>

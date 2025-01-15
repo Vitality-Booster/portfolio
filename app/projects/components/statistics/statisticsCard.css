@@ -1,3 +1,5 @@
+/* Statistics Card wrapper and its Shadow */
+
 .statistics-card-container {
     --card-max-width: min(500px, 30vw);
     --card-max-height: max(500px, 20vh);
@@ -6,7 +8,7 @@
     position: relative;
     flex-direction: column;
     width: var(--card-max-width);
-    height: var(--card-max-height);
+    /* height: var(--card-max-height); */
 }
 
 .statistics-card,
@@ -14,7 +16,7 @@
     padding: 20px;
     border-radius: 10px;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .statistics-card {
@@ -23,6 +25,7 @@
     flex-direction: column;
     background-color: var(--background);
     border: 1px solid var(--green);
+    /* margin-bottom: 100px; */
 }
 
 .statistics-card-shadow {
@@ -32,21 +35,33 @@
     left: -5%;
     background-color: var(--green);
     z-index: -1;
-    height: 120%;
+    height: 97%;
 }
 
-.statistics-container {
-    display: flex;
-    margin: 40px auto;
+@media (max-width: 1400px) {
+    .statistics-card-container {
+        width: 70%;
+    }
+    
 }
+
+/* The container for the Statistics Diagram */
+
+.statistics-container {
+    width: 60%;
+    display: flex;
+    margin: 11% auto;
+}
+
+/* Statistics lower half (Line + Text) */
 
 .statistics-text {
     position: relative;
-    margin-top: 40px;
-    margin-bottom: 10px;
+    margin-top: 7%;
+    /* margin-bottom: 10px; */
     margin-inline: auto;
-    row-gap: 15px;
-    column-gap: 70px;
+    row-gap: 1rem;
+    column-gap: 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -56,7 +71,7 @@
     position: absolute;
     border: 1px solid var(--green);
     width: 70%;
-    top: -20%;
+    top: -15%;
     left: 15%;
     z-index: 2;
 }
@@ -69,6 +84,100 @@
     font-size: 22px;
     line-height: 2rem;
 }
+
+@media (max-width: 1500px) {
+    .single-statistics-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .single-statistics-text {
+        font-size: 24px;
+    }
+
+    .statistics-text {
+        row-gap: 1.5rem;
+        column-gap: 4rem;
+        margin-bottom: 10px;
+    }
+
+    .statistics-text::before {
+        left: 10%;
+        width: 80%;
+        top: -22%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .single-statistics-text {
+        font-size: 22px;
+    }
+
+    .statistics-text {
+        row-gap: 1.5rem;
+        column-gap: 3rem;
+        margin-bottom: 0;
+    }
+
+    .statistics-text::before {
+        left: 10%;
+        width: 80%;
+        top: -15%;
+    }
+}
+
+@media (max-width: 800px) {
+    .single-statistics-text {
+        font-size: 20px;
+    }
+
+    .statistics-text {
+        row-gap: 0.5rem;
+        column-gap: 2rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .single-statistics-text {
+        font-size: 20px;
+    }
+
+    .statistics-text {
+        margin-top: 12%;
+        row-gap: 0.5rem;
+        column-gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .statistics-text::before {
+        left: 5%;
+        width: 90%;
+        top: -10%;
+    }
+}
+
+@media (max-width: 500px) {
+    .single-statistics-text {
+        font-size: 18px;
+    }
+
+    .statistics-text {
+        margin-top: 15%;
+        row-gap: 0.3rem;
+        column-gap: 1.3rem;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .statistics-text::before {
+        width: 70%;
+        left: 15%;
+        top: -7%;
+    }
+    
+}
+
+/* Project Tags */
 
 .project-tags-wrapper {
     display: flex;
@@ -83,4 +192,29 @@
     padding: 10px 20px;
     border-radius: 10px;
     margin: 10px;
+}
+
+@media (max-width: 1400px) {
+    .project-tag {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .project-tag {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-tag {
+        margin: 5px;
+        font-size: inherit;
+    }
+}
+
+@media (max-width: 450px) {
+    .project-tag {
+        padding: 7px 14px;
+    }
 }

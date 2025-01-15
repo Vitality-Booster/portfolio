@@ -46,15 +46,13 @@ export default function StatisticsCard({
             </div>
             <div className="project-tags-wrapper">
                 {tags.map((tag, index) => (
-                    <div className="project-tag" key={index}>
+                    <div className="project-tag" key={index} style={tag === "AI" ? {marginRight: "50px"} : {}}>
                         {tag}
                     </div>
                 ))}
-                {/* <div className="project-tag">Web Development</div>
-                <div className="project-tag">Animals</div>
-                <div className="project-tag">Personal Project</div> */}
             </div>
             <div className="statistics-card-shadow" />
+            {/* <div className="statistics-card-shadow" style={tags.length < 3 ? {height: ONE_ROW_HEIGHT} : {height: "97%"}}/> */}
         </div>
     )
 }

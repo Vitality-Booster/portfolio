@@ -21,6 +21,7 @@ export async function generateAllCircles({
     const realMaxX = maxX - size
     const realMaxY = maxY - size
     skills.forEach((skill) => {
+        console.log("Still counting")
         let newX,
             newY = 0
         for (;;) {
@@ -31,7 +32,6 @@ export async function generateAllCircles({
                 isSuccessful = true
             }
             for (const circle of allCircles) {
-                console.log("Still calculating")
                 if (
                     Math.abs(newX - circle.newX) <
                         size + 2 * animationPadding &&

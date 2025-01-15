@@ -63,56 +63,6 @@ export default function Home() {
         }
     }, [storyPartsData, setStoryParts])
 
-    // useEffect(() => {
-    //     const fetchProjects = async () => {
-    //         const response = await fetch("/api/projects", {
-    //             // cache: "force-cache",
-    //         })
-    //         const data = await response.json()
-    //         setProjects(data.projects)
-    //     }
-
-    //     const fetchSkills = async () => {
-    //         const response = await fetch("/api/skills", {
-    //             // cache: "force-cache",
-    //         })
-    //         const data = await response.json()
-    //         setSkills(data.skills)
-    //     }
-
-    //     async function fetchStoryParts() {
-    //         const res = await fetch("/api/storyline", {
-    //             // cache: "force-cache",
-    //         })
-    //         const data = await res.json()
-    //         setStoryParts(data.storyParts)
-    //     }
-
-    //     const fetchHiddenSkills = async () => {
-    //         const response = await fetch("/api/hidden-skills", {
-    //             // cache: "force-cache"
-    //         })
-    //         const data = await response.json()
-    //         setHiddenSkills(data.hiddenSkills)
-    //     }
-
-    //     if (projects.length === 0) {
-    //         fetchProjects()
-    //     }
-
-    //     if (skills.length === 0) {
-    //         fetchSkills()
-    //     }
-
-    //     if (hiddenSkills.length === 0) {
-    //         fetchHiddenSkills()
-    //     }
-
-    //     if (storyParts.length === 0) {
-    //         fetchStoryParts()
-    //     }
-    // }, [])
-
     useGSAP(() => {
         gsap.to(".main-container", {
             duration: 0,
@@ -142,14 +92,6 @@ export default function Home() {
 
     return (
         <div id="root" className="root-container">
-            {/* {skills.length === 0 || projects.length === 0 || hiddenSkills.length === 0 || storyParts.length === 0 ? <Loader /> : (
-            <div className="main-container">
-                <LandingPage />
-                <StoryLine />
-                <Projects />
-                <Skillset />
-                <ContactPage />
-            </div>)} */}
             <Loader />
             <Cursor />
             {skills.length > 0 &&
