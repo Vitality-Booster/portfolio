@@ -37,6 +37,7 @@
     height: 400px;
     width: 300px;
     overflow: auto;
+    padding-bottom: 10px;
 }
 
 /* Scroll Indicator for Buttons */

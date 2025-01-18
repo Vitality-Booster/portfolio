@@ -13,13 +13,6 @@ import { useMainStore } from "../stores/mainStore"
 
 gsap.registerPlugin(useGSAP)
 
-// const cardAppear = {
-//     y: "+=200px",
-//     opacity: 0,
-//     duration: 2,
-//     ease: "elastic.out(0.5,0.4)",
-// }
-
 const cardReappear = {
     y: "-=200px",
     opacity: 1,

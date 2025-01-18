@@ -12,6 +12,10 @@
     background-color: var(--glass-background);
 }
 
+.personal-info-icon-container:hover {
+    top: -5%;
+}
+
 .personal-info-text-container {
     display: flex;
     flex-direction: column;

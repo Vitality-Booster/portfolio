@@ -3,7 +3,8 @@ import "./loader.css" // Assuming you have a CSS file for styling
 
 const Loader = () => {
     return (
-        <figure className="loader-container">
+        <div className="loader-root-container">
+        <figure className="loader-figure">
             <div></div>
             <div></div>
             <div></div>
@@ -13,6 +14,7 @@ const Loader = () => {
             <div></div>
             <div></div>
         </figure>
+        </div>
     )
 }
 

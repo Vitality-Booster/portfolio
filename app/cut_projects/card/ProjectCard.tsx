@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react"
 import { ProjectWithSkills } from "@/app/types/Project"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
+import useWindowSize from "@/app/utils/windowSize"
 
 gsap.registerPlugin(useGSAP)
 
@@ -22,12 +23,19 @@ export default function ProjectCard({
     const shadowRef = useRef(null)
     const wrapperRef = useRef(null)
     const { contextSafe } = useGSAP({ scope: wrapperRef })
+    const {width: windowWidth} = useWindowSize()
 
     useGSAP(() => {
         tl.current.to(cardRef.current, {
             y: "-=40px",
             duration: 0.5,
         })
+        tl.current.to(".project-card-view-more-button", {
+            backgroundColor: "#43ff3f",
+            color: "#1f2133",
+            duration: 0.5,
+            ease: "power1.out",
+        }, "<")
         tl.current.to(
             shadowRef.current,
             {
@@ -59,7 +67,7 @@ export default function ProjectCard({
                 onMouseLeave={handleOnMouseLeave}
                 onClick={() => router.push(`/projects/${project.id}`)}
             >
-                <svg
+                {windowWidth > 550 && (<svg
                     className="card-border-svg"
                     width="435"
                     height="700"
@@ -77,7 +85,8 @@ export default function ProjectCard({
                         stroke="#43FF3F"
                         strokeWidth="2"
                     />
-                </svg>
+                </svg>)}
+                
 
                 <img
                     className="project-card-image"
@@ -113,6 +122,9 @@ export default function ProjectCard({
                         height={35}
                     />
                 </div>
+                <button className="project-card-view-more-button" onClick={() => router.push(`/projects/${project.id}`)}>
+                    View more
+                </button>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ export default function Circle({
     src,
     alt,
     iconSize,
-    onClickCallback
+    onClickCallback,
 }: {
     techCircle: TechCircleType
     src: string
@@ -25,23 +25,20 @@ export default function Circle({
 
     return (
         <div id={techCircle.id} className="tech-circle-wrapper">
-
-        
-        <div
-            className={`tech-circle ${circleType}`}
-            onClick={() => onClickCallback(techCircle.type)}
-            style={{ padding: `${(techCircle.size - iconSize) / 2}px` }}
-        >
-            <Image
-                className={iconType}
-                src={src}
-                alt={alt}
-                width={iconSize}
-                height={iconSize}
-            />
-            
-        </div>
-        <h3 className={`tech-circle-name ${nameType}`}>
+            <div
+                className={`tech-circle ${circleType}`}
+                onClick={() => onClickCallback(techCircle.type)}
+                style={{ padding: `${(techCircle.size - iconSize) / 2}px` }}
+            >
+                <Image
+                    className={iconType}
+                    src={src}
+                    alt={alt}
+                    width={iconSize}
+                    height={iconSize}
+                />
+            </div>
+            <h3 className={`tech-circle-name ${nameType}`}>
                 {techCircle.name}
             </h3>
         </div>

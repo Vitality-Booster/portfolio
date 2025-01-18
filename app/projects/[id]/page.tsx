@@ -16,7 +16,6 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import useWindowSize from "@/app/utils/windowSize"
 
-
 export default function ProjectsPage({ params }: { params: { id: number } }) {
     const { id } = params
     const { projects: allProjects, setProjects } = useMainStore()
@@ -24,7 +23,8 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
         useState<ProjectWithSkills | null>(null)
 
     const tl = useRef(gsap.timeline())
-    const {width: windowWidth} = useWindowSize()
+    const { width: windowWidth } = useWindowSize()
+    const [showLoader, setShowLoader] = useState(true)
 
     useEffect(() => {
         async function fetchProjects() {
@@ -50,55 +50,61 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
             overflow: "hidden",
         })
 
-        if (
-            currentProject && currentProject.skills.length > 0
-        ) {
-            tl.current.to(".loader-container", {
+        if (currentProject && currentProject.skills.length > 0) {
+            tl.current.to(".loader-root-container", {
                 duration: 1,
                 opacity: 0,
-                y: "-100%",
+                // y: "-100%",
             })
+            tl.current.to(".loader-figure", {
+                duration: 1,
+                opacity: 0,
+                // y: "-100%",
+            }, "<")
             tl.current.to(".all-projects-container", {
                 duration: 0.5,
                 opacity: 1,
+            }).then(() => {
+                setShowLoader(false)  
             })
         }
     }, [currentProject])
 
     return (
         <div className="root-container">
-            <Loader />
+            {showLoader && <Loader />}
             <Cursor />
             {currentProject && (
                 <div className="all-projects-container">
-                <div className="main-image-container">
-                    <img
-                        className="project-main-image"
-                        src={currentProject.mainPicture}
-                    />
-                    <div className="project-name-label">
-                        <h2>{currentProject.name}</h2>
+                    <div className="main-image-container">
+                        <img
+                            className="project-main-image"
+                            src={currentProject.mainPicture}
+                        />
+                        <div className="project-name-label">
+                            <h2>{currentProject.name}</h2>
+                        </div>
                     </div>
-                </div>
-                <div className="description-with-stats-container">
-                    <DescriptionCard
-                        description={currentProject.fullDescription}
-                        link={currentProject.mainLink}
-                    />
-                    <StatisticsCard
+                    <div className="description-with-stats-container">
+                        <DescriptionCard
+                            description={currentProject.fullDescription}
+                            link={currentProject.mainLink}
+                        />
+                        <StatisticsCard
                             stats={currentProject.stats as StatisticsType}
-                            tags={currentProject.tags} />
+                            tags={currentProject.tags}
+                        />
+                    </div>
+                    {windowWidth > 0 && (
+                        <div className="project-tech-stack">
+                            <TechStack
+                                skills={currentProject.skills}
+                                windowWidth={windowWidth}
+                            />
+                        </div>
+                    )}
                 </div>
-               {windowWidth > 0 && <div className="project-tech-stack">
-                    <TechStack
-                        skills={currentProject.skills}
-                        windowWidth={windowWidth}
-                    />
-                </div>} 
-                
-            </div>
             )}
-            
         </div>
     )
 }

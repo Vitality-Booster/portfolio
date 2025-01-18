@@ -241,30 +241,30 @@
         content: "Com";
         top: -22%;
     }
-    
+
     .diagonal-line-1::after {
         content: "Inn";
         padding-left: 50px;
         padding-bottom: 20px;
     }
-    
+
     .diagonal-line-2::after {
         content: "Str";
         padding-right: 40px;
         padding-bottom: 20px;
     }
-    
+
     .vertical-line::before {
         content: "Fun";
         top: 105%;
     }
-    
+
     .diagonal-line-1::before {
         content: "Cre";
         padding-right: 65px;
         padding-top: 40px;
     }
-    
+
     .diagonal-line-2::before {
         content: "Lea";
         padding-left: 70px;

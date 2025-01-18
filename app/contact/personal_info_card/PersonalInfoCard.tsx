@@ -7,23 +7,27 @@ export default function PersonalInfoCard({
     value,
     size = 80,
     boxPadding = 8,
+    link
 }: {
     icon: StaticImageData
     title: string
     value: string
     size?: number
     boxPadding?: number
+    link: string
 }) {
     return (
         <div className="personal-info-card">
             {/* <div className="personal-info-image-container"> */}
-            <Image
-                className="personal-info-icon"
-                src={icon}
-                alt="Email icon"
-                width={size}
-                style={{ padding: boxPadding }}
-            />
+            <a href={link} className="personal-info-icon-container">
+                <Image
+                    className="personal-info-icon"
+                    src={icon}
+                    alt={`${title} icon`}
+                    width={size}
+                    style={{ padding: boxPadding }}
+                />
+            </a>
             {/* </div> */}
             <div className="personal-info-text-container">
                 <a className="personal-info-title">{title}</a>

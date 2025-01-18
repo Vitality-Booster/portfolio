@@ -1,0 +1,46 @@
+.message-received-modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9990;
+}
+
+.message-received-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 400px;
+    /* height: 250px; */
+    background-color: var(--background);
+    padding: 25px;
+    border: 1px solid var(--green);
+    border-radius: 10px;
+}
+
+.message-received-modal a {
+    text-align: center;
+}
+
+.close-modal-button {
+    background-color: var(--green);
+    color: var(--background);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--green);
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.close-modal-button:hover {
+    background-color: var(--background);
+    color: var(--green);
+}

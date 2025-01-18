@@ -9,54 +9,20 @@ import AddressIcon from "@/public/contact_page/location.png"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { useRef, useState } from "react"
+import { useState } from "react"
+import Modal from "./modal/Modal"
+import AnimatedButton from "../components/animated_button/AnimatedButton"
 
 gsap.registerPlugin(useGSAP)
 
 export default function ContactPage() {
-    const buttonRef = useRef(null)
-    const buttonContRef = useRef(null)
-    const extraTextRef = useRef(null)
-    const buttonEffectTl = useRef(gsap.timeline())
-    const { contextSafe } = useGSAP({ scope: buttonContRef })
+    const [showModal, setShowModal] = useState(false)
 
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
         message: "",
         subject: "",
-    })
-    // TODO: Use it later
-    // const [status, setStatus] = useState("")
-
-    useGSAP(() => {
-        buttonEffectTl.current.to(buttonRef.current, {
-            width: "+=2.5rem",
-            color: "#fff",
-            duration: 0.5,
-            ease: "power1",
-        })
-
-        buttonEffectTl.current.to(
-            extraTextRef.current,
-            {
-                opacity: 1,
-                duration: 0.5,
-                ease: "power1",
-            },
-            "<",
-        )
-
-        buttonEffectTl.current.pause()
-    }, [buttonEffectTl])
-
-    const buttonHoverHandler = contextSafe(() => {
-        console.log("I am hjere!")
-        buttonEffectTl.current.restart()
-    })
-
-    const buttonLeaveHandler = contextSafe(() => {
-        buttonEffectTl.current.reverse()
     })
 
     const handleChange = (
@@ -68,7 +34,6 @@ export default function ContactPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        // setStatus("Sending...")
 
         const response = await fetch("/api/contact", {
             method: "POST",
@@ -81,11 +46,13 @@ export default function ContactPage() {
         console.log("The response is:", response)
 
         if (response.ok) {
-            // setStatus("Email sent successfully!")
+            setShowModal(true);
             setFormData({ fullName: "", email: "", message: "", subject: "" })
-        } else {
-            // setStatus("Error sending email.")
         }
+    }
+
+    const handleCloseModal = () => {
+        setShowModal(false);
     }
 
     return (
@@ -110,19 +77,16 @@ export default function ContactPage() {
                         <PersonalInfoCard
                             icon={EmailIcon}
                             title="Email"
-                            value="bestolkovv@gmail.com"
-                        />
+                            value="bestolkovv@gmail.com" link={"mailto:bestolkovv@gmail.com"}                        />
                         <PersonalInfoCard
                             icon={PhoneIcon}
                             title="Phone"
                             value="+31 6 51394215"
-                            boxPadding={12}
-                        />
+                            boxPadding={12} link={"tel:+31651394215"}                      />
                         <PersonalInfoCard
                             icon={AddressIcon}
                             title="Address"
-                            value="Amsterdam, Netherlands"
-                        />
+                            value="Amsterdam, Netherlands" link={"https://maps.app.goo.gl/QVbS2Hru3sUjAPRY9"}                        />
                     </div>
                 </div>
                 <form className="contact-form" onSubmit={handleSubmit}>
@@ -135,7 +99,7 @@ export default function ContactPage() {
                                 className="contact-input"
                                 name="fullName"
                                 type="text"
-                                placeholder="Elon Musk"
+                                placeholder="John Smith"
                                 value={formData.fullName}
                                 onChange={handleChange}
                                 required
@@ -147,7 +111,7 @@ export default function ContactPage() {
                                 className="contact-input"
                                 name="email"
                                 type="email"
-                                placeholder="elonmusk@tesla.com"
+                                placeholder="jsmith@company.com"
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
@@ -181,34 +145,13 @@ export default function ContactPage() {
                             />
                         </div>
                     </div>
-                    <div className="button-container" ref={buttonContRef}>
-                        <div className="button-wrapper">
-                            <button
-                                className="contact-submit-button"
-                                type="submit"
-                                ref={buttonRef}
-                                onMouseEnter={buttonHoverHandler}
-                                onMouseLeave={buttonLeaveHandler}
-                                // onClick={() => {
-                                //     fetch("/api/projects").then((res) =>
-                                //         console.log(
-                                //             "Here is the response from the projects endpoint: " +
-                                //                 res.json(),
-                                //         ),
-                                //     )
-                                // }}
-                            >
-                                <a className="button-text" ref={buttonRef}>
-                                    Send email
-                                </a>
-                            </button>
-                            <a className="extra-button-text" ref={extraTextRef}>
-                                {"->"}
-                            </a>
-                        </div>
+                    <div className="button-container">
+                        <AnimatedButton text={"Send email"} includeArrows={true}/>
                     </div>
                 </form>
+                {showModal && <Modal closeCallback={handleCloseModal} />}
             </div>
+            
         </div>
     )
 }

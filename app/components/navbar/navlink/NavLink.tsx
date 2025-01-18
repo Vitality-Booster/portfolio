@@ -105,7 +105,7 @@ export default function NavLink({
     return (
         <a
             className={"navbar-link"}
-            href={`#${link}`}
+            href={`${process.env.NEXT_PUBLIC_BASE_URL}#${link}`}
             ref={navLink}
             onMouseEnter={onHoverHandler}
             onMouseLeave={onLeaveHandler}

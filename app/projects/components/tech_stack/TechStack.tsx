@@ -15,7 +15,7 @@ gsap.registerPlugin(useGSAP)
 
 export default function TechStack({
     skills,
-    windowWidth
+    windowWidth,
 }: {
     skills: Skill[]
     windowWidth: number
@@ -104,13 +104,10 @@ export default function TechStack({
         }
     }, [tl, animationComplete, techCircles, lines])
 
-    const circleClickHandler = contextSafe((type: string) => 
-    {
-        if (type === clickedStack)
-            return
+    const circleClickHandler = contextSafe((type: string) => {
+        if (type === clickedStack) return
 
-        if (clickedStack !== "")
-        {
+        if (clickedStack !== "") {
             const formattedType = clickedStack
                 .toLowerCase()
                 .replaceAll(" ", "-")
@@ -189,7 +186,6 @@ export default function TechStack({
             },
             "<",
         )
-
     })
 
     return (

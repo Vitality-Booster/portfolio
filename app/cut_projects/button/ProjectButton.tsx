@@ -23,6 +23,7 @@ export default function ProjectButton({
                 onClick={() => callback(index)}
             >
                 <h3>{projectName}</h3>
+                <span className="circle"></span>
             </button>
         </div>
     )

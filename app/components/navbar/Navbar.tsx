@@ -8,6 +8,7 @@ import BurgerMenu from "./burger_menu/BurgerMenu"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import { useRouter, usePathname } from "next/navigation"
 
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState<string>("")
@@ -221,6 +222,15 @@ export default function Navbar() {
     //     ">-0.1",
     // )
     const { contextSafe } = useGSAP({ scope: refWrapper })
+    const pathname = usePathname()
+
+    useEffect(() => {
+        console.log("The pathname is:", )
+        if (pathname.indexOf("projects/") !== -1) {
+            setPrevActiveSection(activeSection)
+            setActiveSection("single-project")
+        }
+    }, [pathname])
 
     useGSAP(() => {
         if (windowWidth !== 0 && windowWidth <= 768) {
@@ -283,7 +293,7 @@ export default function Navbar() {
                             text="Home"
                             link="home"
                             active={
-                                activeSection === "" || activeSection === "home"
+                                (activeSection === "" || activeSection === "home") && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1
                             }
                             wasActive={
                                 prevActiveSection === "" ||
@@ -296,7 +306,7 @@ export default function Navbar() {
                         <NavLink
                             text="Story Line"
                             link="story-line"
-                            active={activeSection === "story-line"}
+                            active={activeSection === "story-line" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
                             wasActive={prevActiveSection === "story-line"}
                             onClickCallback={handleTabChange}
                         />
@@ -305,7 +315,7 @@ export default function Navbar() {
                         <NavLink
                             text="Projects"
                             link="projects"
-                            active={activeSection === "projects"}
+                            active={activeSection === "projects" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
                             wasActive={prevActiveSection === "projects"}
                             onClickCallback={handleTabChange}
                         />
@@ -314,7 +324,7 @@ export default function Navbar() {
                         <NavLink
                             text="Skills"
                             link="skills"
-                            active={activeSection === "skills"}
+                            active={activeSection === "skills" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
                             wasActive={prevActiveSection === "skills"}
                             onClickCallback={handleTabChange}
                         />
@@ -323,7 +333,7 @@ export default function Navbar() {
                         <NavLink
                             text="Contact"
                             link="contact"
-                            active={activeSection === "contact"}
+                            active={activeSection === "contact" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
                             wasActive={prevActiveSection === "contact"}
                             onClickCallback={handleTabChange}
                         />

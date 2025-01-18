@@ -73,7 +73,7 @@
     position: absolute;
     left: -0.2em;
     height: 1em;
-    width: 6.4em;
+    width: 10em;
     background-color: var(--green);
     z-index: -1;
 }
@@ -99,7 +99,6 @@
 
     .last-name-rectangle {
         top: -0.1em;
-        width: 6em;
     }
 }
 
@@ -122,11 +121,6 @@
         left: 20%;
         margin-top: 0px;
     }
-
-    .last-name-rectangle {
-        /* top: 0em; */
-        width: 8em;
-    }
 }
 
 @media (max-width: 550px) {
@@ -138,6 +132,10 @@
 @media (max-width: 400px) {
     .full-name {
         font-size: 40px;
+    }
+
+    .last-name-rectangle {
+        top: 0em;
     }
 }
 
