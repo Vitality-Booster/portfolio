@@ -44,7 +44,7 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
     }, [allProjects])
 
     useGSAP(() => {
-        gsap.to(".all-projects-container", {
+        currentProject && gsap.to(".all-projects-container", {
             duration: 0,
             opacity: 0,
             overflow: "hidden",
@@ -56,17 +56,23 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
                 opacity: 0,
                 // y: "-100%",
             })
-            tl.current.to(".loader-figure", {
-                duration: 1,
-                opacity: 0,
-                // y: "-100%",
-            }, "<")
-            tl.current.to(".all-projects-container", {
-                duration: 0.5,
-                opacity: 1,
-            }).then(() => {
-                setShowLoader(false)  
-            })
+            tl.current.to(
+                ".loader-figure",
+                {
+                    duration: 1,
+                    opacity: 0,
+                    // y: "-100%",
+                },
+                "<",
+            )
+            tl.current
+                .to(".all-projects-container", {
+                    duration: 0.5,
+                    opacity: 1,
+                })
+                .then(() => {
+                    setShowLoader(false)
+                })
         }
     }, [currentProject])
 

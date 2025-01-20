@@ -47,6 +47,7 @@
 
 .description-text {
     margin: 20px;
+    white-space: pre-wrap;
 }
 
 .view-more-button {

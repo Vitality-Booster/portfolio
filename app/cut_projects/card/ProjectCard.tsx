@@ -23,19 +23,23 @@ export default function ProjectCard({
     const shadowRef = useRef(null)
     const wrapperRef = useRef(null)
     const { contextSafe } = useGSAP({ scope: wrapperRef })
-    const {width: windowWidth} = useWindowSize()
+    const { width: windowWidth } = useWindowSize()
 
     useGSAP(() => {
         tl.current.to(cardRef.current, {
             y: "-=40px",
             duration: 0.5,
         })
-        tl.current.to(".project-card-view-more-button", {
-            backgroundColor: "#43ff3f",
-            color: "#1f2133",
-            duration: 0.5,
-            ease: "power1.out",
-        }, "<")
+        tl.current.to(
+            ".project-card-view-more-button",
+            {
+                backgroundColor: "#43ff3f",
+                color: "#1f2133",
+                duration: 0.5,
+                ease: "power1.out",
+            },
+            "<",
+        )
         tl.current.to(
             shadowRef.current,
             {
@@ -67,26 +71,27 @@ export default function ProjectCard({
                 onMouseLeave={handleOnMouseLeave}
                 onClick={() => router.push(`/projects/${project.id}`)}
             >
-                {windowWidth > 550 && (<svg
-                    className="card-border-svg"
-                    width="435"
-                    height="700"
-                    viewBox="0 0 437 702"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <rect
-                        className="card-border-path"
-                        x="0"
-                        y="0"
-                        width="436"
-                        height="701"
-                        rx="10"
-                        stroke="#43FF3F"
-                        strokeWidth="2"
-                    />
-                </svg>)}
-                
+                {windowWidth > 550 && (
+                    <svg
+                        className="card-border-svg"
+                        width="435"
+                        height="700"
+                        viewBox="0 0 437 702"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                            className="card-border-path"
+                            x="0"
+                            y="0"
+                            width="436"
+                            height="701"
+                            rx="10"
+                            stroke="#43FF3F"
+                            strokeWidth="2"
+                        />
+                    </svg>
+                )}
 
                 <img
                     className="project-card-image"
@@ -122,7 +127,10 @@ export default function ProjectCard({
                         height={35}
                     />
                 </div>
-                <button className="project-card-view-more-button" onClick={() => router.push(`/projects/${project.id}`)}>
+                <button
+                    className="project-card-view-more-button"
+                    onClick={() => router.push(`/projects/${project.id}`)}
+                >
                     View more
                 </button>
             </div>

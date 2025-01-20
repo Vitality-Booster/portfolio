@@ -15,6 +15,20 @@ import AnimatedButton from "../components/animated_button/AnimatedButton"
 
 gsap.registerPlugin(useGSAP)
 
+const EMAIL_ICON =
+    "https://profile-website-bucket.s3.us-east-1.amazonaws.com/contact_page/email.png"
+const PHONE_ICON =
+    "https://profile-website-bucket.s3.us-east-1.amazonaws.com/contact_page/call-phone.png"
+const ADDRESS_ICON =
+    "https://profile-website-bucket.s3.us-east-1.amazonaws.com/contact_page/location.png"
+
+const EMAIL_ICON_DARK =
+    "https://profile-website-bucket.s3.us-east-1.amazonaws.com/contact_page/dark/email.png"
+const PHONE_ICON_DARK =
+    "https://profile-website-bucket.s3.us-east-1.amazonaws.com/contact_page/dark/phone-call.png"
+const ADDRESS_ICON_DARK =
+    "https://profile-website-bucket.s3.us-east-1.amazonaws.com/contact_page/dark/location.png"
+
 export default function ContactPage() {
     const [showModal, setShowModal] = useState(false)
 
@@ -46,13 +60,13 @@ export default function ContactPage() {
         console.log("The response is:", response)
 
         if (response.ok) {
-            setShowModal(true);
+            setShowModal(true)
             setFormData({ fullName: "", email: "", message: "", subject: "" })
         }
     }
 
     const handleCloseModal = () => {
-        setShowModal(false);
+        setShowModal(false)
     }
 
     return (
@@ -75,18 +89,28 @@ export default function ContactPage() {
                      */}
                     <div className="personal-information-container">
                         <PersonalInfoCard
-                            icon={EmailIcon}
-                            title="Email"
-                            value="bestolkovv@gmail.com" link={"mailto:bestolkovv@gmail.com"}                        />
+                            icon={ADDRESS_ICON}
+                            darkIcon={ADDRESS_ICON_DARK}
+                            title="Address"
+                            value="Amsterdam, Netherlands"
+                            link={"https://maps.app.goo.gl/QVbS2Hru3sUjAPRY9"}
+                        />
+
                         <PersonalInfoCard
-                            icon={PhoneIcon}
+                            icon={EMAIL_ICON}
+                            darkIcon={EMAIL_ICON_DARK}
+                            title="Email"
+                            value="bestolkovv@gmail.com"
+                            link={"mailto:bestolkovv@gmail.com"}
+                        />
+                        <PersonalInfoCard
+                            icon={PHONE_ICON}
+                            darkIcon={PHONE_ICON_DARK}
                             title="Phone"
                             value="+31 6 51394215"
-                            boxPadding={12} link={"tel:+31651394215"}                      />
-                        <PersonalInfoCard
-                            icon={AddressIcon}
-                            title="Address"
-                            value="Amsterdam, Netherlands" link={"https://maps.app.goo.gl/QVbS2Hru3sUjAPRY9"}                        />
+                            boxPadding={12}
+                            link={"tel:+31651394215"}
+                        />
                     </div>
                 </div>
                 <form className="contact-form" onSubmit={handleSubmit}>
@@ -146,12 +170,14 @@ export default function ContactPage() {
                         </div>
                     </div>
                     <div className="button-container">
-                        <AnimatedButton text={"Send email"} includeArrows={true}/>
+                        <AnimatedButton
+                            text={"Send email"}
+                            includeArrows={true}
+                        />
                     </div>
                 </form>
                 {showModal && <Modal closeCallback={handleCloseModal} />}
             </div>
-            
         </div>
     )
 }

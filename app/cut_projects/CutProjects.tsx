@@ -54,32 +54,6 @@ export default function Projects() {
         }
     }, [allProjects])
 
-    // useEffect(() => {
-
-    //     async function fetchSkills() {
-    //         const res = await fetch("/api/skills", {
-    //             cache: "force-cache",
-    //         })
-    //         const data = await res.json()
-    //         setSkills(data.skills)
-    //     }
-
-    //     async function fetchProjects() {
-    //         const res = await fetch("/api/projects", {
-    //             cache: "force-cache",
-    //         })
-    //         const data = await res.json()
-    //         setProjects(data.projects)
-    //     }
-
-    //     if (skills.length === 0){
-    //         fetchSkills()
-    //     }
-    //     if (skills.length > 0 && allProjects.length === 0) {
-    //         fetchProjects()
-    //     }
-    // }, [skills, allProjects])
-
     /**
      * Handles card animation and changes the active button
      */
@@ -98,7 +72,6 @@ export default function Projects() {
                 },
                 ">",
             )
-            // .then(() => )
             setActiveProjectId(index)
         }
     })

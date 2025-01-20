@@ -8,7 +8,6 @@ export default function DescriptionCard({
     description: string
     link: string
 }) {
-
     const onButtonClickHandler = () => {
         window.open(link, "_blank")
     }
@@ -24,7 +23,14 @@ export default function DescriptionCard({
                     >
                         Source
                     </button> */}
-                    <AnimatedButton text={"Source link"} includeArrows={true} borderWidth={1}onClickCallback={onButtonClickHandler} primaryColor="green" secondaryColor="background" />
+                    <AnimatedButton
+                        text={"Source link"}
+                        includeArrows={true}
+                        borderWidth={1}
+                        onClickCallback={onButtonClickHandler}
+                        primaryColor="green"
+                        secondaryColor="background"
+                    />
                 </div>
             </div>
             <div className="description-card-shadow" />

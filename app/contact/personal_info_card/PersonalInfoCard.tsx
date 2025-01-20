@@ -1,32 +1,75 @@
 import "./personalInfoCard.css"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { useRef, useState } from "react"
 
 export default function PersonalInfoCard({
     icon,
+    darkIcon,
     title,
     value,
     size = 80,
     boxPadding = 8,
-    link
+    link,
 }: {
-    icon: StaticImageData
+    icon: string
+    darkIcon: string
     title: string
     value: string
     size?: number
     boxPadding?: number
     link: string
 }) {
+    const iconContainerRef = useRef(null)
+    const [isDarkIcon, setIsDarkIcon] = useState(false)
+    const tl = useRef(gsap.timeline())
+    const { contextSafe } = useGSAP({ scope: iconContainerRef })
+
+    // useGSAP(() => {
+    //     tl.current.to(".icon-rectangle-fill", {
+    //         height: "100%",
+    //         duration: 0.5
+    //     })
+    // })
+
+    const handleOnHover = contextSafe(() => {
+        gsap.to(".icon-rectangle-fill", {
+            top: "0%",
+            duration: 0.4,
+            ease: "power1.out",
+        })
+        setIsDarkIcon(true)
+    })
+
+    const handleOnLeave = contextSafe(() => {
+        gsap.to(".icon-rectangle-fill", {
+            top: "100%",
+            duration: 0.4,
+            ease: "power1.out",
+        })
+        setIsDarkIcon(false)
+    })
+
     return (
         <div className="personal-info-card">
             {/* <div className="personal-info-image-container"> */}
-            <a href={link} className="personal-info-icon-container">
+            <a
+                href={link}
+                className="personal-info-icon-container"
+                ref={iconContainerRef}
+                onMouseEnter={handleOnHover}
+                onMouseLeave={handleOnLeave}
+            >
                 <Image
                     className="personal-info-icon"
-                    src={icon}
+                    src={isDarkIcon ? darkIcon : icon}
                     alt={`${title} icon`}
                     width={size}
+                    height={size}
                     style={{ padding: boxPadding }}
                 />
+                <div className="icon-rectangle-fill" />
             </a>
             {/* </div> */}
             <div className="personal-info-text-container">

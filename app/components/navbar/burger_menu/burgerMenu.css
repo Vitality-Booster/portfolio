@@ -1,7 +1,7 @@
 .ham {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 400ms;
+    transition: transform 600ms;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;

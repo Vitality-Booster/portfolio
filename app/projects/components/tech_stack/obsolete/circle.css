@@ -3,9 +3,9 @@
     left: 0%;
     top: 0%;
     padding: 28px;
-    border-radius: 50%;
+    border-radius: 10px;
     background-color: var(--background);
-    border: 1px solid #5e5e5e94;
+    border: 2px solid #5e5e5e94;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,11 +24,12 @@
 }
 
 .tech-circle-wrapper {
-    position: absolute;
+    position: relative;
     width: fit-content;
     height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    align-self: center;
 }

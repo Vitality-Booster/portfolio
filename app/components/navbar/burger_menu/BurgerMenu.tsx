@@ -16,7 +16,7 @@ export default function BurgerMenu({
                 !active ? "ham hamRotate ham7" : "ham hamRotate ham7 active"
             }
             viewBox="0 0 100 100"
-            width="80"
+            width="70"
             onClick={() => {
                 toggleHandler(!active)
                 setActive(!active)

@@ -85,18 +85,24 @@ export default function Home() {
                 opacity: 0,
                 // y: "-100%",
             })
-            tl.current.to(".loader-figure", {
-                duration: 1,
-                opacity: 0,
-                // y: "-100%",
-            }, "<")
-            tl.current.to(".main-container", {
-                duration: 0.5,
-                opacity: 1,
-            }).then(() => {
-                router.push(window.location.href)
-                setShowLoader(false)
-            })
+            tl.current.to(
+                ".loader-figure",
+                {
+                    duration: 1,
+                    opacity: 0,
+                    // y: "-100%",
+                },
+                "<",
+            )
+            tl.current
+                .to(".main-container", {
+                    duration: 0.5,
+                    opacity: 1,
+                })
+                .then(() => {
+                    router.push(window.location.href)
+                    setShowLoader(false)
+                })
         }
     }, [skills, projects, hiddenSkills, storyParts])
 

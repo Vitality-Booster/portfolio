@@ -22,210 +22,18 @@ export default function Navbar() {
         }
     }, [])
 
-    // useEffect(() => {
-    //     if (sections[0] === null){
-    //         setSections(ALL_SECTIONS.map(section => document.getElementById(section)));
-    //     }
-
-    //     const observerOptions = {
-    //         root: document.querySelector("#root"),
-    //         rootMargin: '0px',
-    //         threshold: 0.3,
-    //       };
-
-    // //       if (sections[0] !== null){
-    // //         console.log("I have reached the non-null statenet")
-    // //     const observer = new IntersectionObserver(entries => {
-
-    // //       entries.forEach(entry => {
-    // //           if(entry.isIntersecting){
-    // //             console.log("entry target is", entry.target.id)
-    // //             setPrevActiveSection(activeSection)
-    // //             setActiveSection(entry.target.id)
-    // //             //   if (entry.target.id == 'home'){
-    // //             //     setActiveSection('about')
-    // //             //   }
-    // //             //   if (entry.target.id == 'projects'){
-    // //             //     setActiveSection('projects')
-    // //             //   }
-    // //             //   if (entry.target.id == 'skills'){
-    // //             //     setActiveSection('skills')
-    // //             //   }
-    // //             //   if (entry.target.id == 'articles'){
-    // //             //     setActiveSection('articles')
-    // //             //   }
-    // //           }
-    // //       })
-    // //   }, observerOptions)
-
-    // //   sections?.forEach(section => {
-    // //     section && observer.observe(section)
-    // //   })
-    // // }
-
-    // if (sections[0] !== null) {
-    //     const observer = new IntersectionObserver(entries => {
-    //         entries.forEach(entry => {
-    //             if (entry.isIntersecting) {
-    //                 setPrevActiveSection(activeSection);
-    //                 setActiveSection(entry.target.id);
-    //             }
-    //         });
-    //     }, observerOptions);
-
-    //     sections.forEach(section => {
-    //         if (section) observer.observe(section);
-    //     });
-
-    //     return () => {
-    //         sections.forEach(section => {
-    //             if (section) observer.unobserve(section);
-    //         });
-    //     };
-    // }
-
-    // }, [sections, activeSection]);
-
-    // ScrollTrigger.create({
-    //     trigger: "#home",
-    //     start: "top 80%",
-    //     end: "top 20%",
-    //     onToggle: () => {
-    //         setPrevActiveSection(activeSection)
-    //         setActiveSection("home")
-    //     },
-    // })
-
-    // useGSAP(() => {
-    //     // ScrollTrigger.create({
-    //     //     trigger: "#story-line",
-    //     //     start: "top 80%",
-    //     //     end: "top 20%",
-    //     //     markers: true,
-    //     //     onEnter: () => {
-    //     //         setPrevActiveSection(activeSection)
-    //     //         setActiveSection("story-line")
-    //     //     },
-    //     //     onEnterBack: () => {
-    //     //         setPrevActiveSection(activeSection)
-    //     //         setActiveSection("story-line")
-    //     //     }
-    //     // })
-
-    //     // ScrollTrigger.create({
-    //     //     trigger: "#projects",
-    //     //     start: "top 80%",
-    //     //     end: "top 20%",
-    //     //     markers: true,
-    //     //     onEnter: () => {
-    //     //         setPrevActiveSection(activeSection)
-    //     //         setActiveSection("projects")
-    //     //     },
-    //     //     onEnterBack: () => {
-    //     //         setPrevActiveSection(activeSection)
-    //     //         setActiveSection("projects")
-    //     //     }
-    //     // })
-
-    //     if (skills.length > 0){
-    //     ALL_SECTIONS.forEach((section) => ScrollTrigger.create({
-    //         trigger: `#${section}`,
-    //         start: section === "home" ? "top 80%" : "top 80%",
-    //         markers: section === "contact" || section === "home" || section === "story-line",
-    //         end: section === "home" ? "50% 20%" : "80% 20%",
-    //         onEnter: () => {
-    //             setPrevActiveSection(activeSection)
-    //             setActiveSection(section)
-    //         },
-    //         onEnterBack: () => {
-    //             setPrevActiveSection(activeSection)
-    //             setActiveSection(section)
-    //         },
-    //     }))}
-    // }, [activeSection, prevActiveSection, skills])
-
-    // ALL_SECTIONS.forEach((section) => ScrollTrigger.create({
-    //     trigger: `#${section}`,
-    //     start: "top 80%",
-    //     // markers: true,
-    //     end: "top 20%",
-    //     onToggle: () => {
-    //         setPrevActiveSection(activeSection)
-    //         setActiveSection(section)
-    //     },
-    // }))
-
-    // ALL_SECTIONS.forEach((section) => ScrollTrigger.create({
-    //     trigger: `#${section}`,
-    //     start: "top 80%",
-    //     // markers: true,
-    //     end: "top 20%",
-    //     onToggle: () => {
-    //         setPrevActiveSection(activeSection)
-    //         setActiveSection(section)
-    //     },
-    // }))
-
-    // useEffect(() => {
-    //     const sections = document.querySelectorAll("section");
-    //     const observer = new IntersectionObserver(
-    //       (entries) => {
-    //         entries.forEach((entry) => {
-    //           if (entry.isIntersecting) {
-    //             setActiveSection(entry.target.id);
-    //           }
-    //         });
-    //       },
-    //       { threshold: 0.5 } // Adjust for when sections are "active"
-    //     );
-
-    //     ALL_SECTIONS.forEach((section) => {
-    //         const htmlSection = document.querySelector(`#${section}`)
-    //         htmlSection && observer.observe(htmlSection)
-    // });
-
-    //     return () => {
-    //         ALL_SECTIONS.forEach((section) => {
-    //             const htmlSection = document.querySelector(`#${section}`)
-    //             htmlSection && observer.unobserve(htmlSection)
-    //     });
-    //     };
-    //   }, []);
-
     const { width: windowWidth } = useWindowSize()
     const refMenuContainer = useRef(null)
     const refWrapper = useRef(null)
     const refNav = useRef(null)
     const tl = useRef(gsap.timeline())
 
-    // tl.current.to(refMenuContainer.current, {
-    //     width: "150px",
-    //     height: "100vh",
-    //     // borderBottomRightRadius: "0px",
-    //     duration: 1,
-    //     ease: "power2.in",
-    // }).to(refMenuContainer.current, {
-    //     // width: "150px",
-    //     // height: "100vh",
-    //     borderBottomRightRadius: "0px",
-    //     duration: 0.01,
-    //     ease: "power1.in",
-    // }, ">-0.01").from(
-    //     refNav.current,
-    //     {
-    //         opacity: 0,
-    //         zIndex: 10,
-    //         width: "150px",
-    //         duration: 0.3,
-    //         ease: "power2.out",
-    //     },
-    //     ">-0.1",
-    // )
     const { contextSafe } = useGSAP({ scope: refWrapper })
     const pathname = usePathname()
+    const [navbarOpen, setNavbarOpen] = useState(false)
 
     useEffect(() => {
-        console.log("The pathname is:", )
+        console.log("The pathname is:")
         if (pathname.indexOf("projects/") !== -1) {
             setPrevActiveSection(activeSection)
             setActiveSection("single-project")
@@ -234,9 +42,8 @@ export default function Navbar() {
 
     useGSAP(() => {
         if (windowWidth !== 0 && windowWidth <= 768) {
-            console.log(`The values of the windowWidth is: ${windowWidth}`)
             tl.current.to(refMenuContainer.current, {
-                width: "150px",
+                width: "165px",
                 height: "100vh",
                 duration: 1,
                 ease: "power2.in",
@@ -255,6 +62,7 @@ export default function Navbar() {
                 refNav.current,
                 {
                     opacity: 1,
+                    left: "0%",
                     duration: 0.3,
                     ease: "power2.out",
                 },
@@ -271,8 +79,14 @@ export default function Navbar() {
     }
 
     const handleMenuToggle = contextSafe((menuOpen: boolean) => {
-        if (menuOpen) tl.current.play()
-        else tl.current.reverse()
+        if (menuOpen) {
+            setNavbarOpen(true)
+            tl.current.play()
+        }
+        else {
+            tl.current.reverse()
+            setNavbarOpen(false)
+        }
     })
 
     return (
@@ -293,7 +107,10 @@ export default function Navbar() {
                             text="Home"
                             link="home"
                             active={
-                                (activeSection === "" || activeSection === "home") && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1
+                                (activeSection === "" ||
+                                    activeSection === "home") &&
+                                typeof window !== "undefined" &&
+                                window.location.href.indexOf("projects/") === -1
                             }
                             wasActive={
                                 prevActiveSection === "" ||
@@ -306,7 +123,11 @@ export default function Navbar() {
                         <NavLink
                             text="Story Line"
                             link="story-line"
-                            active={activeSection === "story-line" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
+                            active={
+                                activeSection === "story-line" &&
+                                typeof window !== "undefined" &&
+                                window.location.href.indexOf("projects/") === -1
+                            }
                             wasActive={prevActiveSection === "story-line"}
                             onClickCallback={handleTabChange}
                         />
@@ -315,7 +136,11 @@ export default function Navbar() {
                         <NavLink
                             text="Projects"
                             link="projects"
-                            active={activeSection === "projects" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
+                            active={
+                                activeSection === "projects" &&
+                                typeof window !== "undefined" &&
+                                window.location.href.indexOf("projects/") === -1
+                            }
                             wasActive={prevActiveSection === "projects"}
                             onClickCallback={handleTabChange}
                         />
@@ -324,7 +149,11 @@ export default function Navbar() {
                         <NavLink
                             text="Skills"
                             link="skills"
-                            active={activeSection === "skills" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
+                            active={
+                                activeSection === "skills" &&
+                                typeof window !== "undefined" &&
+                                window.location.href.indexOf("projects/") === -1
+                            }
                             wasActive={prevActiveSection === "skills"}
                             onClickCallback={handleTabChange}
                         />
@@ -333,7 +162,11 @@ export default function Navbar() {
                         <NavLink
                             text="Contact"
                             link="contact"
-                            active={activeSection === "contact" && typeof(window) !== "undefined" && window.location.href.indexOf("projects/") === -1}
+                            active={
+                                activeSection === "contact" &&
+                                typeof window !== "undefined" &&
+                                window.location.href.indexOf("projects/") === -1
+                            }
                             wasActive={prevActiveSection === "contact"}
                             onClickCallback={handleTabChange}
                         />

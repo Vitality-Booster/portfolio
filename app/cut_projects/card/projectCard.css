@@ -44,31 +44,12 @@
 
 .project-card-image {
     position: relative;
-    object-fit: cover;
+    object-fit:contain;
     object-position: center;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     max-width: 100%;
     width: var(--card-width);
-    height: 325px;
-}
-
-@media (max-width: 1024px) {
-    .project-card-image {
-        height: 250px;
-    }
-}
-
-@media (max-width: 550px) {
-    .project-card-image {
-        height: 200px;
-    }
-}
-
-@media (max-width: 400px) {
-    .project-card-image {
-        height: 150px;
-    }
 }
 
 /* Text Area + Project Title */

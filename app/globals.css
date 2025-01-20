@@ -10,7 +10,7 @@
     --dark-blue: #1f2133;
     --foreground: #fff;
     --light-background: #2e324b;
-    --glass-background: #2e324b83;
+    --glass-background: #2e324b6e;
     --green: #43ff3f;
     --purple: #fb3fff;
 
@@ -182,7 +182,7 @@ a {
     margin-bottom: 75px;
 }
 
-@media (max-width: 1028px) {
+@media (max-width: 1024px) {
     .section-heading {
         font-size: 50px;
     }
@@ -202,9 +202,13 @@ a {
         left: -6%;
         top: calc(50% - 17px);
     }
+
+    .full-page-section {
+        padding-top: 100px;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .section-heading {
         font-size: 50px;
     }

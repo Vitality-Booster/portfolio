@@ -16,7 +16,6 @@ import CombinedColumn from "./combined_column/CombinedColumn"
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export default function StoryLine() {
-    // const {storyParts, setStoryParts} = useStorylineStore()
     const { storyParts } = useMainStore()
     const { width: windowWidth } = useWindowSize()
 
@@ -38,11 +37,11 @@ export default function StoryLine() {
     return (
         <div id="story-line" className="full-page-section">
             <h1 className="section-heading">Story Line</h1>
-            {windowWidth >= 1028 && <Line />}
-            {windowWidth < 1028 && storyParts.length > 0 && (
-                <CombinedColumn storyParts={storyParts}></CombinedColumn>
+            {/* {windowWidth >= 1028 && <Line />} */}
+            {storyParts.length > 0 && (
+                <CombinedColumn storyParts={storyParts} windowWidth={windowWidth}></CombinedColumn>
             )}
-            {windowWidth >= 1028 && (
+            {/* {windowWidth >= 1028 && (
                 <div className="story-line-wrapper">
                     {storyParts.length > 0 &&
                         storyParts.map((storyPart) => (
@@ -64,7 +63,7 @@ export default function StoryLine() {
                             </div>
                         ))}
                 </div>
-            )}
+            )} */}
         </div>
     )
 }
