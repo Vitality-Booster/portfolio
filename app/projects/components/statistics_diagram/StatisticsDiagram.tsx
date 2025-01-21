@@ -67,8 +67,6 @@ const Stat6Map: StatMap = {
     E: "42.5% 45.5%",
 }
 
-// const statArray = ["B", "C", "B", "S", "A", "A"]
-
 export default function StatisticsDiagram({
     stats,
 }: {

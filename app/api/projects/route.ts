@@ -11,10 +11,5 @@ export async function GET() {
         orderBy: { id: "asc" },
     })
 
-    // for (let i = 0; i < projects.length; i++) {
-    //     const newImage = await imagePathToUrl(projects[i].mainPicture, ImageType.Project)
-    //     projects[i].mainPicture = newImage
-    // }
-
     return Response.json({ projects: projects }, { status: 200 })
 }

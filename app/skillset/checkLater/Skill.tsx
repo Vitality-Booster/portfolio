@@ -15,9 +15,6 @@ export default function Skill() {
     const { contextSafe } = useGSAP()
     const tl1 = useRef(gsap.timeline())
 
-    /**
-     * TODO: Make the animations faster!
-     */
     const handleMouseEnter = contextSafe(() => {
         gsap.to(yearsContainer.current, {
             width: "5em",

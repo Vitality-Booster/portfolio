@@ -21,7 +21,6 @@ export default function Skillset() {
     const { skills, hiddenSkills } = useMainStore()
     const [currentTab, setCurrentTab] = useState("Back-end")
     const [prevTab, setPrevTab] = useState("Back-end")
-    // const [hiddenSkills, setHiddenSkills] = useState<HiddenSkillWithProjectNames[]>([])
     const [skillset, setSkillset] = useState<SkillWithProjectNames[]>(
         skills.filter((skill) => skill.tags.includes(currentTab)),
     )
@@ -119,19 +118,3 @@ export default function Skillset() {
         </div>
     )
 }
-
-// TODO: Previous version, check later if needed for the cool animation of the Skill Years
-// may need to look for that in the "Check Later" folder as well!
-
-// export default function Skillset() {
-//     return (
-//         <div className="skillset-container">
-//             <div className="skillset-section">
-//                 <h2>Frontend</h2>
-//                 <div className="skills-container">
-//                     <Skill />
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }

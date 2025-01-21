@@ -26,14 +26,12 @@ export default function Point({ marginTop = "20px" }: { marginTop?: string }) {
             width: "+=150",
             duration: 1,
             ease: "power1.in",
-            // paused: true,
         })
         tl.current.to(
             littleCircle.current,
             {
                 backgroundColor: "#fff",
                 duration: 1,
-                // paused: true,
             },
             "<",
         )
@@ -46,20 +44,14 @@ export default function Point({ marginTop = "20px" }: { marginTop?: string }) {
                 end: "center center",
                 scrub: 0.5,
                 onScrubComplete: (obj) => {
-                    console.log(
-                        `The values of the animation: ${animationComplete} and progress: ${obj.progress}`,
-                    )
                     if (obj.progress === 1 && !animationComplete) {
-                        console.log("Reached the thing")
                         gsap.to(point.current, {
                             "--lightning-opacity": 0,
                             duration: 2,
                         })
                         tl.current.play()
-                        // setAnimationComplete(true)
                     }
                     if (obj.direction === -1 && obj.progress <= 0.9) {
-                        console.log("Leaving the thing")
                         tl.current.reverse().then(() => {
                             gsap.to(point.current, {
                                 "--lightning-opacity": 1,
@@ -67,12 +59,9 @@ export default function Point({ marginTop = "20px" }: { marginTop?: string }) {
                             })
                         })
 
-                        // setAnimationComplete(false)
                     }
                 },
             },
-            // scale: 1.3,
-            // skew: 20,
         })
     }, [point, littleCircle, tl, line, animationComplete, setAnimationComplete])
 

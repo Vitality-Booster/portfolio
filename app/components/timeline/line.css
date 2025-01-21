@@ -12,15 +12,11 @@
 }
 
 .dashed-line {
-    /* padding-right: 1px; */
-
     height: 100%;
     border-left: 2px dashed var(--green);
 }
 
 .filled-line {
-    /* left: 50%; */
-    /* padding-right: 0.5px; */
     height: 0px;
     border-left: 4px solid var(--green);
 }

@@ -26,6 +26,5 @@ export async function GET() {
         projects: skill.projects.map((project) => project.name),
     }))
 
-    // console.log("The project names of the skills that I get with a new approach:", skills[0].projects)
     return Response.json({ skills: formattedSkills })
 }

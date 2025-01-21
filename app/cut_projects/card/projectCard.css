@@ -34,17 +34,13 @@
         --card-width: 250px;
         --card-height: 450px;
     }
-
-    /* .project-card {
-        height: fit-content;
-    } */
 }
 
 /* Project Card Image */
 
 .project-card-image {
     position: relative;
-    object-fit:contain;
+    object-fit: contain;
     object-position: center;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -175,15 +171,9 @@
     position: absolute;
     top: -0.06%;
     left: -2%;
-    /* top: -0.4%;
-    left: -150%; */
-
     z-index: 4;
     rotate: 180deg;
-    /* height: calc(var(--card-height) + 70px);
-    width: calc(var(--card-width) + 100px); */
     height: 100%;
-    /* height: calc(var(--card-height) + 150px); */
     width: 104%;
 }
 

@@ -1,11 +1,8 @@
-// "use server";
+"use server";
 
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3"
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers"
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
-// import "dotenv/config"
-
-// TODO: Finish it
 
 const S3_SKILL_FOLDER = "skillset/icons/"
 
@@ -17,15 +14,6 @@ const client = new S3Client({
         identityPoolId: process.env.S3_IDENTITY_POOL_ID ?? "",
     }),
 })
-
-// export async function GET() {
-//     const command = new ListObjectsCommand({
-//         Bucket: process.env.S3_BUCKET_NAME,
-//     })
-//     const { Contents } = await client.send(command)
-
-//     return Response.json({ images: Contents })
-// }
 
 export async function GET(request: Request) {
     const query = new URL(request.url)

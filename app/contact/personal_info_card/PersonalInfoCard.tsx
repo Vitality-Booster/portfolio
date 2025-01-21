@@ -23,15 +23,8 @@ export default function PersonalInfoCard({
 }) {
     const iconContainerRef = useRef(null)
     const [isDarkIcon, setIsDarkIcon] = useState(false)
-    const tl = useRef(gsap.timeline())
     const { contextSafe } = useGSAP({ scope: iconContainerRef })
 
-    // useGSAP(() => {
-    //     tl.current.to(".icon-rectangle-fill", {
-    //         height: "100%",
-    //         duration: 0.5
-    //     })
-    // })
 
     const handleOnHover = contextSafe(() => {
         gsap.to(".icon-rectangle-fill", {
@@ -53,7 +46,6 @@ export default function PersonalInfoCard({
 
     return (
         <div className="personal-info-card">
-            {/* <div className="personal-info-image-container"> */}
             <a
                 href={link}
                 className="personal-info-icon-container"
@@ -71,7 +63,6 @@ export default function PersonalInfoCard({
                 />
                 <div className="icon-rectangle-fill" />
             </a>
-            {/* </div> */}
             <div className="personal-info-text-container">
                 <a className="personal-info-title">{title}</a>
                 <a className="personal-info-value">{value}</a>

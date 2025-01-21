@@ -5,7 +5,6 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
     align-items: center;
     position: relative;
 
@@ -17,7 +16,6 @@
 .hidden-skill-number {
     position: absolute;
     font-size: 400px;
-    /* color: var(--green); */
     left: 70%;
     top: -48%;
     opacity: 0.4;
@@ -29,7 +27,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 
 .hidden-skill-year-experience {

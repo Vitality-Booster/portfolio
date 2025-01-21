@@ -56,7 +56,6 @@ export default function StatisticsCard({
                 ))}
             </div>
             <div className="statistics-card-shadow" />
-            {/* <div className="statistics-card-shadow" style={tags.length < 3 ? {height: ONE_ROW_HEIGHT} : {height: "97%"}}/> */}
         </div>
     )
 }

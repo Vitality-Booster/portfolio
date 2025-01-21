@@ -1,5 +1,11 @@
 import "./animatedButton.css"
 
+interface CustomCSSProperties extends React.CSSProperties {
+    '--primary-color'?: string;
+    '--secondary-color'?: string;
+    '--borderSize'?: string;
+}
+
 export default function AnimatedButton({
     text,
     includeArrows,
@@ -24,7 +30,7 @@ export default function AnimatedButton({
                 "--primary-color": `var(--${primaryColor})`,
                 "--secondary-color": `var(--${secondaryColor})`,
                 "--borderSize": "" + borderWidth + "px",
-            }}
+            } as CustomCSSProperties}
             type={type}
             onClick={onClickCallback && onClickCallback}
         >

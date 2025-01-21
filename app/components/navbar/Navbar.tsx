@@ -8,7 +8,7 @@ import BurgerMenu from "./burger_menu/BurgerMenu"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState<string>("")
@@ -30,10 +30,8 @@ export default function Navbar() {
 
     const { contextSafe } = useGSAP({ scope: refWrapper })
     const pathname = usePathname()
-    const [navbarOpen, setNavbarOpen] = useState(false)
 
     useEffect(() => {
-        console.log("The pathname is:")
         if (pathname.indexOf("projects/") !== -1) {
             setPrevActiveSection(activeSection)
             setActiveSection("single-project")
@@ -80,12 +78,9 @@ export default function Navbar() {
 
     const handleMenuToggle = contextSafe((menuOpen: boolean) => {
         if (menuOpen) {
-            setNavbarOpen(true)
             tl.current.play()
-        }
-        else {
+        } else {
             tl.current.reverse()
-            setNavbarOpen(false)
         }
     })
 

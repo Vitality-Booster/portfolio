@@ -31,7 +31,6 @@
 .all-project-buttons {
     display: flex;
     flex-direction: column;
-    /* margin: 50px; */
     position: relative;
     z-index: 0;
     height: 400px;

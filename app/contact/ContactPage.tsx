@@ -3,10 +3,6 @@
 import "./contactPage.css"
 import PersonalInfoCard from "./personal_info_card/PersonalInfoCard"
 
-import EmailIcon from "@/public/contact_page/email.png"
-import PhoneIcon from "@/public/contact_page/call-phone.png"
-import AddressIcon from "@/public/contact_page/location.png"
-
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useState } from "react"
@@ -57,8 +53,6 @@ export default function ContactPage() {
             body: JSON.stringify(formData),
         })
 
-        console.log("The response is:", response)
-
         if (response.ok) {
             setShowModal(true)
             setFormData({ fullName: "", email: "", message: "", subject: "" })
@@ -74,7 +68,6 @@ export default function ContactPage() {
             <h1 className="section-heading">Contact Me</h1>
             <div className="contact-main-container">
                 <div className="contact-information-container">
-                    {/* <a className="cta-text-highlited">* Contact me *</a> */}
                     <a className="contact-main-text">
                         Looking for a {``}
                         <span className="contact-main-text-highlighted">

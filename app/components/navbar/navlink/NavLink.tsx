@@ -83,17 +83,14 @@ export default function NavLink({
 
         if (wasActive && !active) {
             bordersTL.current.reverse()
-            // setFinishedInitAnimation(true)
         } else if (wasActive && active) {
             bordersTL.current.play()
-            // setFinishedInitAnimation(true)
         } else if (active && !wasActive) {
             bordersTL.current.play()
         }
     }, [active, animationComplete])
 
     const onHoverHandler = contextSafe(() => {
-        // if (!active) bordersTL.current.play().then(() => setAnimationComplete(true))
         if (!active) bordersTL.current.play()
     })
 
@@ -112,7 +109,6 @@ export default function NavLink({
             onClick={() => onClickCallback(link)}
         >
             <div
-                // className={active ? "left-border-active" : "left-border"}
                 className={"left-border"}
                 ref={leftBorder}
             />

@@ -29,7 +29,6 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
     useEffect(() => {
         async function fetchProjects() {
             const res = await fetch("/api/projects", {
-                // cache: "force-cache",
             })
             const data = await res.json()
             setProjects(data.projects)
@@ -44,24 +43,23 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
     }, [allProjects])
 
     useGSAP(() => {
-        currentProject && gsap.to(".all-projects-container", {
-            duration: 0,
-            opacity: 0,
-            overflow: "hidden",
-        })
+        if(currentProject)
+            gsap.to(".all-projects-container", {
+                duration: 0,
+                opacity: 0,
+                overflow: "hidden",
+            })
 
         if (currentProject && currentProject.skills.length > 0) {
             tl.current.to(".loader-root-container", {
                 duration: 1,
                 opacity: 0,
-                // y: "-100%",
             })
             tl.current.to(
                 ".loader-figure",
                 {
                     duration: 1,
                     opacity: 0,
-                    // y: "-100%",
                 },
                 "<",
             )
@@ -105,7 +103,6 @@ export default function ProjectsPage({ params }: { params: { id: number } }) {
                         <div className="project-tech-stack">
                             <TechStack
                                 skills={currentProject.skills}
-                                windowWidth={windowWidth}
                             />
                         </div>
                     )}

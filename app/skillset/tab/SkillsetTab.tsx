@@ -19,8 +19,6 @@ export default function SkillsetTab({
     wasActive: boolean
     onClickCallback: (tab: string) => void
 }) {
-    // const [finishedInitAnimation, setFinishedInitAnimation] = useState(false)
-
     const tabRef = useRef(null)
     const rectRef = useRef(null)
     const tl = useRef(gsap.timeline())
@@ -48,10 +46,8 @@ export default function SkillsetTab({
 
         if (wasActive && !active) {
             tl.current.reverse()
-            // setFinishedInitAnimation(true)
         } else if (wasActive && active) {
             tl.current.play()
-            // setFinishedInitAnimation(true)
         } else if (active && !wasActive) {
             tl.current.play()
         }

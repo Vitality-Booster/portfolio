@@ -75,7 +75,6 @@ export default function SkillCard({
                 </div>
                 <a className="skill-year-experience">
                     <strong>Projects</strong>: {allProjects}
-                    {/* {skillData.projects.slice(0, 3).join(", ")} */}
                 </a>
             </div>
         </div>

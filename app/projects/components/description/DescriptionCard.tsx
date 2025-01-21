@@ -17,12 +17,6 @@ export default function DescriptionCard({
             <div className="description-project-card">
                 <div className="description-text">{description}</div>
                 <div className="view-more-button-container">
-                    {/* <button
-                        className="view-more-button"
-                        onClick={() => window.open(link, "_blank")}
-                    >
-                        Source
-                    </button> */}
                     <AnimatedButton
                         text={"Source link"}
                         includeArrows={true}

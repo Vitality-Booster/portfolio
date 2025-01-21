@@ -10,18 +10,6 @@ export type ProjectCardInfo = {
     iconImage3: ImageType
 }
 
-// const projectWithSkills = Prisma.validator<Prisma.ProjectDefaultArgs>()({
-//     include: { skills: true },
-// })
-
-// export type ProjectWithSkills = Prisma.ProjectGetPayload<
-//     typeof projectWithSkills
-// >
-
-// export interface ProjectStats {
-//     [key: string]: string
-// }
-
 // Define the type alias directly
 export type ProjectWithSkills = Prisma.ProjectGetPayload<{
     include: { skills: true }

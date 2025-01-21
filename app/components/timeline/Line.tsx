@@ -8,8 +8,6 @@ import ScrollTrigger from "gsap/ScrollTrigger"
 import { useRef } from "react"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
-
-// export default function Line({ height = 300 }: { height?: number }) {
 export default function Line() {
     const filledLine = useRef(null)
     const dashedLine = useRef(null)

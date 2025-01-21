@@ -41,39 +41,28 @@ export default function Home() {
     useEffect(() => {
         if (projectsData) {
             setProjects(projectsData.projects)
-            // console.log("Projects data is", projectsData.projects)
         }
     }, [projectsData, setProjects])
 
     useEffect(() => {
         if (skillsData) {
             setSkills(skillsData.skills)
-            // console.log("Skill data is", skillsData.skills)
         }
     }, [skillsData, setSkills])
 
     useEffect(() => {
         if (hiddenSkillsData) {
             setHiddenSkills(hiddenSkillsData.hiddenSkills)
-            // console.log("Hidden Skill data is", hiddenSkillsData.hiddenSkills)
         }
     }, [hiddenSkillsData, setHiddenSkills])
 
     useEffect(() => {
         if (storyPartsData) {
             setStoryParts(storyPartsData.storyParts)
-            // console.log("Story parts data is", storyPartsData.storyParts)
         }
     }, [storyPartsData, setStoryParts])
 
     useGSAP(() => {
-        // gsap.to(".main-container", {
-        //     duration: 0,
-        //     opacity: 0,
-        //     // y: "100%",
-        //     overflow: "hidden",
-        // })
-
         if (
             skills.length > 0 &&
             projects.length > 0 &&
@@ -83,14 +72,12 @@ export default function Home() {
             tl.current.to(".loader-root-container", {
                 duration: 1,
                 opacity: 0,
-                // y: "-100%",
             })
             tl.current.to(
                 ".loader-figure",
                 {
                     duration: 1,
                     opacity: 0,
-                    // y: "-100%",
                 },
                 "<",
             )
