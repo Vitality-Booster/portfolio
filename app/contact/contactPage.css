@@ -187,12 +187,12 @@
     background: var(--light-background);
     border: #ffffff3a 1px solid;
     border-radius: 7px;
+    color: #fff;
 }
 
 .contact-input {
     padding: 13px;
     padding-left: 20px;
-    color: #fff;
 }
 
 .contact-input:focus,
