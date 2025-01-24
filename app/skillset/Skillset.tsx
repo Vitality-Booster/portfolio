@@ -24,6 +24,7 @@ export default function Skillset() {
     const [skillset, setSkillset] = useState<SkillWithProjectNames[]>(
         skills.filter((skill) => skill.tags.includes(currentTab)),
     )
+    const [tabsBlocked, setTabsBlocked] = useState(false)
 
     const skillsetCardsRef = useRef(null)
     const tl = useRef(gsap.timeline())
@@ -43,25 +44,28 @@ export default function Skillset() {
     }, [skills])
 
     const handleTabChange = contextSafe((tab: string) => {
+        if (tabsBlocked) return
+        setTabsBlocked(true)
         setPrevTab(currentTab)
         setCurrentTab(tab)
 
         tl.current
             .to(skillsetCardsRef.current, {
-                duration: 1,
+                duration: 0.5,
                 opacity: 0,
                 y: "+=200px",
+                ease: "power1.in"
             })
             .then(() => {
                 setSkillset(skills.filter((skill) => skill.tags.includes(tab)))
             })
             .then(() =>
                 tl.current.to(skillsetCardsRef.current, {
-                    duration: 1,
+                    duration: 0.5,
                     opacity: 1,
                     y: "-=200px",
                 }),
-            )
+            ).then(() => setTabsBlocked(false))
     })
 
     if (
@@ -75,7 +79,7 @@ export default function Skillset() {
 
     return (
         <div id="skills" className="full-page-section">
-            <h1 className="section-heading">Expertiese</h1>
+            <h1 className="section-heading">Expertise</h1>
             <div className="skillset-main-container">
                 <div className="skillset-all-tabs">
                     {tabs.map((tab, index) => {

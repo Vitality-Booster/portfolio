@@ -24,6 +24,24 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Custom scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+html::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent; /* Background of the scrollbar track */
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the scrollbar thumb */
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+
 html,
 body {
     max-width: 100vw;
@@ -124,7 +142,7 @@ a {
     height: 0px;
 }
 
-@media (max-width: 786px) {
+@media (max-width: 768px) {
     .navbar-container {
         width: 0;
     }

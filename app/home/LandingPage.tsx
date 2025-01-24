@@ -60,7 +60,7 @@ export default function LandingPage() {
                 </div>
                 <div className="home-descriptions">
                     <div className="home-description-line">
-                        <p className="hidden-home-description">Team Player</p>
+                        <p className="hidden-home-description">Problem Solver</p>
                         <p className="home-description">Developer</p>
                     </div>
                     <div className="home-description-line">
@@ -70,7 +70,7 @@ export default function LandingPage() {
                     </div>
                     <div className="home-description-line">
                         <p className="hidden-home-description">
-                            Problem Solver
+                            Team Player
                         </p>
                         <p className="home-description">Challenger</p>
                     </div>

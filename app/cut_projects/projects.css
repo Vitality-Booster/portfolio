@@ -39,6 +39,24 @@
     padding-bottom: 10px;
 }
 
+/* Custom scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+.all-project-buttons::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+
+.all-project-buttons::-webkit-scrollbar-track {
+    background: transparent; /* Background of the scrollbar track */
+}
+
+.all-project-buttons::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the scrollbar thumb */
+}
+
+.all-project-buttons::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+
 /* Scroll Indicator for Buttons */
 
 .scroll-indicator {
@@ -99,6 +117,13 @@
     .all-project-buttons {
         width: 100%;
     }
+
+    /* Custom scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+    .all-project-buttons::-webkit-scrollbar {
+        height: 5px; /* Width of the scrollbar */
+        width: 5px;
+    }
+
 
     .buttons-with-indicator {
         margin-left: 30px;
